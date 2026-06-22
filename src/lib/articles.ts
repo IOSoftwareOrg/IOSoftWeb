@@ -6,7 +6,8 @@ export type Category =
   | "Lean Management"
   | "Droit"
   | "Économie"
-  | "Informatique";
+  | "Informatique"
+  | "Management";
 
 export interface Article {
   slug: string;
@@ -18,6 +19,70 @@ export interface Article {
 }
 
 export const articles: Article[] = [
+  {
+    slug: "ia-management-adapter-organisation",
+    title: "IA et management : comment les dirigeants doivent adapter leur organisation",
+    category: "Management",
+    date: "22 juin 2026",
+    excerpt:
+      "L'intelligence artificielle redistribue les cartes du management. Ce n'est pas une révolution technologique à confier à la DSI — c'est une transformation organisationnelle que les dirigeants doivent piloter eux-mêmes.",
+    content: `## L'IA n'est pas un sujet informatique
+
+C'est l'erreur la plus fréquente dans les organisations : déléguer l'IA à la direction des systèmes d'information comme on délègue l'installation d'un ERP. L'intelligence artificielle n'est pas un outil de plus. Elle reconfigure les processus de décision, redistribue les compétences, modifie les rapports hiérarchiques et transforme la valeur attendue de chaque collaborateur.
+
+Un dirigeant qui laisse son DSI "gérer le sujet IA" prend le risque de voir une transformation pilotée par des contraintes techniques plutôt que par une vision stratégique. **L'IA est d'abord un choix de management.**
+
+## Ce que l'IA change concrètement dans l'organisation
+
+### 1. La prise de décision se déplace vers le bas
+
+Les outils d'IA permettent à des collaborateurs de niveau intermédiaire d'accéder à des analyses qui nécessitaient auparavant l'intervention d'experts. Un responsable commercial peut modéliser des scénarios de pricing. Un chef de projet peut anticiper des risques avec des données en temps réel.
+
+Conséquence directe : **le rôle du manager intermédiaire évolue**. Il ne centralise plus l'information — il devient un architecte de contexte, capable de cadrer les décisions prises plus bas dans l'organisation.
+
+### 2. Certaines tâches à forte valeur apparente disparaissent
+
+La rédaction de rapports, la synthèse de données, la veille concurrentielle, la production de comptes-rendus — autant de tâches qui justifiaient des postes entiers et qui peuvent désormais être partiellement automatisées.
+
+Ce n'est pas une menace pour l'emploi en tant que telle. C'est une **requalification forcée** : les collaborateurs qui s'appuient sur ces tâches pour justifier leur valeur doivent monter en abstraction. Analyser, décider, convaincre, innover — ce sont les compétences que l'IA ne remplace pas (encore).
+
+### 3. La supervision humaine devient une compétence stratégique
+
+L'IA produit des outputs. Elle ne les valide pas. Elle n'assume pas la responsabilité d'une décision. Elle n'a pas de jugement éthique ni de connaissance du contexte politique interne à une organisation.
+
+Le nouveau compétence clé du manager à l'ère de l'IA : **savoir critiquer intelligemment ce que la machine produit**. Identifier le biais, repérer l'hallucination, comprendre pourquoi le modèle se trompe. C'est un métier en soi.
+
+## Les trois erreurs classiques des dirigeants face à l'IA
+
+### Erreur n°1 : attendre que la technologie soit "mûre"
+
+La technologie est déjà là. ChatGPT, Copilot, Claude, Gemini — ces outils sont utilisés par vos collaborateurs, avec ou sans votre accord. La question n'est plus "faut-il adopter l'IA ?" mais "comment l'encadrer pour qu'elle serve votre stratégie plutôt qu'elle ne la court-circuite ?"
+
+### Erreur n°2 : lancer un "projet IA" transversal sans sponsor exécutif
+
+Un groupe de travail sans pouvoir de décision ni budget propre produit généralement des slides. Une transformation IA réussie nécessite un sponsor au niveau CODIR, un périmètre défini et des indicateurs de succès mesurables.
+
+### Erreur n°3 : ne pas former le management intermédiaire en premier
+
+Les directions générales investissent dans des formations pour les équipes techniques et oublient les managers de proximité — ceux qui vont devoir gérer la résistance au changement, réorganiser les process, rassurer les équipes. C'est une erreur fatale.
+
+## Par où commencer : un cadre en trois étapes
+
+**Étape 1 — Cartographier les processus à fort potentiel d'automatisation**
+Identifiez dans votre organisation les tâches répétitives à haute fréquence, les processus de reporting chronophages, les flux d'information manuels. Ce sont vos premiers chantiers IA.
+
+**Étape 2 — Définir votre posture de gouvernance**
+Qui décide quels outils sont autorisés ? Quelles données peuvent être utilisées ? Comment gérer la confidentialité ? Une charte IA, même simple, est indispensable avant tout déploiement.
+
+**Étape 3 — Piloter un projet pilote avec un périmètre limité**
+Choisissez un processus, une équipe volontaire, un horizon de 3 mois. Mesurez le gain de temps, l'impact sur la qualité, la réaction des équipes. Puis capitalisez et étendez.
+
+## Conclusion
+
+L'IA ne va pas remplacer les dirigeants. Elle va révéler ceux qui savent s'en emparer comme levier stratégique et ceux qui la subissent comme une contrainte externe. La transformation organisationnelle qu'elle impose n'est pas optionnelle — mais son succès dépend entièrement de la qualité du pilotage humain qui l'accompagne.
+
+*IO Software accompagne les dirigeants dans la définition de leur stratégie IA et la transformation de leur organisation. [Contactez-nous](/contact) pour en discuter.*`,
+  },
   {
     slug: "takt-time-optimise-gerer-backlog-demandes",
     title: "Takt Time optimisé : Gérer un Backlog de Demandes",
@@ -873,6 +938,7 @@ export const categories: Category[] = [
   "Droit",
   "Économie",
   "Informatique",
+  "Management",
 ];
 
 export function getArticleBySlug(slug: string): Article | undefined {
