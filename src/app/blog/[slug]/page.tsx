@@ -96,6 +96,17 @@ export default async function ArticlePage({
         </div>
       </section>
 
+      {/* OG Image banner */}
+      <div className="max-w-3xl mx-auto px-6 -mb-8 mt-8">
+        <img
+          src={`/blog/${article.slug}/opengraph-image`}
+          alt={article.title}
+          width={1200}
+          height={630}
+          className="w-full rounded-xl shadow-lg"
+        />
+      </div>
+
       {/* Content */}
       <section className="py-16 bg-white">
         <div className="max-w-3xl mx-auto px-6">
