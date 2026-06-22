@@ -1,5 +1,20 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Hero from "@/components/Hero";
+
+export const metadata: Metadata = {
+  title: "IO Software — Conseil & Développement",
+  description:
+    "Cabinet de conseil multidisciplinaire basé à Marseille. Management, Stratégie, Finance, Data, Process Mining et Systèmes d'information. Plus de 30 ans d'expérience.",
+  alternates: { canonical: "https://www.io-software.fr" },
+  openGraph: {
+    title: "IO Software — Conseil & Développement",
+    description:
+      "Cabinet de conseil multidisciplinaire. Management, Stratégie, Finance, Data, Process Mining. Plus de 30 ans d'expérience.",
+    url: "https://www.io-software.fr",
+    type: "website",
+  },
+};
 
 const sections = [
   {
