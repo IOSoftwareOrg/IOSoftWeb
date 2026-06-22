@@ -80,7 +80,7 @@ export default function Hero() {
       {/* Scroll indicator */}
       <button
         onClick={scrollDown}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce z-20"
         aria-label="Défiler vers le bas"
       >
         <svg className="w-6 h-6 text-white/40 hover:text-white/70 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
