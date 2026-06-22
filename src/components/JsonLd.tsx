@@ -3,6 +3,20 @@ export default function JsonLd() {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "WebSite",
+        "@id": "https://www.io-software.fr/#website-search",
+        url: "https://www.io-software.fr",
+        name: "IO Software",
+        potentialAction: {
+          "@type": "SearchAction",
+          target: {
+            "@type": "EntryPoint",
+            urlTemplate: "https://www.io-software.fr/blog?q={search_term_string}",
+          },
+          "query-input": "required name=search_term_string",
+        },
+      },
+      {
         "@type": "Organization",
         "@id": "https://www.io-software.fr/#organization",
         name: "IO Software",
