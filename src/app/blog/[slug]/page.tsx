@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { articles, getArticleBySlug } from "@/lib/articles";
 import type { Metadata } from "next";
 
@@ -98,8 +99,8 @@ export default async function ArticlePage({
       {/* Content */}
       <section className="py-16 bg-white">
         <div className="max-w-3xl mx-auto px-6">
-          <div className="prose prose-slate prose-headings:text-[#0f172a] prose-headings:font-bold prose-a:text-[#1e3a5f] prose-strong:text-[#0f172a] prose-blockquote:border-[#c9a84c] prose-blockquote:text-[#64748b] max-w-none">
-            <ReactMarkdown>{article.content}</ReactMarkdown>
+          <div className="prose prose-slate prose-headings:text-[#0f172a] prose-headings:font-bold prose-a:text-[#1e3a5f] prose-strong:text-[#0f172a] prose-blockquote:border-[#c9a84c] prose-blockquote:text-[#64748b] prose-table:w-full prose-th:bg-[#1e3a5f] prose-th:text-white prose-th:px-4 prose-th:py-2 prose-td:px-4 prose-td:py-2 prose-td:border prose-td:border-[#e2e8f0] max-w-none">
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>{article.content}</ReactMarkdown>
           </div>
 
           <div className="mt-12 pt-8 border-t border-[#e2e8f0]">
