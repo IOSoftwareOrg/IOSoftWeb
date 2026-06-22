@@ -22,7 +22,7 @@ export default function PolitiqueConfidentialite() {
           <h2>Responsable du traitement</h2>
           <p>
             <strong>IO Software SAS</strong><br />
-            119, Rue Denis Magdelon, 13009 Marseille<br />
+            Rue Denis Magdelon, 13009 Marseille<br />
             Site : <a href="https://www.io-software.fr">https://www.io-software.fr</a>
           </p>
 
@@ -61,7 +61,7 @@ export default function PolitiqueConfidentialite() {
           </ul>
           <p>
             Pour exercer ces droits, adressez un courrier signé accompagné d&apos;une copie de votre pièce d&apos;identité à :<br />
-            <strong>IO Software SAS — 119, Rue Denis Magdelon, 13009 Marseille</strong><br />
+            <strong>IO Software SAS — Rue Denis Magdelon, 13009 Marseille</strong><br />
             Ou par e-mail : <a href="mailto:contact@io-software.fr">contact@io-software.fr</a>
           </p>
           <p>
