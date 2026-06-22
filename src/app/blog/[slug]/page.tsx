@@ -77,18 +77,20 @@ export default async function ArticlePage({
       {/* Hero */}
       <section className="bg-[#1e3a5f] pt-32 pb-12">
         <div className="max-w-3xl mx-auto px-6">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-1 text-white/60 hover:text-[#c9a84c] text-sm transition-colors mb-6"
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            Retour au blog
-          </Link>
-          <span className="inline-block bg-[#c9a84c]/20 text-[#c9a84c] text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">
-            {article.category}
-          </span>
+          <div className="flex items-start justify-between gap-4 mb-6">
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-1 text-white/60 hover:text-[#c9a84c] text-sm transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              Retour au blog
+            </Link>
+            <span className="text-xs font-semibold text-[#c9a84c] uppercase tracking-widest shrink-0">
+              {article.category}
+            </span>
+          </div>
           <h1 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
             {article.title}
           </h1>
