@@ -35,6 +35,9 @@ export const metadata: Metadata = {
   authors: [{ name: "IO Software", url: BASE_URL }],
   creator: "IO Software",
   publisher: "IO Software",
+  verification: {
+    google: "fVnxu9l8yiFHzwFsXVRCoqZIM6Rl5A7KCeFpQN2umV8",
+  },
   robots: {
     index: true,
     follow: true,
