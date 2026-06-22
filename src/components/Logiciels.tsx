@@ -22,22 +22,24 @@ const logiciels = [
   },
 ];
 
-export default function Logiciels() {
+export default function Logiciels({ hideHeader }: { hideHeader?: boolean } = {}) {
   return (
     <section id="logiciels" className="py-24 bg-white">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">
-            Éditeur logiciel
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0f172a] mt-3 mb-4">
-            Nos solutions logicielles
-          </h2>
-          <p className="text-[#64748b] max-w-xl mx-auto">
-            IO Software développe et édite des logiciels métier conçus pour répondre aux
-            besoins spécifiques des entreprises.
-          </p>
-        </div>
+        {!hideHeader && (
+          <div className="text-center mb-16">
+            <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">
+              Éditeur logiciel
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0f172a] mt-3 mb-4">
+              Nos solutions logicielles
+            </h2>
+            <p className="text-[#64748b] max-w-xl mx-auto">
+              IO Software développe et édite des logiciels métier conçus pour répondre aux
+              besoins spécifiques des entreprises.
+            </p>
+          </div>
+        )}
 
         <div className="grid md:grid-cols-3 gap-8">
           {logiciels.map((logiciel) => (

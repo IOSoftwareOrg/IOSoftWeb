@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function Contact() {
+export default function Contact({ hideHeader }: { hideHeader?: boolean } = {}) {
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -28,12 +28,16 @@ export default function Contact() {
         <div className="grid md:grid-cols-2 gap-12 items-start">
           {/* Left */}
           <div className="text-white">
-            <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">
-              Parlons de votre projet
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-3 mb-6">
-              Prenons contact
-            </h2>
+            {!hideHeader && (
+              <>
+                <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">
+                  Parlons de votre projet
+                </span>
+                <h2 className="text-3xl md:text-4xl font-bold mt-3 mb-6">
+                  Prenons contact
+                </h2>
+              </>
+            )}
             <p className="text-white/70 leading-relaxed mb-10">
               Quel que soit votre besoin — conseil, audit, développement logiciel ou
               accompagnement stratégique — nous reviendrons vers vous dans les 24h.

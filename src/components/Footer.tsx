@@ -17,16 +17,16 @@ export default function Footer() {
           <p className="text-white font-semibold mb-3">Navigation</p>
           <ul className="space-y-2 text-sm">
             {[
-              ["Services", "#services"],
-              ["Expertise", "#expertise"],
-              ["Logiciels", "#logiciels"],
-              ["Blog", "#blog"],
-              ["Contact", "#contact"],
+              ["Services", "/services"],
+              ["Expertise", "/expertise"],
+              ["Logiciels", "/logiciels"],
+              ["Blog", "/blog"],
+              ["Contact", "/contact"],
             ].map(([label, href]) => (
               <li key={href}>
-                <a href={href} className="hover:text-[#c9a84c] transition-colors">
+                <Link href={href} className="hover:text-[#c9a84c] transition-colors">
                   {label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

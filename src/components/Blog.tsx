@@ -36,10 +36,11 @@ const categories = [
   "Informatique",
 ];
 
-export default function Blog() {
+export default function Blog({ hideHeader }: { hideHeader?: boolean } = {}) {
   return (
     <section id="blog" className="py-24 bg-[#f8fafc]">
       <div className="max-w-6xl mx-auto px-6">
+        {!hideHeader && (
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-4">
           <div>
             <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">
@@ -50,7 +51,7 @@ export default function Blog() {
             </h2>
           </div>
           <a
-            href="#"
+            href="/blog"
             className="text-sm font-semibold text-[#1e3a5f] hover:text-[#c9a84c] transition-colors flex items-center gap-1 self-start md:self-auto"
           >
             Tous les articles
@@ -59,6 +60,7 @@ export default function Blog() {
             </svg>
           </a>
         </div>
+        )}
 
         {/* Categories */}
         <div className="flex flex-wrap gap-2 mb-10">

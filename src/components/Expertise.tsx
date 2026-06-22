@@ -30,23 +30,24 @@ const values = [
   },
 ];
 
-export default function Expertise() {
+export default function Expertise({ hideHeader }: { hideHeader?: boolean } = {}) {
   return (
     <section id="expertise" className="py-24 bg-[#f8fafc]">
       <div className="max-w-6xl mx-auto px-6">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">
-            Notre ADN
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0f172a] mt-3 mb-4">
-            30 ans d&apos;expertise au service de votre croissance
-          </h2>
-          <p className="text-[#64748b] max-w-xl mx-auto">
-            IO Software accompagne entreprises françaises et internationales avec une vision
-            transversale et des compétences éprouvées dans des secteurs exigeants.
-          </p>
-        </div>
+        {!hideHeader && (
+          <div className="text-center mb-16">
+            <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">
+              Notre ADN
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0f172a] mt-3 mb-4">
+              30 ans d&apos;expertise au service de votre croissance
+            </h2>
+            <p className="text-[#64748b] max-w-xl mx-auto">
+              IO Software accompagne entreprises françaises et internationales avec une vision
+              transversale et des compétences éprouvées dans des secteurs exigeants.
+            </p>
+          </div>
+        )}
 
         <div className="grid md:grid-cols-2 gap-12 items-start mb-20">
           {/* Left: story */}
