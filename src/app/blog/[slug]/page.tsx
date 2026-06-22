@@ -4,6 +4,8 @@ import ReactMarkdown from "react-markdown";
 import { articles, getArticleBySlug } from "@/lib/articles";
 import type { Metadata } from "next";
 
+const BASE_URL = "https://www.io-software.fr";
+
 export async function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }));
 }
@@ -16,9 +18,25 @@ export async function generateMetadata({
   const { slug } = await params;
   const article = getArticleBySlug(slug);
   if (!article) return {};
+  const url = `${BASE_URL}/blog/${article.slug}`;
   return {
-    title: `${article.title} — IO Software`,
+    title: article.title,
     description: article.excerpt,
+    alternates: { canonical: url },
+    openGraph: {
+      type: "article",
+      url,
+      title: article.title,
+      description: article.excerpt,
+      publishedTime: article.date,
+      authors: ["IO Software"],
+      tags: [article.category],
+    },
+    twitter: {
+      card: "summary",
+      title: article.title,
+      description: article.excerpt,
+    },
   };
 }
 
@@ -31,8 +49,30 @@ export default async function ArticlePage({
   const article = getArticleBySlug(slug);
   if (!article) notFound();
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.excerpt,
+    author: { "@type": "Organization", name: "IO Software", url: BASE_URL },
+    publisher: {
+      "@type": "Organization",
+      name: "IO Software",
+      url: BASE_URL,
+    },
+    datePublished: article.date,
+    url: `${BASE_URL}/blog/${article.slug}`,
+    articleSection: article.category,
+    inLanguage: "fr-FR",
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+
       {/* Hero */}
       <section className="bg-[#1e3a5f] pt-32 pb-12">
         <div className="max-w-3xl mx-auto px-6">

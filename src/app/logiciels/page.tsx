@@ -2,9 +2,16 @@ import type { Metadata } from "next";
 import Logiciels from "@/components/Logiciels";
 
 export const metadata: Metadata = {
-  title: "Logiciels — IO Software",
+  title: "Logiciels",
   description:
     "IO Software éditeur de logiciels métier : FinAnalyzer, ProcessMap, DataBridge. Solutions sur mesure pour vos besoins spécifiques.",
+  alternates: { canonical: "https://www.io-software.fr/logiciels" },
+  openGraph: {
+    title: "Logiciels — IO Software",
+    description:
+      "Éditeur de logiciels métier : FinAnalyzer (finance), ProcessMap (process mining), DataBridge (data). Solutions sur mesure.",
+    url: "https://www.io-software.fr/logiciels",
+  },
 };
 
 export default function LogicielsPage() {
