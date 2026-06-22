@@ -54,7 +54,7 @@ export default function Hero() {
             { value: "30+", label: "Ans d'expérience" },
             { value: "8", label: "Domaines d'expertise" },
             { value: "TPE/PME", label: "& Grands groupes" },
-            { value: "Marseille", label: "& International" },
+            { value: "France", label: "& International" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
               <p className="text-3xl font-bold text-[#c9a84c]">{stat.value}</p>
