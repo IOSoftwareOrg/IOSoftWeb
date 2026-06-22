@@ -13,7 +13,7 @@ export default function Hero() {
   }
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center bg-[#1e3a5f] pb-16 md:pb-0">
+    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center bg-[#1e3a5f] pb-24">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
