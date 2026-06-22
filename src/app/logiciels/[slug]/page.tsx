@@ -123,13 +123,13 @@ export default async function LogicielPage({
           <div className="bg-[#1e3a5f] rounded-2xl p-8 text-white">
             <h3 className="text-xl font-bold mb-4">Intéressé par {logiciel.name} ?</h3>
             <p className="text-white/70 mb-6 text-sm">
-              Contactez-nous pour une démonstration personnalisée adaptée à votre contexte.
+              Parlons de votre contexte et voyons comment {logiciel.name} peut répondre à vos besoins.
             </p>
             <Link
               href="/contact"
               className="inline-flex items-center gap-2 bg-[#c9a84c] hover:bg-[#b8943d] text-white font-semibold px-6 py-3 rounded-md transition-colors text-sm"
             >
-              Demander une démo
+              Prendre contact
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
