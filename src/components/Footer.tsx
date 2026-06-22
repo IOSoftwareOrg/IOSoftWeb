@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
           <p className="text-white text-xl font-bold mb-3">
-            IO <span className="text-[#c9a84c]">Software</span>
+            <span className="text-[#c9a84c] font-mono">&lt;/&gt;</span> IO Software
           </p>
           <p className="text-sm leading-relaxed">
             Cabinet de conseil multidisciplinaire basé à Marseille. Partenaire stratégique des TPE/PME et grandes entreprises depuis plus de 30 ans.
