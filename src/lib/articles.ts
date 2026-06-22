@@ -685,7 +685,7 @@ Cette distinction fondamentale entre besoin et désir est au cœur de toute stra
   {
     slug: "windows-10-mises-a-jour",
     title: "Windows 10 : Éviter les mises à jour intempestives",
-    category: "Informatique",
+    category: "IT",
     date: "4 mai 2017",
     excerpt:
       "Guide pratique pour désactiver ou gérer manuellement les mises à jour automatiques de Windows 10 via le Gestionnaire de Services.",
@@ -718,7 +718,7 @@ Même si vous souhaitez contrôler les mises à jour, il est conseillé d'instal
   {
     slug: "open-source",
     title: "Open Source : Déploiement et développement pérenne",
-    category: "Informatique",
+    category: "IT",
     date: "31 août 2016",
     excerpt:
       "Les logiciels open-source offrent désormais les mêmes garanties de stabilité et de qualité que les logiciels payants. IO Software se spécialise dans leur implémentation.",
@@ -755,7 +755,7 @@ Les principales plateformes utilisées incluent **Odoo**, **Magento**, **WordPre
   {
     slug: "securiser-son-site-internet",
     title: "Sécuriser son site internet : Pensez à tout !",
-    category: "Informatique",
+    category: "IT",
     date: "19 août 2016",
     excerpt:
       "Lors de la création d'un site internet, la sécurisation est essentielle. Sauvegardes, base de données, protection des URLs d'administration — le guide complet.",
@@ -796,7 +796,7 @@ Cette double authentification empêche l'accès non autorisé à l'interface adm
   {
     slug: "securite-achats-sur-internet",
     title: "Sécurité informatique : vos achats sur internet",
-    category: "Informatique",
+    category: "IT",
     date: "30 novembre 2013",
     excerpt:
       "Pour faire vos achats en ligne en toute confiance : HTTPS, phishing, stockage des données bancaires — les bonnes pratiques à adopter.",
