@@ -1,8 +1,19 @@
 "use client";
 
+import { useRef } from "react";
+
 export default function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  function scrollDown() {
+    if (sectionRef.current) {
+      const bottom = sectionRef.current.getBoundingClientRect().bottom + window.scrollY;
+      window.scrollTo({ top: bottom, behavior: "smooth" });
+    }
+  }
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-[#1e3a5f] pb-16 md:pb-0">
+    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center bg-[#1e3a5f] pb-16 md:pb-0">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -68,7 +79,7 @@ export default function Hero() {
 
       {/* Scroll indicator */}
       <button
-        onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })}
+        onClick={scrollDown}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce"
         aria-label="Défiler vers le bas"
       >
