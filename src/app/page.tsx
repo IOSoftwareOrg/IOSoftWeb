@@ -62,7 +62,7 @@ export default function Home() {
       <Hero />
 
       {/* Navigation cards */}
-      <section className="pt-10 pb-24 bg-white">
+      <section className="pt-10 md:pt-24 pb-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-14">
             <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">
