@@ -49,7 +49,7 @@ export default function Hero() {
         </div>
 
         {/* Stats */}
-        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-white/10 pt-10">
+        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-white/10 pt-10 pb-8 md:pb-0">
           {[
             { value: "30+", label: "Ans d'expérience" },
             { value: "8", label: "Domaines d'expertise" },
