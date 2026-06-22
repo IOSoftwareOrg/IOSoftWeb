@@ -2,9 +2,16 @@ import type { Metadata } from "next";
 import Services from "@/components/Services";
 
 export const metadata: Metadata = {
-  title: "Services — IO Software",
+  title: "Services",
   description:
-    "Conseil en Management, Stratégie, Finance, Data, Process Mining, Systèmes d'information et Développement logiciel.",
+    "Conseil en Management, Stratégie, Finance d'entreprise, Data, Process Mining, Systèmes d'information, Rédaction technique et Développement logiciel.",
+  alternates: { canonical: "https://www.io-software.fr/services" },
+  openGraph: {
+    title: "Services — IO Software",
+    description:
+      "8 domaines d'expertise : Management, Stratégie, Finance, Data, Process Mining, SI, Rédaction technique, Développement logiciel.",
+    url: "https://www.io-software.fr/services",
+  },
 };
 
 export default function ServicesPage() {

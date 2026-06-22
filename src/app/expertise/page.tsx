@@ -2,9 +2,16 @@ import type { Metadata } from "next";
 import Expertise from "@/components/Expertise";
 
 export const metadata: Metadata = {
-  title: "Expertise — IO Software",
+  title: "Expertise",
   description:
     "30 ans d'expérience en conseil multidisciplinaire. Banque, Luxe, Télécoms, Aéronautique — une vision transversale au service de votre croissance.",
+  alternates: { canonical: "https://www.io-software.fr/expertise" },
+  openGraph: {
+    title: "Expertise — IO Software",
+    description:
+      "30 ans d'expérience. Banque, Luxe, Télécoms, Aéronautique — partenaire stratégique des TPE/PME et grandes entreprises.",
+    url: "https://www.io-software.fr/expertise",
+  },
 };
 
 export default function ExpertisePage() {

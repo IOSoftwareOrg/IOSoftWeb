@@ -2,9 +2,16 @@ import type { Metadata } from "next";
 import Blog from "@/components/Blog";
 
 export const metadata: Metadata = {
-  title: "Blog — IO Software",
+  title: "Blog",
   description:
-    "Articles et ressources sur la finance, la stratégie, le management, le lean et les systèmes d'information.",
+    "Articles et ressources sur la finance, la stratégie, le management, le lean, le droit, l'économie et l'informatique. Insights de nos consultants.",
+  alternates: { canonical: "https://www.io-software.fr/blog" },
+  openGraph: {
+    title: "Blog — IO Software",
+    description:
+      "Finance, stratégie, management, lean, droit, économie, informatique — les ressources de nos consultants pour les dirigeants.",
+    url: "https://www.io-software.fr/blog",
+  },
 };
 
 export default function BlogPage() {
