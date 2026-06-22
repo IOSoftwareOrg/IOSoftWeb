@@ -80,7 +80,7 @@ Les tokens sont l'unité de facturation. Un token correspond environ à 3/4 d'un
 - Une page A4 de texte ≈ 600 tokens
 - Un fichier PDF de 10 pages ≈ 6 000 tokens
 
-### Paramètre `max_tokens`
+### Paramètre max_tokens
 
 Ce paramètre limite la longueur de la réponse générée. **Ne le sous-estimez pas** : si le modèle atteint la limite, il s'arrête brutalement en pleine phrase.
 
@@ -99,7 +99,7 @@ C'est probablement la fonctionnalité la plus sous-utilisée de l'API Claude. Le
 
 ### Comment ça fonctionne
 
-Le cache est un préfixe : tout ce qui précède un marqueur `cache_control` est mis en cache. Les requêtes suivantes identiques à ce préfixe sont servies à tarif réduit.
+Le cache est un préfixe : tout ce qui précède un marqueur **cache_control** est mis en cache. Les requêtes suivantes identiques à ce préfixe sont servies à tarif réduit.
 
 \`\`\`json
 {
@@ -114,7 +114,7 @@ Le cache est un préfixe : tout ce qui précède un marqueur `cache_control` est
 \`\`\`
 
 **Ce qu'il faut garder en tête :**
-- Le cache est valide 5 minutes (ou 1 heure avec `"ttl": "1h"`)
+- Le cache est valide 5 minutes (ou 1 heure avec ttl: "1h")
 - Toute modification du texte avant le marqueur invalide tout le cache
 - **Ne jamais mettre une date ou un ID dynamique dans le system prompt** — cela casse le cache à chaque requête
 - Maximum 4 marqueurs de cache par requête
@@ -140,12 +140,12 @@ Disponible sur Opus 4.6+, Sonnet 4.6 et Opus 4.8, le thinking adaptatif laisse C
 
 | Niveau | Usage |
 |---|---|
-| `low` | Tâches simples, latence critique |
-| `medium` | Équilibre coût/qualité |
-| `high` | Raisonnement complexe (défaut recommandé) |
-| `max` | Problèmes les plus difficiles, coût élevé |
+| **low** | Tâches simples, latence critique |
+| **medium** | Équilibre coût/qualité |
+| **high** | Raisonnement complexe (défaut recommandé) |
+| **max** | Problèmes les plus difficiles, coût élevé |
 
-**À retenir :** ne pas confondre thinking adaptatif et température. Depuis Opus 4.7, les paramètres `temperature`, `top_p` et `top_k` ont été supprimés — les envoyer déclenche une erreur 400. La profondeur de raisonnement se contrôle uniquement via `effort`.
+**À retenir :** ne pas confondre thinking adaptatif et température. Depuis Opus 4.7, les paramètres **temperature**, **top_p** et **top_k** ont été supprimés — les envoyer déclenche une erreur 400. La profondeur de raisonnement se contrôle uniquement via **effort**.
 
 ## 6. Les outputs structurés
 
@@ -175,9 +175,9 @@ Résultat garanti valide, parsable sans post-traitement. Idéal pour l'extractio
 
 ## 7. Gestion des erreurs et des refus
 
-Claude peut refuser une requête (`stop_reason: "refusal"`) — les classifiers de sécurité peuvent parfois rejeter des contenus légitimes dans des domaines comme la cybersécurité ou les sciences du vivant.
+Claude peut refuser une requête (stop_reason: "refusal") — les classifiers de sécurité peuvent parfois rejeter des contenus légitimes dans des domaines comme la cybersécurité ou les sciences du vivant.
 
-**Toujours vérifier `stop_reason` avant de lire la réponse :**
+**Toujours vérifier stop_reason avant de lire la réponse :**
 
 \`\`\`python
 if response.stop_reason == "refusal":
@@ -188,10 +188,10 @@ else:
 \`\`\`
 
 Les autres valeurs importantes :
-- `end_turn` — réponse normale
-- `max_tokens` — limite atteinte, augmentez `max_tokens` ou passez en streaming
-- `tool_use` — le modèle veut appeler un outil
-- `pause_turn` — le modèle a fait une pause (agents longs), relancez la requête
+- **end_turn** — réponse normale
+- **max_tokens** — limite atteinte, augmentez max_tokens ou passez en streaming
+- **tool_use** — le modèle veut appeler un outil
+- **pause_turn** — le modèle a fait une pause (agents longs), relancez la requête
 
 ## 8. Checklist avant mise en production
 
@@ -199,10 +199,10 @@ Avant de déployer une intégration Claude, validez ces points :
 
 - [ ] **Modèle adapté** au niveau de complexité de la tâche
 - [ ] **System prompt** testé et validé sur des cas réels
-- [ ] **`max_tokens`** correctement dimensionné (ni trop bas, ni gaspillé)
+- [ ] **max_tokens** correctement dimensionné (ni trop bas, ni gaspillé)
 - [ ] **Prompt caching** activé sur les parties statiques du prompt
 - [ ] **Outputs structurés** pour les extractions de données
-- [ ] **Gestion du `stop_reason`** dans le code
+- [ ] **Gestion du stop_reason** dans le code
 - [ ] **Streaming** activé pour les réponses > 16 000 tokens
 - [ ] **Pas de données dynamiques** (dates, IDs) dans le system prompt
 
