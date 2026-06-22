@@ -1,13 +1,9 @@
 import { ImageResponse } from "next/og";
-import { getArticleBySlug, articles } from "@/lib/articles";
+import { getArticleBySlug } from "@/lib/articles";
 
 export const runtime = "edge";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-
-export async function generateStaticParams() {
-  return articles.map((a) => ({ slug: a.slug }));
-}
 
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
