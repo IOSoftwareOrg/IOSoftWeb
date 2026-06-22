@@ -58,9 +58,9 @@ export default function Footer() {
         <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between text-xs gap-2">
           <p>© {new Date().getFullYear()} IO Software. Tous droits réservés.</p>
           <p>
-            <a href="#" className="hover:text-[#c9a84c] transition-colors">Mentions légales</a>
+            <Link href="/mentions-legales" className="hover:text-[#c9a84c] transition-colors">Mentions légales</Link>
             {" · "}
-            <a href="#" className="hover:text-[#c9a84c] transition-colors">Politique de confidentialité</a>
+            <Link href="/politique-de-confidentialite" className="hover:text-[#c9a84c] transition-colors">Politique de confidentialité</Link>
           </p>
         </div>
       </div>
