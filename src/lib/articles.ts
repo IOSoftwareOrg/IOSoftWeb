@@ -20,6 +20,199 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: "claude-anthropic-best-practices",
+    title: "Claude (Anthropic) : les bonnes pratiques pour en tirer le meilleur",
+    category: "Informatique",
+    date: "22 juin 2026",
+    excerpt:
+      "System prompt, choix du modèle, gestion des tokens, prompt caching, thinking adaptatif — le guide des best practices pour exploiter Claude efficacement et maîtriser vos coûts.",
+    content: `## Claude, bien plus qu'un chatbot
+
+Depuis l'émergence de Claude chez Anthropic, les entreprises qui l'intègrent dans leurs processus se retrouvent rapidement face au même constat : les résultats varient énormément selon la façon dont on l'utilise. Un prompt mal structuré, un modèle mal choisi, des tokens gaspillés — et la facture grimpe sans que la valeur suive.
+
+Ce guide synthétise les bonnes pratiques essentielles pour tirer le meilleur de l'API Claude, que vous l'utilisiez pour automatiser des tâches internes, alimenter une application ou accélérer votre production de contenu.
+
+## 1. Choisir le bon modèle
+
+Anthropic propose plusieurs modèles avec des profils très différents en termes de performance, vitesse et coût :
+
+| Modèle | Usage recommandé | Contexte |
+|---|---|---|
+| **Claude Opus 4.8** | Tâches complexes, agents longs, raisonnement avancé | 1M tokens |
+| **Claude Sonnet 4.6** | Meilleur équilibre vitesse/intelligence | 1M tokens |
+| **Claude Haiku 4.5** | Tâches simples, classification, latence critique | 200K tokens |
+
+**Règle d'or :** ne pas systématiquement utiliser le modèle le plus puissant. Une classification de documents ou une extraction de données ne nécessite pas Opus — Haiku fera le travail en 5 à 10 fois moins cher.
+
+### Tarification indicative (juin 2026)
+
+- Opus 4.8 : 5 $/MTok en entrée, 25 $/MTok en sortie
+- Sonnet 4.6 : 3 $/MTok en entrée, 15 $/MTok en sortie
+- Haiku 4.5 : 1 $/MTok en entrée, 5 $/MTok en sortie
+
+## 2. Structurer son system prompt
+
+Le system prompt est l'instruction permanente donnée au modèle avant toute conversation. C'est là que se joue l'essentiel de la qualité des résultats.
+
+### Ce qui fonctionne
+
+**Donner un rôle précis :**
+> "Tu es un assistant spécialisé en analyse financière pour PME. Tu rédiges toujours en français professionnel et tu fournis des chiffres sourcés."
+
+**Fixer le format de sortie attendu :**
+> "Réponds toujours en JSON avec les clés : titre, résumé (max 2 phrases), points_clés (liste de 3 à 5 éléments)."
+
+**Définir les limites :**
+> "Tu ne réponds qu'aux questions liées à la comptabilité et à la gestion d'entreprise. Pour toute autre question, indique poliment que ce n'est pas ton domaine."
+
+### Ce qu'il faut éviter
+
+- Les instructions vagues ("Sois utile", "Fais de ton mieux")
+- Les system prompts trop longs et répétitifs — le modèle se perd
+- Les doubles injonctions contradictoires ("Sois concis mais détaillé")
+- Le langage impératif excessif : sur les modèles récents (Opus 4.6+), "IMPORTANT : TU DOIS ABSOLUMENT" provoque du sur-déclenchement. Préférez simplement "Utilise cet outil quand..."
+
+## 3. Maîtriser les tokens
+
+Les tokens sont l'unité de facturation. Un token correspond environ à 3/4 d'un mot en français. Quelques repères :
+
+- 1 000 mots ≈ 1 300 tokens
+- Une page A4 de texte ≈ 600 tokens
+- Un fichier PDF de 10 pages ≈ 6 000 tokens
+
+### Paramètre `max_tokens`
+
+Ce paramètre limite la longueur de la réponse générée. **Ne le sous-estimez pas** : si le modèle atteint la limite, il s'arrête brutalement en pleine phrase.
+
+Recommandations :
+- Requêtes courtes (classification, extraction) : 256 à 1 024 tokens
+- Réponses conversationnelles : 4 000 à 8 000 tokens
+- Génération de documents : 16 000 à 64 000 tokens (nécessite le streaming au-delà de ~16 000)
+
+### Streaming pour les longues réponses
+
+Au-delà de ~16 000 tokens de sortie, activez le streaming pour éviter les timeouts HTTP. Le modèle commence à répondre immédiatement et vous lisez la réponse au fur et à mesure.
+
+## 4. Le Prompt Caching : réduire les coûts de 90 %
+
+C'est probablement la fonctionnalité la plus sous-utilisée de l'API Claude. Le prompt caching permet de mettre en cache les parties stables de vos prompts et de les réutiliser entre les requêtes à seulement **10 % du prix normal**.
+
+### Comment ça fonctionne
+
+Le cache est un préfixe : tout ce qui précède un marqueur `cache_control` est mis en cache. Les requêtes suivantes identiques à ce préfixe sont servies à tarif réduit.
+
+\`\`\`json
+{
+  "system": [
+    {
+      "type": "text",
+      "text": "Votre system prompt de 10 000 tokens...",
+      "cache_control": { "type": "ephemeral" }
+    }
+  ]
+}
+\`\`\`
+
+**Ce qu'il faut garder en tête :**
+- Le cache est valide 5 minutes (ou 1 heure avec `"ttl": "1h"`)
+- Toute modification du texte avant le marqueur invalide tout le cache
+- **Ne jamais mettre une date ou un ID dynamique dans le system prompt** — cela casse le cache à chaque requête
+- Maximum 4 marqueurs de cache par requête
+
+### Cas d'usage idéaux
+
+- System prompt long avec documentation métier intégrée
+- Applications multi-tours (conversations longues)
+- Traitement de documents volumineux partagés entre plusieurs requêtes
+
+## 5. Le Thinking adaptatif
+
+Disponible sur Opus 4.6+, Sonnet 4.6 et Opus 4.8, le thinking adaptatif laisse Claude décider seul s'il doit "réfléchir" avant de répondre — et combien de temps.
+
+\`\`\`json
+{
+  "thinking": { "type": "adaptive" },
+  "output_config": { "effort": "high" }
+}
+\`\`\`
+
+### Les niveaux d'effort
+
+| Niveau | Usage |
+|---|---|
+| `low` | Tâches simples, latence critique |
+| `medium` | Équilibre coût/qualité |
+| `high` | Raisonnement complexe (défaut recommandé) |
+| `max` | Problèmes les plus difficiles, coût élevé |
+
+**À retenir :** ne pas confondre thinking adaptatif et température. Depuis Opus 4.7, les paramètres `temperature`, `top_p` et `top_k` ont été supprimés — les envoyer déclenche une erreur 400. La profondeur de raisonnement se contrôle uniquement via `effort`.
+
+## 6. Les outputs structurés
+
+Pour extraire des données fiables, utilisez les outputs structurés plutôt que de parser du texte libre.
+
+\`\`\`json
+{
+  "output_config": {
+    "format": {
+      "type": "json_schema",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "nom": { "type": "string" },
+          "montant": { "type": "number" },
+          "categorie": { "type": "string", "enum": ["achat", "vente", "remboursement"] }
+        },
+        "required": ["nom", "montant", "categorie"],
+        "additionalProperties": false
+      }
+    }
+  }
+}
+\`\`\`
+
+Résultat garanti valide, parsable sans post-traitement. Idéal pour l'extraction automatisée de données depuis des documents, emails ou formulaires.
+
+## 7. Gestion des erreurs et des refus
+
+Claude peut refuser une requête (`stop_reason: "refusal"`) — les classifiers de sécurité peuvent parfois rejeter des contenus légitimes dans des domaines comme la cybersécurité ou les sciences du vivant.
+
+**Toujours vérifier `stop_reason` avant de lire la réponse :**
+
+\`\`\`python
+if response.stop_reason == "refusal":
+    # Le contenu est vide ou partiel — ne pas utiliser
+    gerer_refus()
+else:
+    traiter_reponse(response.content[0].text)
+\`\`\`
+
+Les autres valeurs importantes :
+- `end_turn` — réponse normale
+- `max_tokens` — limite atteinte, augmentez `max_tokens` ou passez en streaming
+- `tool_use` — le modèle veut appeler un outil
+- `pause_turn` — le modèle a fait une pause (agents longs), relancez la requête
+
+## 8. Checklist avant mise en production
+
+Avant de déployer une intégration Claude, validez ces points :
+
+- [ ] **Modèle adapté** au niveau de complexité de la tâche
+- [ ] **System prompt** testé et validé sur des cas réels
+- [ ] **`max_tokens`** correctement dimensionné (ni trop bas, ni gaspillé)
+- [ ] **Prompt caching** activé sur les parties statiques du prompt
+- [ ] **Outputs structurés** pour les extractions de données
+- [ ] **Gestion du `stop_reason`** dans le code
+- [ ] **Streaming** activé pour les réponses > 16 000 tokens
+- [ ] **Pas de données dynamiques** (dates, IDs) dans le system prompt
+
+## Conclusion
+
+Intégrer Claude efficacement, c'est d'abord comprendre sa logique de facturation et calibrer chaque paramètre en fonction de l'usage réel. Un audit de vos prompts existants révèle souvent des gains de 50 à 80 % sur les coûts — sans perte de qualité.
+
+*IO Software accompagne les entreprises dans l'intégration et l'optimisation de leurs workflows IA. [Contactez-nous](/contact) pour un audit de vos intégrations Claude.*`,
+  },
+  {
     slug: "ia-management-adapter-organisation",
     title: "IA et management : comment les dirigeants doivent adapter leur organisation",
     category: "Management",
