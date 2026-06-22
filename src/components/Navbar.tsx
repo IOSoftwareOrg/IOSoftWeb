@@ -39,7 +39,7 @@ export default function Navbar() {
               dark ? "text-white" : "text-[#1e3a5f]"
             }`}
           >
-            IO <span className="text-[#c9a84c]">Software</span>
+            <span className="text-[#c9a84c] font-mono">&lt;/&gt;</span>{" "}IO Software
           </span>
         </Link>
 
