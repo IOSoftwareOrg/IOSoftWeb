@@ -1,26 +1,5 @@
-const logiciels = [
-  {
-    name: "FinAnalyzer",
-    category: "Finance",
-    description:
-      "Outil d'analyse financière et de contrôle de gestion. Tableaux de bord, ratios, consolidation et reporting pour PME.",
-    color: "from-blue-500 to-blue-700",
-  },
-  {
-    name: "ProcessMap",
-    category: "Process Mining",
-    description:
-      "Visualisation et analyse de vos processus métier à partir des logs systèmes. Identifiez les dérives et optimisez vos flux.",
-    color: "from-emerald-500 to-emerald-700",
-  },
-  {
-    name: "DataBridge",
-    category: "Data",
-    description:
-      "Connecteur et transformateur de données multi-sources. Agrégation, nettoyage et mise à disposition pour vos équipes BI.",
-    color: "from-violet-500 to-violet-700",
-  },
-];
+import Link from "next/link";
+import { logiciels } from "@/lib/logiciels";
 
 export default function Logiciels({ hideHeader }: { hideHeader?: boolean } = {}) {
   return (
@@ -44,7 +23,7 @@ export default function Logiciels({ hideHeader }: { hideHeader?: boolean } = {})
         <div className="grid md:grid-cols-3 gap-8">
           {logiciels.map((logiciel) => (
             <div
-              key={logiciel.name}
+              key={logiciel.slug}
               className="group rounded-2xl overflow-hidden border border-[#e2e8f0] hover:shadow-xl transition-shadow duration-300"
             >
               <div className={`bg-gradient-to-br ${logiciel.color} p-8 flex items-end`}>
@@ -57,15 +36,15 @@ export default function Logiciels({ hideHeader }: { hideHeader?: boolean } = {})
               </div>
               <div className="p-6">
                 <p className="text-sm text-[#64748b] leading-relaxed mb-4">{logiciel.description}</p>
-                <a
-                  href="#contact"
+                <Link
+                  href={`/logiciels/${logiciel.slug}`}
                   className="text-sm font-semibold text-[#1e3a5f] hover:text-[#c9a84c] transition-colors flex items-center gap-1"
                 >
                   En savoir plus
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
-                </a>
+                </Link>
               </div>
             </div>
           ))}
@@ -75,15 +54,15 @@ export default function Logiciels({ hideHeader }: { hideHeader?: boolean } = {})
           <p className="text-[#64748b] text-sm mb-4">
             Besoin d&apos;une solution sur mesure adaptée à vos processus ?
           </p>
-          <a
-            href="#contact"
+          <Link
+            href="/contact"
             className="inline-flex items-center gap-2 bg-[#1e3a5f] text-white font-semibold px-6 py-3 rounded-md hover:bg-[#2d5a8e] transition-colors text-sm"
           >
             Discutons de votre projet
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

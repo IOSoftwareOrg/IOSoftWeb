@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { articles } from "@/lib/articles";
+import { logiciels } from "@/lib/logiciels";
 
 const BASE_URL = "https://www.io-software.fr";
 
@@ -13,6 +14,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/contact`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.6 },
   ];
 
+  const logicielRoutes: MetadataRoute.Sitemap = logiciels.map((l) => ({
+    url: `${BASE_URL}/logiciels/${l.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
   const articleRoutes: MetadataRoute.Sitemap = articles.map((a) => ({
     url: `${BASE_URL}/blog/${a.slug}`,
     lastModified: new Date(),
@@ -20,5 +28,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...articleRoutes];
+  return [...staticRoutes, ...logicielRoutes, ...articleRoutes];
 }
