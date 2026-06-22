@@ -60,9 +60,7 @@ export default function PolitiqueConfidentialite() {
             <li><strong>Droit à la portabilité</strong> : recevoir vos données dans un format structuré</li>
           </ul>
           <p>
-            Pour exercer ces droits, adressez un courrier signé accompagné d&apos;une copie de votre pièce d&apos;identité à :<br />
-            <strong>IO Software SAS — Rue Denis Magdelon, 13009 Marseille</strong><br />
-            Ou par e-mail : <a href="mailto:contact@io-software.fr">contact@io-software.fr</a>
+            Pour exercer ces droits, contactez-nous par e-mail : <a href="mailto:contact@io-software.fr">contact@io-software.fr</a>
           </p>
           <p>
             Vous pouvez également introduire une réclamation auprès de la <strong>CNIL</strong> (<a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer">www.cnil.fr</a>).
