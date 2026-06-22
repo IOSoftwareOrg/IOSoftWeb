@@ -42,14 +42,6 @@ export default function Footer() {
               </svg>
               <span>Rue Denis Magdelon<br />13009 Marseille</span>
             </li>
-            <li className="flex items-center gap-2">
-              <svg className="w-4 h-4 shrink-0 text-[#c9a84c]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              <a href="mailto:contact@io-software.fr" className="hover:text-[#c9a84c] transition-colors">
-                contact@io-software.fr
-              </a>
-            </li>
           </ul>
         </div>
       </div>
