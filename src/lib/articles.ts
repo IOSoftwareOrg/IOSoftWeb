@@ -6,8 +6,9 @@ export type Category =
   | "Lean Management"
   | "Droit"
   | "Économie"
-  | "Informatique"
-  | "Management";
+  | "IT"
+  | "Management"
+  | "IA";
 
 export interface Article {
   slug: string;
@@ -22,7 +23,7 @@ export const articles: Article[] = [
   {
     slug: "claude-anthropic-best-practices",
     title: "Claude (Anthropic) : les bonnes pratiques pour en tirer le meilleur",
-    category: "Informatique",
+    category: "IA",
     date: "22 juin 2026",
     excerpt:
       "System prompt, choix du modèle, gestion des tokens, prompt caching, thinking adaptatif — le guide des best practices pour exploiter Claude efficacement et maîtriser vos coûts.",
@@ -1130,8 +1131,9 @@ export const categories: Category[] = [
   "Lean Management",
   "Droit",
   "Économie",
-  "Informatique",
+  "IT",
   "Management",
+  "IA",
 ];
 
 export function getArticleBySlug(slug: string): Article | undefined {
