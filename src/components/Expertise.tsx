@@ -14,19 +14,40 @@ const values = [
     title: "Entrepreneurship",
     description:
       "Nous croyons en l'épanouissement individuel au sein de structures horizontales et collaboratives, où chaque acteur contribue à la valeur collective.",
-    icon: "🚀",
+    icon: (
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#1e3a5f" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="16" cy="10" r="4" />
+        <circle cx="6" cy="24" r="3" />
+        <circle cx="26" cy="24" r="3" />
+        <line x1="16" y1="14" x2="6" y2="21" />
+        <line x1="16" y1="14" x2="26" y2="21" />
+      </svg>
+    ),
   },
   {
     title: "Efficiency",
     description:
       "Nous nous engageons sur la qualité des réponses apportées. Chaque mission est conduite avec rigueur, dans les délais et au niveau d'exigence attendu.",
-    icon: "⚡",
+    icon: (
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#1e3a5f" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="16" cy="16" r="12" />
+        <polyline points="16,9 16,16 21,16" />
+      </svg>
+    ),
   },
   {
     title: "Value",
     description:
       "Tout travail doit apporter une valeur mesurable. Nos recommandations sont concrètes, actionnables et orientées résultat pour votre organisation.",
-    icon: "💎",
+    icon: (
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#1e3a5f" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="4,12 16,4 28,12 28,28 4,28" />
+        <line x1="4" y1="12" x2="28" y2="12" />
+        <line x1="16" y1="4" x2="16" y2="28" />
+        <line x1="4" y1="28" x2="16" y2="12" />
+        <line x1="28" y1="28" x2="16" y2="12" />
+      </svg>
+    ),
   },
 ];
 
@@ -110,7 +131,7 @@ export default function Expertise({ hideHeader }: { hideHeader?: boolean } = {})
         <div className="grid md:grid-cols-3 gap-6">
           {values.map((v) => (
             <div key={v.title} className="bg-white rounded-xl p-6 border border-[#e2e8f0]">
-              <div className="text-3xl mb-4">{v.icon}</div>
+              <div className="mb-4">{v.icon}</div>
               <h4 className="font-bold text-[#0f172a] mb-2">{v.title}</h4>
               <p className="text-sm text-[#64748b] leading-relaxed">{v.description}</p>
             </div>
