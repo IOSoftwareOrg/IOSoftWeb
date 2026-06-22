@@ -89,22 +89,24 @@ const services = [
   },
 ];
 
-export default function Services() {
+export default function Services({ hideHeader }: { hideHeader?: boolean } = {}) {
   return (
     <section id="services" className="py-24 bg-white">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">
-            Ce que nous faisons
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0f172a] mt-3 mb-4">
-            Nos domaines d&apos;expertise
-          </h2>
-          <p className="text-[#64748b] max-w-xl mx-auto">
-            Une approche transversale couvrant l&apos;ensemble des dimensions de votre entreprise,
-            de la stratégie à l&apos;opérationnel.
-          </p>
-        </div>
+        {!hideHeader && (
+          <div className="text-center mb-16">
+            <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">
+              Ce que nous faisons
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0f172a] mt-3 mb-4">
+              Nos domaines d&apos;expertise
+            </h2>
+            <p className="text-[#64748b] max-w-xl mx-auto">
+              Une approche transversale couvrant l&apos;ensemble des dimensions de votre entreprise,
+              de la stratégie à l&apos;opérationnel.
+            </p>
+          </div>
+        )}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service) => (
