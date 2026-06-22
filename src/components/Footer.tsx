@@ -33,10 +33,19 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="text-white font-semibold mb-3">Contact</p>
-          <Link href="/contact" className="text-sm text-slate-400 hover:text-[#c9a84c] transition-colors">
-            Formulaire de contact →
-          </Link>
+          <p className="text-white font-semibold mb-4">Nos valeurs</p>
+          <ul className="space-y-3 text-sm">
+            {[
+              { title: "Entrepreneurship", desc: "Structures horizontales, épanouissement collectif" },
+              { title: "Efficiency", desc: "Qualité et rigueur sur chaque mission" },
+              { title: "Value", desc: "Chaque travail apporte une valeur mesurable" },
+            ].map((v) => (
+              <li key={v.title}>
+                <p className="text-[#c9a84c] font-semibold">{v.title}</p>
+                <p className="text-slate-400 text-xs">{v.desc}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 
