@@ -77,14 +77,14 @@ export default function Blog({ hideHeader }: { hideHeader?: boolean } = {}) {
             >
               <div className="h-2 bg-[#1e3a5f] group-hover:bg-[#c9a84c] transition-colors" />
               <div className="p-6 flex flex-col flex-1">
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="text-xs font-semibold text-[#c9a84c] uppercase tracking-widest">
+                <div className="flex items-start justify-between gap-2 mb-3">
+                  <h3 className="font-bold text-[#0f172a] leading-snug group-hover:text-[#1e3a5f] transition-colors flex-1">
+                    {article.title}
+                  </h3>
+                  <span className="text-xs font-semibold text-[#c9a84c] uppercase tracking-widest shrink-0 mt-0.5">
                     {article.category}
                   </span>
                 </div>
-                <h3 className="font-bold text-[#0f172a] mb-3 leading-snug group-hover:text-[#1e3a5f] transition-colors flex-1">
-                  {article.title}
-                </h3>
                 <p className="text-sm text-[#64748b] leading-relaxed mb-4 line-clamp-3">
                   {article.excerpt}
                 </p>
