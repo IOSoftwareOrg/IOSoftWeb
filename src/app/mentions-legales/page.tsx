@@ -22,7 +22,7 @@ export default function MentionsLegales() {
           <h2>Éditeur du site</h2>
           <p>
             <strong>IO Software SAS</strong><br />
-            119, Rue Denis Magdelon<br />
+            Rue Denis Magdelon<br />
             13009 Marseille<br />
             Activité : Développement stratégique et commercial des entreprises et éditeur de logiciels
           </p>
@@ -51,7 +51,7 @@ export default function MentionsLegales() {
             Les informations communiquées via les formulaires de contact sont utilisées exclusivement à des fins de gestion administrative et commerciale. Vous disposez d&apos;un droit d&apos;accès, de rectification et d&apos;opposition au traitement de vos données personnelles. Pour exercer ces droits, adressez un courrier signé accompagné d&apos;une copie de votre pièce d&apos;identité à :
           </p>
           <p>
-            IO Software SAS — 119, Rue Denis Magdelon, 13009 Marseille
+            IO Software SAS — Rue Denis Magdelon, 13009 Marseille
           </p>
 
           <h2>Cookies</h2>
