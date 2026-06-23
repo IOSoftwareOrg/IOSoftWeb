@@ -16,7 +16,7 @@ const BASE_URL = "https://www.io-software.fr";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "IO Software — Conseil & Développement",
+    default: "IO Software — Conseil en management, stratégie, organisation, process, data et IA",
     template: "%s — IO Software",
   },
   description:
@@ -49,13 +49,13 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: BASE_URL,
     siteName: "IO Software",
-    title: "IO Software — Conseil & Développement",
+    title: "IO Software — Conseil en management, stratégie, organisation, process, data et IA",
     description:
       "Cabinet de conseil multidisciplinaire. Management, Stratégie, Finance, Data, Process Mining. Plus de 30 ans d'expérience.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "IO Software — Conseil & Développement",
+    title: "IO Software — Conseil en management, stratégie, organisation, process, data et IA",
     description:
       "Cabinet de conseil multidisciplinaire. Management, Stratégie, Finance, Data, Process Mining. Plus de 30 ans d'expérience.",
   },
