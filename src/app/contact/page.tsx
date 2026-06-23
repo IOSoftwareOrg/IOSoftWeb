@@ -26,7 +26,7 @@ export default function ContactPage() {
             Prenons contact
           </h1>
           <p className="text-white/70 mt-4 max-w-xl">
-            Décrivez votre besoin et nous vous répondrons dans les 24 heures ouvrées.
+            Décrivez votre besoin et nous vous répondrons rapidement.
           </p>
         </div>
       </section>
