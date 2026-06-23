@@ -4,8 +4,12 @@ import { useState } from "react";
 
 export default function Contact({ hideHeader }: { hideHeader?: boolean } = {}) {
   const [form, setForm] = useState({
+    genre: "",
     name: "",
+    firstname: "",
     email: "",
+    phoneCode: "+33",
+    phone: "",
     company: "",
     subject: "",
     message: "",
@@ -40,22 +44,9 @@ export default function Contact({ hideHeader }: { hideHeader?: boolean } = {}) {
             )}
             <p className="text-white/70 leading-relaxed mb-10">
               Quel que soit votre besoin — conseil, audit, développement logiciel ou
-              accompagnement stratégique — nous reviendrons vers vous dans les 24h.
+              accompagnement stratégique — décrivez-nous votre contexte.
             </p>
 
-            <div className="space-y-5">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center shrink-0">
-                  <svg className="w-5 h-5 text-[#c9a84c]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="font-semibold text-white">Réponse sous</p>
-                  <p className="text-white/60 text-sm">24 heures ouvrées</p>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Right: form */}
@@ -68,11 +59,41 @@ export default function Contact({ hideHeader }: { hideHeader?: boolean } = {}) {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-[#0f172a] mb-2">Message envoyé !</h3>
-                <p className="text-[#64748b]">Nous vous répondrons dans les 24 heures ouvrées.</p>
+                <p className="text-[#64748b]">Nous vous répondrons dans les meilleurs délais.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-[#0f172a] mb-1">Genre</label>
+                  <div className="flex gap-4">
+                    {["Madame", "Monsieur", "Autre"].map((g) => (
+                      <label key={g} className="flex items-center gap-1.5 text-sm text-[#0f172a] cursor-pointer">
+                        <input
+                          type="radio"
+                          name="genre"
+                          value={g}
+                          checked={form.genre === g}
+                          onChange={handleChange}
+                          className="accent-[#1e3a5f]"
+                        />
+                        {g}
+                      </label>
+                    ))}
+                  </div>
+                </div>
                 <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-[#0f172a] mb-1">Prénom *</label>
+                    <input
+                      type="text"
+                      name="firstname"
+                      required
+                      value={form.firstname}
+                      onChange={handleChange}
+                      className="w-full border border-[#e2e8f0] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/30 focus:border-[#1e3a5f]"
+                      placeholder="Votre prénom"
+                    />
+                  </div>
                   <div>
                     <label className="block text-sm font-medium text-[#0f172a] mb-1">Nom *</label>
                     <input
@@ -85,16 +106,70 @@ export default function Contact({ hideHeader }: { hideHeader?: boolean } = {}) {
                       placeholder="Votre nom"
                     />
                   </div>
-                  <div>
-                    <label className="block text-sm font-medium text-[#0f172a] mb-1">Email *</label>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-[#0f172a] mb-1">Email *</label>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    value={form.email}
+                    onChange={handleChange}
+                    className="w-full border border-[#e2e8f0] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/30 focus:border-[#1e3a5f]"
+                    placeholder="votre@email.com"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-[#0f172a] mb-1">Téléphone</label>
+                  <div className="flex gap-2">
+                    <select
+                      name="phoneCode"
+                      value={form.phoneCode}
+                      onChange={handleChange}
+                      className="border border-[#e2e8f0] rounded-lg px-2 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/30 focus:border-[#1e3a5f] bg-white w-36 shrink-0"
+                    >
+                      {[
+                        { code: "+33", label: "🇫🇷 +33" },
+                        { code: "+32", label: "🇧🇪 +32" },
+                        { code: "+41", label: "🇨🇭 +41" },
+                        { code: "+352", label: "🇱🇺 +352" },
+                        { code: "+1", label: "🇺🇸 +1" },
+                        { code: "+44", label: "🇬🇧 +44" },
+                        { code: "+49", label: "🇩🇪 +49" },
+                        { code: "+34", label: "🇪🇸 +34" },
+                        { code: "+39", label: "🇮🇹 +39" },
+                        { code: "+31", label: "🇳🇱 +31" },
+                        { code: "+351", label: "🇵🇹 +351" },
+                        { code: "+212", label: "🇲🇦 +212" },
+                        { code: "+213", label: "🇩🇿 +213" },
+                        { code: "+216", label: "🇹🇳 +216" },
+                        { code: "+7", label: "🇷🇺 +7" },
+                        { code: "+48", label: "🇵🇱 +48" },
+                        { code: "+420", label: "🇨🇿 +420" },
+                        { code: "+421", label: "🇸🇰 +421" },
+                        { code: "+36", label: "🇭🇺 +36" },
+                        { code: "+40", label: "🇷🇴 +40" },
+                        { code: "+359", label: "🇧🇬 +359" },
+                        { code: "+385", label: "🇭🇷 +385" },
+                        { code: "+381", label: "🇷🇸 +381" },
+                        { code: "+386", label: "🇸🇮 +386" },
+                        { code: "+372", label: "🇪🇪 +372" },
+                        { code: "+371", label: "🇱🇻 +371" },
+                        { code: "+370", label: "🇱🇹 +370" },
+                        { code: "+380", label: "🇺🇦 +380" },
+                        { code: "+375", label: "🇧🇾 +375" },
+                      ].map(({ code, label }) => (
+                        <option key={code} value={code}>{label}</option>
+                      ))}
+                    </select>
                     <input
-                      type="email"
-                      name="email"
-                      required
-                      value={form.email}
+                      type="tel"
+                      name="phone"
+                      value={form.phone}
                       onChange={handleChange}
                       className="w-full border border-[#e2e8f0] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/30 focus:border-[#1e3a5f]"
-                      placeholder="votre@email.com"
+                      placeholder="06 12 34 56 78"
                     />
                   </div>
                 </div>
