@@ -36,9 +36,9 @@ export default function Hero() {
         </div>
 
         <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
-          Des compétences fortes,
+          L&apos;expérience des grands groupes
           <br />
-          <span className="text-[#c9a84c]">des conseils pertinents</span>
+          <span className="text-[#c9a84c]">au service de votre entreprise</span>
         </h1>
 
         <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-10 leading-relaxed">

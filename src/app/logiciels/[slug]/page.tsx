@@ -21,8 +21,21 @@ export async function generateMetadata({
   return {
     title: `${logiciel.name} — ${logiciel.tagline}`,
     description: logiciel.description,
+    keywords: [logiciel.name, logiciel.category, "process mining", "logiciel métier", "optimisation processus", "IO Software"],
     alternates: { canonical: url },
-    openGraph: { title: logiciel.name, description: logiciel.tagline, url },
+    openGraph: {
+      title: `${logiciel.name} — ${logiciel.tagline}`,
+      description: logiciel.description,
+      url,
+      siteName: "IO Software",
+      type: "website",
+      locale: "fr_FR",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${logiciel.name} — ${logiciel.tagline}`,
+      description: logiciel.description,
+    },
   };
 }
 
@@ -39,7 +52,10 @@ export default async function LogicielPage({
     <>
       {/* Hero */}
       <section className={`bg-gradient-to-br ${logiciel.color} pt-32 pb-16`}>
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-6xl mx-auto px-6 relative">
+          <span className="absolute top-0 right-0 bg-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full">
+            {logiciel.category}
+          </span>
           <Link
             href="/logiciels"
             className="inline-flex items-center gap-1 text-white/70 hover:text-white text-sm transition-colors mb-8"
@@ -49,9 +65,6 @@ export default async function LogicielPage({
             </svg>
             Nos logiciels
           </Link>
-          <span className="inline-block bg-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">
-            {logiciel.category}
-          </span>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">{logiciel.name}</h1>
           <p className="text-xl text-white/80 max-w-2xl">{logiciel.tagline}</p>
         </div>
@@ -69,6 +82,12 @@ export default async function LogicielPage({
             <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">La solution</span>
             <h2 className="text-2xl font-bold text-[#0f172a] mt-3 mb-4">Ce que {logiciel.name} change</h2>
             <p className="text-[#64748b] leading-relaxed">{logiciel.solution}</p>
+            {logiciel.diagram && (
+              <div
+                className="mt-6 w-full rounded-xl overflow-hidden"
+                dangerouslySetInnerHTML={{ __html: logiciel.diagram }}
+              />
+            )}
           </div>
         </div>
       </section>
