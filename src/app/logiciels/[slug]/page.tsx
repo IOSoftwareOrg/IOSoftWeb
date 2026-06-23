@@ -39,7 +39,10 @@ export default async function LogicielPage({
     <>
       {/* Hero */}
       <section className={`bg-gradient-to-br ${logiciel.color} pt-32 pb-16`}>
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-6xl mx-auto px-6 relative">
+          <span className="absolute top-0 right-0 bg-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full">
+            {logiciel.category}
+          </span>
           <Link
             href="/logiciels"
             className="inline-flex items-center gap-1 text-white/70 hover:text-white text-sm transition-colors mb-8"
@@ -49,9 +52,6 @@ export default async function LogicielPage({
             </svg>
             Nos logiciels
           </Link>
-          <span className="inline-block bg-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">
-            {logiciel.category}
-          </span>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">{logiciel.name}</h1>
           <p className="text-xl text-white/80 max-w-2xl">{logiciel.tagline}</p>
         </div>
