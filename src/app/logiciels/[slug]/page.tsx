@@ -21,8 +21,21 @@ export async function generateMetadata({
   return {
     title: `${logiciel.name} — ${logiciel.tagline}`,
     description: logiciel.description,
+    keywords: [logiciel.name, logiciel.category, "process mining", "logiciel métier", "optimisation processus", "IO Software"],
     alternates: { canonical: url },
-    openGraph: { title: logiciel.name, description: logiciel.tagline, url },
+    openGraph: {
+      title: `${logiciel.name} — ${logiciel.tagline}`,
+      description: logiciel.description,
+      url,
+      siteName: "IO Software",
+      type: "website",
+      locale: "fr_FR",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${logiciel.name} — ${logiciel.tagline}`,
+      description: logiciel.description,
+    },
   };
 }
 
@@ -69,6 +82,12 @@ export default async function LogicielPage({
             <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">La solution</span>
             <h2 className="text-2xl font-bold text-[#0f172a] mt-3 mb-4">Ce que {logiciel.name} change</h2>
             <p className="text-[#64748b] leading-relaxed">{logiciel.solution}</p>
+            {logiciel.diagram && (
+              <div
+                className="mt-6 w-full rounded-xl overflow-hidden"
+                dangerouslySetInnerHTML={{ __html: logiciel.diagram }}
+              />
+            )}
           </div>
         </div>
       </section>
