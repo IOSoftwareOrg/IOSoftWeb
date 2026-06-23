@@ -36,7 +36,7 @@ export default function Hero() {
         </div>
 
         <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
-          L&apos;expérience des grands groupes,
+          L&apos;expérience des grands groupes
           <br />
           <span className="text-[#c9a84c]">au service de votre entreprise</span>
         </h1>
