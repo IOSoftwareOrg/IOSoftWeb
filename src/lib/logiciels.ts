@@ -12,6 +12,7 @@ export interface Logiciel {
   fonctionnalites: { titre: string; description: string }[];
   profils: string[];
   benefices: { valeur: string; label: string }[];
+  diagram?: string;
 }
 
 export const logiciels: Logiciel[] = [
@@ -130,6 +131,54 @@ export const logiciels: Logiciel[] = [
       { valeur: "100%", label: "de visibilité sur vos processus réels" },
       { valeur: "2h", label: "pour générer une première cartographie complète" },
     ],
+    diagram: `<svg viewBox="0 0 700 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="pm-diag-title pm-diag-desc" font-family="system-ui, sans-serif">
+  <title id="pm-diag-title">Architecture Process Mining — SI vers Cloud Storage vers UiPath et Celonis</title>
+  <desc id="pm-diag-desc">Le système SI pousse des événements horodatés (date début, date fin, nom activité) vers un Cloud Storage (AWS S3, GCS, Azure Blob, BigQuery). UiPath Process Mining et Celonis lisent ensuite cette source pour produire des cartes de processus, détecter les déviations et calculer les KPI.</desc>
+  <rect width="700" height="360" fill="#f8fafc" rx="12"/>
+  <text x="350" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">Process Mining — SI › Cloud Storage › Analyse</text>
+  <rect x="40" y="135" width="140" height="120" rx="10" fill="white" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="110" y="163" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">Système SI</text>
+  <line x1="60" y1="173" x2="160" y2="173" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="110" y="193" text-anchor="middle" font-size="10" fill="#64748b">date_début</text>
+  <text x="110" y="210" text-anchor="middle" font-size="10" fill="#64748b">date_fin</text>
+  <text x="110" y="227" text-anchor="middle" font-size="10" fill="#64748b">nom_activité</text>
+  <line x1="180" y1="195" x2="268" y2="195" stroke="#f97316" stroke-width="2" marker-end="url(#pm-a1)"/>
+  <text x="224" y="185" text-anchor="middle" font-size="9" fill="#f97316">push data</text>
+  <rect x="270" y="110" width="160" height="170" rx="10" fill="white" stroke="#fdba74" stroke-width="1.5"/>
+  <text x="350" y="134" text-anchor="middle" font-size="12" font-weight="700" fill="#9a3412">Cloud Storage</text>
+  <line x1="290" y1="144" x2="410" y2="144" stroke="#fde68a" stroke-width="1"/>
+  <text x="290" y="163" font-size="9" font-weight="600" fill="#64748b">Exemples :</text>
+  <text x="290" y="180" font-size="9" fill="#94a3b8">☁️  AWS S3</text>
+  <text x="290" y="197" font-size="9" fill="#94a3b8">☁️  Google Cloud Storage</text>
+  <text x="290" y="214" font-size="9" fill="#94a3b8">☁️  Azure Blob Storage</text>
+  <text x="290" y="231" font-size="9" fill="#94a3b8">☁️  BigQuery / Redshift</text>
+  <line x1="290" y1="243" x2="410" y2="243" stroke="#fde68a" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="290" y="258" font-size="9" fill="#64748b">→ vue exposée (CSV / SQL)</text>
+  <line x1="430" y1="160" x2="518" y2="115" stroke="#6366f1" stroke-width="2" marker-end="url(#pm-a2)"/>
+  <text x="484" y="127" text-anchor="middle" font-size="9" fill="#6366f1">lecture</text>
+  <line x1="430" y1="230" x2="518" y2="275" stroke="#0ea5e9" stroke-width="2" marker-end="url(#pm-a3)"/>
+  <text x="484" y="270" text-anchor="middle" font-size="9" fill="#0ea5e9">lecture</text>
+  <rect x="520" y="60" width="140" height="120" rx="10" fill="white" stroke="#a5b4fc" stroke-width="1.5"/>
+  <text x="590" y="88" text-anchor="middle" font-size="12" font-weight="700" fill="#3730a3">UiPath PM</text>
+  <line x1="540" y1="98" x2="640" y2="98" stroke="#e0e7ff" stroke-width="1"/>
+  <text x="590" y="118" text-anchor="middle" font-size="10" fill="#64748b">Carte de processus</text>
+  <text x="590" y="135" text-anchor="middle" font-size="10" fill="#64748b">Déviations</text>
+  <text x="590" y="152" text-anchor="middle" font-size="10" fill="#64748b">KPI / Bottlenecks</text>
+  <rect x="520" y="210" width="140" height="120" rx="10" fill="white" stroke="#7dd3fc" stroke-width="1.5"/>
+  <text x="590" y="238" text-anchor="middle" font-size="12" font-weight="700" fill="#075985">Celonis</text>
+  <line x1="540" y1="248" x2="640" y2="248" stroke="#bae6fd" stroke-width="1"/>
+  <text x="590" y="268" text-anchor="middle" font-size="10" fill="#64748b">Carte de processus</text>
+  <text x="590" y="285" text-anchor="middle" font-size="10" fill="#64748b">Déviations</text>
+  <text x="590" y="302" text-anchor="middle" font-size="10" fill="#64748b">KPI / Bottlenecks</text>
+  <text x="110" y="278" text-anchor="middle" font-size="9" fill="#94a3b8">Producteur</text>
+  <text x="350" y="302" text-anchor="middle" font-size="9" fill="#94a3b8">Stockage &amp; exposition</text>
+  <text x="590" y="348" text-anchor="middle" font-size="9" fill="#94a3b8">Analyse &amp; visualisation</text>
+  <defs>
+    <marker id="pm-a1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#f97316"/></marker>
+    <marker id="pm-a2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#6366f1"/></marker>
+    <marker id="pm-a3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#0ea5e9"/></marker>
+  </defs>
+</svg>`,
   },
   {
     slug: "databridge",
