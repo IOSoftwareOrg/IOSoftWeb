@@ -4,9 +4,30 @@ import { useState } from "react";
 import Link from "next/link";
 import { articles, categories } from "@/lib/articles";
 import type { Category } from "@/lib/articles";
+import type { Locale } from "@/lib/i18n";
 
-export default function Blog({ hideHeader }: { hideHeader?: boolean } = {}) {
+const t = {
+  fr: {
+    label: "Ressources",
+    title: "Blog & Actualités",
+    allArticles: "Tous les articles",
+    all: "Tous",
+    none: "Aucun article dans cette catégorie.",
+    read: "Lire →",
+  },
+  en: {
+    label: "Resources",
+    title: "Blog & News",
+    allArticles: "All articles",
+    all: "All",
+    none: "No articles in this category.",
+    read: "Read →",
+  },
+};
+
+export default function Blog({ hideHeader, lang = "fr" }: { hideHeader?: boolean; lang?: Locale } = {}) {
   const [activeCategory, setActiveCategory] = useState<Category | null>(null);
+  const d = t[lang];
 
   const filtered = activeCategory
     ? articles.filter((a) => a.category === activeCategory)
@@ -18,18 +39,14 @@ export default function Blog({ hideHeader }: { hideHeader?: boolean } = {}) {
         {!hideHeader && (
           <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-4">
             <div>
-              <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">
-                Ressources
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#0f172a] mt-3">
-                Blog & Actualités
-              </h2>
+              <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">{d.label}</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0f172a] mt-3">{d.title}</h2>
             </div>
             <Link
-              href="/blog"
+              href={`/${lang}/blog`}
               className="text-sm font-semibold text-[#1e3a5f] hover:text-[#c9a84c] transition-colors flex items-center gap-1 self-start md:self-auto"
             >
-              Tous les articles
+              {d.allArticles}
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
@@ -37,7 +54,6 @@ export default function Blog({ hideHeader }: { hideHeader?: boolean } = {}) {
           </div>
         )}
 
-        {/* Filters */}
         <div className="flex flex-wrap gap-2 mb-10">
           <button
             onClick={() => setActiveCategory(null)}
@@ -47,7 +63,7 @@ export default function Blog({ hideHeader }: { hideHeader?: boolean } = {}) {
                 : "border-[#e2e8f0] bg-white text-[#64748b] hover:border-[#1e3a5f] hover:text-[#1e3a5f]"
             }`}
           >
-            Tous ({articles.length})
+            {d.all} ({articles.length})
           </button>
           {categories.map((cat) => {
             const count = articles.filter((a) => a.category === cat).length;
@@ -68,7 +84,6 @@ export default function Blog({ hideHeader }: { hideHeader?: boolean } = {}) {
           })}
         </div>
 
-        {/* Articles grid */}
         <div className="grid md:grid-cols-3 gap-6">
           {filtered.map((article) => (
             <article
@@ -85,16 +100,14 @@ export default function Blog({ hideHeader }: { hideHeader?: boolean } = {}) {
                     {article.category}
                   </span>
                 </div>
-                <p className="text-sm text-[#64748b] leading-relaxed mb-4 line-clamp-3">
-                  {article.excerpt}
-                </p>
+                <p className="text-sm text-[#64748b] leading-relaxed mb-4 line-clamp-3">{article.excerpt}</p>
                 <div className="flex items-center justify-between mt-auto">
                   <span className="text-xs text-[#94a3b8]">{article.date}</span>
                   <Link
-                    href={`/blog/${article.slug}`}
+                    href={`/${lang}/blog/${article.slug}`}
                     className="text-xs font-semibold text-[#1e3a5f] hover:text-[#c9a84c] transition-colors"
                   >
-                    Lire →
+                    {d.read}
                   </Link>
                 </div>
               </div>
@@ -103,7 +116,7 @@ export default function Blog({ hideHeader }: { hideHeader?: boolean } = {}) {
         </div>
 
         {filtered.length === 0 && (
-          <p className="text-center text-[#64748b] py-12">Aucun article dans cette catégorie.</p>
+          <p className="text-center text-[#64748b] py-12">{d.none}</p>
         )}
       </div>
     </section>

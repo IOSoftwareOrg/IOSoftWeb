@@ -1,0 +1,137 @@
+{
+  "nav": {
+    "services": "Services",
+    "expertise": "Expertise",
+    "software": "Software",
+    "blog": "Blog",
+    "contact": "Contact",
+    "cta": "Get in touch",
+    "menu": "Menu"
+  },
+  "footer": {
+    "tagline": "Strategy, Organisation, Process, Data & AI consulting — based in Marseille, operating in France and internationally.",
+    "navigation": "Navigation",
+    "values": "Our values",
+    "legal": "Legal notice",
+    "privacy": "Privacy policy",
+    "rights": "All rights reserved"
+  },
+  "home": {
+    "badge": "Over 30 years of professional experience",
+    "title1": "Big company expertise",
+    "title2": "at the service of your business",
+    "subtitle": "Strategy, Organisation, Process, Data & AI consulting — a transversal vision to build your success.",
+    "cta1": "Discover our services",
+    "cta2": "Get in touch",
+    "explore": "Explore",
+    "exploreTitle": "Everything IO Software can do for you",
+    "discover": "Discover",
+    "stats": {
+      "experience": "Years of experience",
+      "domains": "Areas of expertise",
+      "clients": "& Major groups",
+      "presence": "& International"
+    },
+    "sections": {
+      "services": { "title": "8 areas of expertise", "desc": "Strategy, Organisation, Process, Data, AI and Software development." },
+      "expertise": { "title": "30 years of experience", "desc": "A trusted partner for executives. France & International presence in demanding sectors." },
+      "software": { "title": "Software publisher", "desc": "FinAnalyzer, ProcessMap, DataBridge — business solutions designed for real enterprise needs." },
+      "blog": { "title": "Resources & News", "desc": "Finance, strategy, management, law, economics and IT — insights from our consultants for executives." }
+    },
+    "cta": {
+      "title": "Have a project? Let's talk.",
+      "subtitle": "Response guaranteed within 24 business hours.",
+      "button": "Get in touch →"
+    }
+  },
+  "services": {
+    "label": "What we do",
+    "title": "Our areas of expertise",
+    "subtitle": "A transversal approach covering all dimensions of your business, from strategy to operations.",
+    "discover": "Discover",
+    "back": "Services",
+    "related": "Related services",
+    "relatedDesc": "These services naturally complement this offering."
+  },
+  "expertise": {
+    "label": "Our DNA",
+    "title": "30 years of expertise",
+    "subtitle": "IO Software supports French and international companies with a transversal vision and proven expertise in demanding sectors.",
+    "why": "Why IO Software?",
+    "partner": "A trusted partner for executives",
+    "story1": "Founded in Marseille, IO Software is a consulting firm and software publisher focused on strategy, organisation, processes, data and AI. Our consultants combine field experience and academic expertise to deliver concrete and lasting solutions.",
+    "story2": "We operate in France and internationally, working with SMEs and large companies alike, with the same commitment to quality and impact.",
+    "sectors": "Sectors",
+    "highlights": [
+      "360° view covering strategy, finance, HR and IT",
+      "Experience in high-demand sectors",
+      "Pragmatic results-oriented approach",
+      "Quality commitment on every mission",
+      "France & International presence"
+    ],
+    "values": {
+      "impact": { "title": "Impact", "desc": "Our recommendations are concrete, actionable and results-oriented. We measure our success by yours." },
+      "objectivity": { "title": "Objectivity", "desc": "Our independence is our strength. It allows us to advise you without compromise." },
+      "expertise": { "title": "Expertise", "desc": "We operate where we excel. Every mission is conducted with the rigour your trust demands." }
+    }
+  },
+  "logiciels": {
+    "label": "Software publisher",
+    "title": "Our software solutions",
+    "subtitle": "Business software designed to meet the specific needs of companies, from finance to process analysis."
+  },
+  "blog": {
+    "label": "Resources",
+    "title": "Blog & News",
+    "subtitle": "Finance, strategy, management, lean, law, economics and IT — resources from our consultants for executives.",
+    "readmore": "Read article"
+  },
+  "contact": {
+    "label": "Let's talk about your project",
+    "title": "Get in touch",
+    "subtitle": "Describe your need and we will get back to you quickly.",
+    "intro": "Whatever your need — strategy, organisation, process, data or AI — describe your context to us.",
+    "form": {
+      "gender": "Title",
+      "madame": "Ms",
+      "monsieur": "Mr",
+      "autre": "Other",
+      "firstname": "First name *",
+      "firstnamePlaceholder": "Your first name",
+      "firstnameRequired": "First name required",
+      "lastname": "Last name *",
+      "lastnamePlaceholder": "Your last name",
+      "lastnameRequired": "Last name required",
+      "email": "Email *",
+      "emailPlaceholder": "your@email.com",
+      "emailInvalid": "Invalid email",
+      "phone": "Phone",
+      "company": "Company",
+      "companyPlaceholder": "Your company name",
+      "subject": "Subject *",
+      "selectSubject": "Select a subject",
+      "subjectInvalid": "Invalid subject",
+      "message": "Message *",
+      "messagePlaceholder": "Describe your need...",
+      "messageTooShort": "Message too short",
+      "send": "Send message",
+      "sending": "Sending...",
+      "successTitle": "Message sent!",
+      "successDesc": "We will get back to you as soon as possible.",
+      "tooManyAttempts": "Too many attempts. Please wait a few minutes.",
+      "unavailable": "Service temporarily unavailable.",
+      "sendError": "Error sending. Please try again.",
+      "unexpected": "Unexpected error."
+    }
+  },
+  "notFound": {
+    "title": "Page not found",
+    "desc": "The page you are looking for does not exist or has been moved.",
+    "home": "Back to home",
+    "contact": "Contact us"
+  },
+  "common": {
+    "ctaContact": "Get in touch →",
+    "discover": "Discover"
+  }
+}
