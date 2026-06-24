@@ -55,8 +55,8 @@ export async function sendContactForm(
   formData: FormData
 ): Promise<ContactState> {
   const headersList = await headers();
-  const ip = headersList.get("x-forwarded-for")?.split(",")[0].trim() ?? "unknown";
-  if (isRateLimited(ip)) {
+  const ip = headersList.get("x-forwarded-for")?.split(",")[0].trim();
+  if (ip && isRateLimited(ip)) {
     return { error: "Trop de tentatives. Veuillez patienter quelques minutes." };
   }
 
