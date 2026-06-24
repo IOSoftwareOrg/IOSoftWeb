@@ -10,6 +10,24 @@ const nextConfig: NextConfig = {
       { source: "/blog/", destination: "/blog", permanent: true },
       { source: "/contact/", destination: "/contact", permanent: true },
 
+      // Anciennes pages services WordPress → nouvelles pages
+      { source: "/conseil-en-management", destination: "/services/conseil-en-management", permanent: true },
+      { source: "/conseil-en-management/", destination: "/services/conseil-en-management", permanent: true },
+      { source: "/redaction-technique-2", destination: "/services/redaction-technique", permanent: true },
+      { source: "/redaction-technique-2/", destination: "/services/redaction-technique", permanent: true },
+      { source: "/redaction-technique", destination: "/services/redaction-technique", permanent: true },
+      { source: "/redaction-technique/", destination: "/services/redaction-technique", permanent: true },
+      { source: "/process-mining", destination: "/services/process-mining", permanent: true },
+      { source: "/process-mining/", destination: "/services/process-mining", permanent: true },
+      { source: "/data-consulting", destination: "/services/data-consulting", permanent: true },
+      { source: "/data-consulting/", destination: "/services/data-consulting", permanent: true },
+      { source: "/finance-entreprise", destination: "/services/finance-entreprise", permanent: true },
+      { source: "/finance-entreprise/", destination: "/services/finance-entreprise", permanent: true },
+      { source: "/systemes-information", destination: "/services/systemes-information", permanent: true },
+      { source: "/systemes-information/", destination: "/services/systemes-information", permanent: true },
+      { source: "/developpement-logiciel", destination: "/services/developpement-logiciel", permanent: true },
+      { source: "/developpement-logiciel/", destination: "/services/developpement-logiciel", permanent: true },
+
       // Catégories WordPress → page blog
       { source: "/category/:cat", destination: "/blog", permanent: true },
       { source: "/category/:cat/", destination: "/blog", permanent: true },
