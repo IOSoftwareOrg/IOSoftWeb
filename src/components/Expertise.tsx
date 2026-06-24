@@ -11,41 +11,35 @@ const sectors = [
 
 const values = [
   {
-    title: "Entrepreneurship",
+    title: "Impact",
     description:
-      "Nous croyons en l'épanouissement individuel au sein de structures horizontales et collaboratives, où chaque acteur contribue à la valeur collective.",
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#1e3a5f" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="16" cy="10" r="4" />
-        <circle cx="6" cy="24" r="3" />
-        <circle cx="26" cy="24" r="3" />
-        <line x1="16" y1="14" x2="6" y2="21" />
-        <line x1="16" y1="14" x2="26" y2="21" />
-      </svg>
-    ),
-  },
-  {
-    title: "Efficiency",
-    description:
-      "Nous nous engageons sur la qualité des réponses apportées. Chaque mission est conduite avec rigueur, dans les délais et au niveau d'exigence attendu.",
+      "Nos recommandations sont concrètes, actionnables et orientées résultat. Nous mesurons notre succès au vôtre.",
     icon: (
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#1e3a5f" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="16" cy="16" r="12" />
-        <polyline points="16,9 16,16 21,16" />
+        <polyline points="10,16 14,20 22,12" />
       </svg>
     ),
   },
   {
-    title: "Value",
+    title: "Objectivité",
     description:
-      "Tout travail doit apporter une valeur mesurable. Nos recommandations sont concrètes, actionnables et orientées résultat pour votre organisation.",
+      "Notre indépendance est notre force. Elle nous permet de vous conseiller sans compromis.",
     icon: (
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#1e3a5f" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="4,12 16,4 28,12 28,28 4,28" />
-        <line x1="4" y1="12" x2="28" y2="12" />
+        <circle cx="16" cy="16" r="12" />
         <line x1="16" y1="4" x2="16" y2="28" />
-        <line x1="4" y1="28" x2="16" y2="12" />
-        <line x1="28" y1="28" x2="16" y2="12" />
+        <line x1="4" y1="16" x2="28" y2="16" />
+      </svg>
+    ),
+  },
+  {
+    title: "Expertise",
+    description:
+      "Nous intervenons là où nous excellons. Chaque mission est conduite avec la rigueur que votre confiance exige.",
+    icon: (
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#1e3a5f" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <polygon points="16,4 20,12 28,13 22,19 24,28 16,24 8,28 10,19 4,13 12,12" />
       </svg>
     ),
   },
