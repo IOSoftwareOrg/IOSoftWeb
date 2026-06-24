@@ -76,7 +76,7 @@ const content: Record<string, Record<Locale, ServiceContent>> = {
     fr: {
       title: "Stratégie & Développement",
       description: "Analyse stratégique, SWOT, BCG, PESTEL et développement basé sur la data.",
-      intro: "Notre activité de consulting en stratégie s'appuie sur une démarche cohérente inspirée des dernières méthodes d'analyse stratégique, enrichie par la puissance de la donnée. À l'issue de notre analyse, vous aurez une vision claire de l'avenir de votre entreprise.",
+      intro: "« Connaissez l'ennemi et connaissez vous vous-même ; en cent batailles vous ne courrez jamais aucun danger. » — Sun Tzu, L'Art de la guerre\n\nNotre activité de consulting en stratégie s'appuie sur une démarche cohérente inspirée des dernières méthodes d'analyse stratégique, enrichie par la puissance de la donnée. À l'issue de notre analyse, vous aurez une vision claire de l'avenir de votre entreprise.",
       body: <SectionGrid sections={[
         { title: "Notre démarche en 5 étapes", items: ["Segmentation stratégique de votre entreprise", "Analyse concurrentielle de chacun de vos domaines d'activités", "Construction de l'avantage compétitif durable", "Identification de nouvelles voies de développement stratégique", "Management d'un portefeuille diversifié d'activités"] },
         { title: "Outils stratégiques", items: ["Analyse SWOT enrichie par la data", "Matrice BCG et gestion du portefeuille produits", "Analyse PESTEL et anticipation de l'environnement", "KPI data-driven via Tableau ou Power BI"] },
@@ -87,7 +87,7 @@ const content: Record<string, Record<Locale, ServiceContent>> = {
     en: {
       title: "Strategy & Development",
       description: "Strategic analysis, SWOT, BCG, PESTEL and data-driven development.",
-      intro: "Our strategy consulting approach is built on a coherent methodology inspired by the latest strategic analysis methods, enriched by the power of data. By the end of our analysis, you will have a clear vision of your company's future.",
+      intro: "\"Know the enemy and know yourself; in a hundred battles you will never be in peril.\" — Sun Tzu, The Art of War\n\nOur strategy consulting approach is built on a coherent methodology inspired by the latest strategic analysis methods, enriched by the power of data. By the end of our analysis, you will have a clear vision of your company's future.",
       body: <SectionGrid sections={[
         { title: "Our 5-step approach", items: ["Strategic segmentation of your company", "Competitive analysis of each business area", "Building a sustainable competitive advantage", "Identifying new strategic development paths", "Managing a diversified portfolio of activities"] },
         { title: "Strategic tools", items: ["Data-enriched SWOT analysis", "BCG matrix and product portfolio management", "PESTEL analysis and environmental anticipation", "Data-driven KPIs via Tableau or Power BI"] },
@@ -329,7 +329,16 @@ export default async function ServicePage({ params }: { params: Promise<{ lang: 
 
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-6">
-          <p className="text-[#475569] leading-relaxed max-w-3xl text-lg">{c.intro}</p>
+          {c.intro.includes("\n\n") ? (
+            <>
+              <blockquote className="border-l-2 border-[#c9a84c] pl-6 text-[#475569] italic mb-8 max-w-3xl">
+                {c.intro.split("\n\n")[0]}
+              </blockquote>
+              <p className="text-[#475569] leading-relaxed max-w-3xl text-lg">{c.intro.split("\n\n")[1]}</p>
+            </>
+          ) : (
+            <p className="text-[#475569] leading-relaxed max-w-3xl text-lg">{c.intro}</p>
+          )}
         </div>
       </section>
 
