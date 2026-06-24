@@ -108,7 +108,7 @@ export default function Navbar({ lang }: { lang: Locale }) {
               }`}
               aria-label={lang === "fr" ? "Switch to English" : "Passer en français"}
             >
-              {lang === "fr" ? "EN" : "FR"}
+              {lang === "fr" ? "🇬🇧 EN" : "🇫🇷 FR"}
             </button>
           </li>
           <li>
@@ -131,7 +131,7 @@ export default function Navbar({ lang }: { lang: Locale }) {
                 : "border-[#1e3a5f]/30 text-[#1e3a5f]"
             }`}
           >
-            {lang === "fr" ? "EN" : "FR"}
+            {lang === "fr" ? "🇬🇧" : "🇫🇷"}
           </button>
           <button
             className={`transition-colors ${dark ? "text-white" : "text-[#1e3a5f]"}`}
