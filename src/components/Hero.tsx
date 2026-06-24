@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { usePathname } from "next/navigation";
 import type { Locale } from "@/lib/i18n";
 
 const t = {
@@ -34,8 +35,11 @@ const t = {
   },
 };
 
-export default function Hero({ lang = "fr" }: { lang?: Locale }) {
+export default function Hero({ lang: langProp = "fr" }: { lang?: Locale }) {
   const sectionRef = useRef<HTMLElement>(null);
+  const pathname = usePathname();
+  // Dérive la locale depuis l'URL pour éviter la désynchronisation après hydration
+  const lang: Locale = pathname.startsWith("/en") ? "en" : "fr";
   const d = t[lang];
 
   function scrollDown() {
