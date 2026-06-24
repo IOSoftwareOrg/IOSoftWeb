@@ -16,11 +16,11 @@ const BASE_URL = "https://www.io-software.fr";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "IO Software — Conseil en management, stratégie, organisation, process, data et IA",
+    default: "IO Software — Conseil en Stratégie, Organisation, Process, Data et IA",
     template: "%s — IO Software",
   },
   description:
-    "Cabinet de conseil multidisciplinaire basé à Marseille. Management, Stratégie, Finance, Data, Process Mining et Systèmes d'information. Plus de 30 ans d'expérience.",
+    "Cabinet de conseil basé à Marseille. Stratégie, Organisation, Process, Data et IA. Plus de 30 ans d'expérience.",
   keywords: [
     "conseil entreprise",
     "management",
@@ -49,15 +49,15 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: BASE_URL,
     siteName: "IO Software",
-    title: "IO Software — Conseil en management, stratégie, organisation, process, data et IA",
+    title: "IO Software — Conseil en Stratégie, Organisation, Process, Data et IA",
     description:
-      "Cabinet de conseil multidisciplinaire. Management, Stratégie, Finance, Data, Process Mining. Plus de 30 ans d'expérience.",
+      "Cabinet de conseil basé à Marseille. Stratégie, Organisation, Process, Data et IA. Plus de 30 ans d'expérience.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "IO Software — Conseil en management, stratégie, organisation, process, data et IA",
+    title: "IO Software — Conseil en Stratégie, Organisation, Process, Data et IA",
     description:
-      "Cabinet de conseil multidisciplinaire. Management, Stratégie, Finance, Data, Process Mining. Plus de 30 ans d'expérience.",
+      "Cabinet de conseil basé à Marseille. Stratégie, Organisation, Process, Data et IA. Plus de 30 ans d'expérience.",
   },
   alternates: {
     canonical: BASE_URL,

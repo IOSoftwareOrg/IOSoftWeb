@@ -3,14 +3,14 @@ import Link from "next/link";
 import Hero from "@/components/Hero";
 
 export const metadata: Metadata = {
-  title: "IO Software — Conseil en management, stratégie, organisation, process, data et IA",
+  title: "IO Software — Conseil en Stratégie, Organisation, Process, Data et IA",
   description:
-    "Cabinet de conseil multidisciplinaire basé à Marseille. Management, Stratégie, Finance, Data, Process Mining et Systèmes d'information. Plus de 30 ans d'expérience.",
+    "Cabinet de conseil basé à Marseille. Stratégie, Organisation, Process, Data et IA. Plus de 30 ans d'expérience.",
   alternates: { canonical: "https://www.io-software.fr" },
   openGraph: {
-    title: "IO Software — Conseil en management, stratégie, organisation, process, data et IA",
+    title: "IO Software — Conseil en Stratégie, Organisation, Process, Data et IA",
     description:
-      "Cabinet de conseil multidisciplinaire. Management, Stratégie, Finance, Data, Process Mining. Plus de 30 ans d'expérience.",
+      "Cabinet de conseil basé à Marseille. Stratégie, Organisation, Process, Data et IA. Plus de 30 ans d'expérience.",
     url: "https://www.io-software.fr",
     type: "website",
   },
@@ -22,7 +22,7 @@ const sections = [
     label: "Services",
     title: "8 domaines d'expertise",
     description:
-      "Management, Stratégie, Finance, Data, Process Mining, SI, Rédaction technique et Développement logiciel.",
+      "Stratégie, Organisation, Process, Data, IA et Développement logiciel.",
     color: "from-blue-600 to-blue-800",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">

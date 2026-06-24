@@ -78,7 +78,7 @@ export default function Expertise({ hideHeader }: { hideHeader?: boolean } = {})
             </h3>
             <p className="text-[#64748b] leading-relaxed mb-4">
               Fondée à Marseille, IO Software est une firme de conseil et un éditeur de logiciels
-              positionnés sur les enjeux de management, de stratégie et de transformation digitale.
+              positionnés sur la stratégie, l&apos;organisation, les process, la data et l&apos;IA.
               Nos consultants allient expérience terrain et expertise académique pour proposer des
               solutions concrètes et durables.
             </p>

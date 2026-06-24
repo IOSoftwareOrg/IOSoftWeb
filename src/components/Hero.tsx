@@ -42,8 +42,7 @@ export default function Hero() {
         </h1>
 
         <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-10 leading-relaxed">
-          Partenaire stratégique des TPE/PME et grandes entreprises. Management, Finance, Data,
-          Process Mining et Systèmes d&apos;information — une vision transversale pour bâtir votre succès.
+          Conseil en Stratégie, Organisation, Process, Data et IA — une vision transversale pour bâtir votre succès.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
