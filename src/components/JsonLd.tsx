@@ -23,7 +23,7 @@ export default function JsonLd() {
         url: "https://www.io-software.fr",
         logo: "https://www.io-software.fr/favicon.ico",
         description:
-          "Cabinet de conseil multidisciplinaire basé à Marseille. Management, Stratégie, Finance, Data, Process Mining et Systèmes d'information. Plus de 30 ans d'expérience.",
+          "Cabinet de conseil basé à Marseille. Stratégie, Organisation, Process, Data et IA. Plus de 30 ans d'expérience.",
         address: {
           "@type": "PostalAddress",
           streetAddress: "Rue Denis Magdelon",
@@ -39,14 +39,13 @@ export default function JsonLd() {
         },
         areaServed: ["FR", "Worldwide"],
         knowsAbout: [
-          "Conseil en management",
-          "Stratégie d'entreprise",
-          "Finance d'entreprise",
+          "Conseil en stratégie",
+          "Organisation",
           "Process Mining",
           "Data Consulting",
+          "Intelligence artificielle",
           "Systèmes d'information",
           "Développement logiciel",
-          "Rédaction technique",
         ],
         sameAs: [],
       },

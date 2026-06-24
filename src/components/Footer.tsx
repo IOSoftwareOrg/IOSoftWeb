@@ -9,7 +9,7 @@ export default function Footer() {
             <span className="text-[#c9a84c] font-mono">&lt;/&gt;</span> IO Software
           </p>
           <p className="text-sm leading-relaxed">
-            Cabinet de conseil multidisciplinaire basé à Marseille. Partenaire stratégique des TPE/PME et grandes entreprises depuis plus de 30 ans.
+            Conseil en Stratégie, Organisation, Process, Data et IA — basé à Marseille, présent en France et à l&apos;international.
           </p>
         </div>
 

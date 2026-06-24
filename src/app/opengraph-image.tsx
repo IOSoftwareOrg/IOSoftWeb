@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "IO Software — Conseil en management, stratégie, organisation, process, data et IA";
+export const alt = "IO Software — Conseil en Stratégie, Organisation, Process, Data et IA";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -47,7 +47,7 @@ export default function Image() {
 
         {/* Subtitle */}
         <div style={{ color: "rgba(255,255,255,0.7)", fontSize: "28px" }}>
-          Conseil • Finance • Data • Développement logiciel • Marseille
+          Stratégie • Organisation • Process • Data • IA • Marseille
         </div>
 
         {/* Bottom bar */}

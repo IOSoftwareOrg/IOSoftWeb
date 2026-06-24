@@ -4,12 +4,12 @@ import Contact from "@/components/Contact";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contactez IO Software pour vos projets de conseil, développement logiciel ou audit. Réponse garantie sous 24h. Marseille, France & International.",
+    "Contactez IO Software pour vos projets de stratégie, organisation, process, data ou IA. Marseille, France & International.",
   alternates: { canonical: "https://www.io-software.fr/contact" },
   openGraph: {
     title: "Contact — IO Software",
     description:
-      "Décrivez votre besoin — conseil, audit, développement logiciel. Réponse sous 24h.",
+      "Décrivez votre besoin en stratégie, organisation, process, data ou IA. Réponse rapide garantie.",
     url: "https://www.io-software.fr/contact",
   },
 };
