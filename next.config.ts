@@ -27,10 +27,13 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   async headers() {
     return [
-      // Sécurité — toutes les routes
+      // Sécurité + cache pages HTML — toutes les routes
       {
         source: "/(.*)",
-        headers: securityHeaders,
+        headers: [
+          ...securityHeaders,
+          { key: "Cache-Control", value: "public, max-age=0, s-maxage=60, stale-while-revalidate=300" },
+        ],
       },
       // Assets statiques Next.js — immuables, 1 an
       {
@@ -51,13 +54,6 @@ const nextConfig: NextConfig = {
         source: "/(favicon.*|robots.txt|sitemap.xml|.*\\.png|.*\\.jpg|.*\\.svg|.*\\.webp|.*\\.woff2?)",
         headers: [
           { key: "Cache-Control", value: "public, max-age=604800, stale-while-revalidate=86400" },
-        ],
-      },
-      // Pages HTML — revalidation à chaque requête, CDN peut garder 60s
-      {
-        source: "/(.*)",
-        headers: [
-          { key: "Cache-Control", value: "public, max-age=0, s-maxage=60, stale-while-revalidate=300" },
         ],
       },
     ];
