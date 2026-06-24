@@ -1,37 +1,3 @@
-import type { Metadata } from "next";
-import Blog from "@/components/Blog";
+﻿import { redirect } from "next/navigation";
+export default function Page() { redirect("/fr/blog"); }
 
-export const metadata: Metadata = {
-  title: "Blog",
-  description:
-    "Articles et ressources sur la finance, la stratégie, le management, le lean, le droit, l'économie et l'informatique. Insights de nos consultants.",
-  alternates: { canonical: "https://www.io-software.fr/blog" },
-  openGraph: {
-    title: "Blog — IO Software",
-    description:
-      "Finance, stratégie, management, lean, droit, économie, informatique — les ressources de nos consultants pour les dirigeants.",
-    url: "https://www.io-software.fr/blog",
-  },
-};
-
-export default function BlogPage() {
-  return (
-    <>
-      <section className="bg-[#1e3a5f] pt-32 pb-16">
-        <div className="max-w-6xl mx-auto px-6">
-          <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">
-            Ressources
-          </span>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mt-3">
-            Blog & Actualités
-          </h1>
-          <p className="text-white/70 mt-4 max-w-xl">
-            Finance, stratégie, management, lean, droit, économie et informatique —
-            les ressources de nos consultants pour les dirigeants.
-          </p>
-        </div>
-      </section>
-      <Blog hideHeader />
-    </>
-  );
-}
