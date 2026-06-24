@@ -74,7 +74,7 @@ const icons = [
 
 export default async function HomePage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
-  if (!hasLocale(lang)) notFound();
+if (!hasLocale(lang)) notFound();
   const d = t[lang as Locale];
 
   return (
