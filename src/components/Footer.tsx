@@ -36,9 +36,9 @@ export default function Footer() {
           <p className="text-white font-semibold mb-4">Nos valeurs</p>
           <ul className="space-y-3 text-sm">
             {[
-              { title: "Entrepreneurship", desc: "Structures horizontales, épanouissement collectif" },
-              { title: "Efficiency", desc: "Qualité et rigueur sur chaque mission" },
-              { title: "Value", desc: "Chaque travail apporte une valeur mesurable" },
+              { title: "Impact", desc: "Nous mesurons notre succès au vôtre." },
+              { title: "Objectivité", desc: "Notre indépendance est notre force." },
+              { title: "Expertise", desc: "Nous intervenons là où nous excellons." },
             ].map((v) => (
               <li key={v.title}>
                 <p className="text-[#c9a84c] font-semibold">{v.title}</p>
