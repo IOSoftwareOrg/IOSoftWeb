@@ -21,25 +21,20 @@ function isRateLimited(ip: string): boolean {
   return false;
 }
 
+const subjectsFr = ["Conseil en Management", "Conseil en Stratégie", "Finance d'entreprise", "Data Consulting", "Process Mining", "Systèmes d'information", "Développement logiciel", "Autre"] as const;
+const subjectsEn = ["Management Consulting", "Strategy & Development", "Corporate Finance", "Data Consulting", "Process Mining", "Information Systems", "Software Development", "Other"] as const;
+
 const schema = z.object({
-  genre: z.enum(["Madame", "Monsieur", "Autre", ""]).optional(),
-  firstname: z.string().min(1, "Prénom requis").max(100),
-  name: z.string().min(1, "Nom requis").max(100),
-  email: z.string().email("Email invalide"),
+  genre: z.enum(["Madame", "Monsieur", "Autre", "Ms", "Mr", "Other", ""]).optional(),
+  firstname: z.string().min(1, "First name required").max(100),
+  name: z.string().min(1, "Last name required").max(100),
+  email: z.string().email("Invalid email"),
   phoneCode: z.string().max(10).optional(),
   phone: z.string().max(20).optional(),
   company: z.string().max(200).optional(),
-  subject: z.enum([
-    "Conseil en Management",
-    "Conseil en Stratégie",
-    "Finance d'entreprise",
-    "Data Consulting",
-    "Process Mining",
-    "Systèmes d'information",
-    "Développement logiciel",
-    "Autre",
-  ], { message: "Sujet invalide" }),
-  message: z.string().min(10, "Message trop court").max(5000),
+  subject: z.enum([...subjectsFr, ...subjectsEn] as [string, ...string[]], { message: "Invalid subject" }),
+  message: z.string().min(10, "Message too short").max(5000),
+  lang: z.enum(["fr", "en"]).optional(),
   // honeypot — doit rester vide
   _hp: z.string().max(0, "Bot detected"),
 });
@@ -73,7 +68,7 @@ export async function sendContactForm(
     return { fieldErrors };
   }
 
-  const { genre, firstname, name, email, phoneCode, phone, company, subject, message } =
+  const { genre, firstname, name, email, phoneCode, phone, company, subject, message, lang } =
     parsed.data;
 
   const apiKey = process.env.BREVO_API_KEY;
@@ -114,8 +109,8 @@ export async function sendContactForm(
         <h1 style="color:#fff;margin:0;font-size:24px">Nous avons bien reçu votre message</h1>
       </div>
       <div style="background:#f8fafc;padding:32px;border-radius:0 0 12px 12px;border:1px solid #e2e8f0;border-top:none">
-        <p style="margin:0 0 16px">Bonjour ${civility}${firstname},</p>
-        <p style="margin:0 0 16px;color:#475569">Votre message concernant <strong>${subject}</strong> a bien été reçu. Nous vous répondrons dans les meilleurs délais.</p>
+        <p style="margin:0 0 16px">${lang === "en" ? `Hello ${firstname},` : `Bonjour ${civility}${firstname},`}</p>
+        <p style="margin:0 0 16px;color:#475569">${lang === "en" ? `Your message regarding <strong>${subject}</strong> has been received. We will get back to you as soon as possible.` : `Votre message concernant <strong>${subject}</strong> a bien été reçu. Nous vous répondrons dans les meilleurs délais.`}</p>
         <div style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:16px;margin:24px 0">
           <p style="margin:0 0 8px;font-size:13px;color:#64748b;font-weight:600;text-transform:uppercase;letter-spacing:1px">Votre message</p>
           <p style="margin:0;white-space:pre-wrap;color:#334155">${message.replace(/</g, "&lt;")}</p>

@@ -1,40 +1,39 @@
 import { MetadataRoute } from "next";
 import { articles } from "@/lib/articles";
 import { logiciels } from "@/lib/logiciels";
+import { locales } from "@/lib/i18n";
 
 const BASE_URL = "https://www.io-software.fr";
 
+const serviceSlugsList = [
+  "conseil-en-management", "strategie-developpement", "finance-entreprise",
+  "data-consulting", "process-mining", "systemes-information",
+  "redaction-technique", "developpement-logiciel",
+];
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes: MetadataRoute.Sitemap = [
-    { url: BASE_URL, lastModified: new Date(), changeFrequency: "weekly", priority: 1 },
-    { url: `${BASE_URL}/services`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
-    { url: `${BASE_URL}/services/conseil-en-management`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE_URL}/services/strategie-developpement`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE_URL}/services/finance-entreprise`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE_URL}/services/data-consulting`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE_URL}/services/process-mining`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE_URL}/services/systemes-information`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE_URL}/services/redaction-technique`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE_URL}/services/developpement-logiciel`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE_URL}/expertise`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE_URL}/logiciels`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE_URL}/blog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
-    { url: `${BASE_URL}/contact`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.6 },
-  ];
+  const staticRoutes: MetadataRoute.Sitemap = locales.flatMap((lang) => [
+    { url: `${BASE_URL}/${lang}`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 1 },
+    { url: `${BASE_URL}/${lang}/services`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
+    { url: `${BASE_URL}/${lang}/expertise`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
+    { url: `${BASE_URL}/${lang}/logiciels`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
+    { url: `${BASE_URL}/${lang}/blog`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.8 },
+    { url: `${BASE_URL}/${lang}/contact`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.6 },
+    ...serviceSlugsList.map((slug) => ({
+      url: `${BASE_URL}/${lang}/services/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+  ]);
 
-  const logicielRoutes: MetadataRoute.Sitemap = logiciels.map((l) => ({
-    url: `${BASE_URL}/logiciels/${l.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }));
+  const logicielRoutes = locales.flatMap((lang) =>
+    logiciels.map((l) => ({ url: `${BASE_URL}/${lang}/logiciels/${l.slug}`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.7 }))
+  );
 
-  const articleRoutes: MetadataRoute.Sitemap = articles.map((a) => ({
-    url: `${BASE_URL}/blog/${a.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "yearly" as const,
-    priority: 0.6,
-  }));
+  const articleRoutes = locales.flatMap((lang) =>
+    articles.map((a) => ({ url: `${BASE_URL}/${lang}/blog/${a.slug}`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.6 }))
+  );
 
   return [...staticRoutes, ...logicielRoutes, ...articleRoutes];
 }

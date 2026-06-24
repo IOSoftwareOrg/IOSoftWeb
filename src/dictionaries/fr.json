@@ -1,0 +1,137 @@
+{
+  "nav": {
+    "services": "Services",
+    "expertise": "Expertise",
+    "software": "Logiciels",
+    "blog": "Blog",
+    "contact": "Contact",
+    "cta": "Prendre contact",
+    "menu": "Menu"
+  },
+  "footer": {
+    "tagline": "Conseil en Stratégie, Organisation, Process, Data et IA — basé à Marseille, présent en France et à l'international.",
+    "navigation": "Navigation",
+    "values": "Nos valeurs",
+    "legal": "Mentions légales",
+    "privacy": "Politique de confidentialité",
+    "rights": "Tous droits réservés"
+  },
+  "home": {
+    "badge": "Plus de 30 ans d'expérience professionnelle",
+    "title1": "L'expérience des grands groupes",
+    "title2": "au service de votre entreprise",
+    "subtitle": "Conseil en Stratégie, Organisation, Process, Data et IA — une vision transversale pour bâtir votre succès.",
+    "cta1": "Découvrir nos services",
+    "cta2": "Prendre contact",
+    "explore": "Explorer",
+    "exploreTitle": "Tout ce qu'IO Software peut faire pour vous",
+    "discover": "Découvrir",
+    "stats": {
+      "experience": "Ans d'expérience",
+      "domains": "Domaines d'expertise",
+      "clients": "& Grands groupes",
+      "presence": "& International"
+    },
+    "sections": {
+      "services": { "title": "8 domaines d'expertise", "desc": "Stratégie, Organisation, Process, Data, IA et Développement logiciel." },
+      "expertise": { "title": "30 ans d'expérience", "desc": "Un partenaire de confiance pour les dirigeants. Présence France & International dans des secteurs exigeants." },
+      "software": { "title": "Éditeur de logiciels", "desc": "FinAnalyzer, ProcessMap, DataBridge — des solutions métier conçues pour les besoins réels des entreprises." },
+      "blog": { "title": "Ressources & Actualités", "desc": "Finance, stratégie, management, lean, droit, économie et informatique — les insights de nos consultants." }
+    },
+    "cta": {
+      "title": "Vous avez un projet ? Parlons-en.",
+      "subtitle": "Réponse garantie sous 24 heures ouvrées.",
+      "button": "Prendre contact →"
+    }
+  },
+  "services": {
+    "label": "Ce que nous faisons",
+    "title": "Nos domaines d'expertise",
+    "subtitle": "Une approche transversale couvrant l'ensemble des dimensions de votre entreprise, de la stratégie à l'opérationnel.",
+    "discover": "Découvrir",
+    "back": "Services",
+    "related": "Services complémentaires",
+    "relatedDesc": "Ces services s'associent naturellement à cette prestation."
+  },
+  "expertise": {
+    "label": "Notre ADN",
+    "title": "30 ans d'expertise",
+    "subtitle": "IO Software accompagne entreprises françaises et internationales avec une vision transversale et des compétences éprouvées dans des secteurs exigeants.",
+    "why": "Pourquoi IO Software ?",
+    "partner": "Un partenaire de confiance pour les dirigeants",
+    "story1": "Fondée à Marseille, IO Software est une firme de conseil et un éditeur de logiciels positionnés sur la stratégie, l'organisation, les process, la data et l'IA. Nos consultants allient expérience terrain et expertise académique pour proposer des solutions concrètes et durables.",
+    "story2": "Nous intervenons en France et à l'international, auprès des TPE/PME comme des grandes entreprises, avec la même exigence de qualité et d'impact.",
+    "sectors": "Secteurs d'intervention",
+    "highlights": [
+      "Vision 360° couvrant stratégie, finance, RH et IT",
+      "Expérience dans des secteurs à forte exigence",
+      "Approche pragmatique orientée résultats mesurables",
+      "Engagement de qualité sur chaque mission",
+      "Présence France & International"
+    ],
+    "values": {
+      "impact": { "title": "Impact", "desc": "Nos recommandations sont concrètes, actionnables et orientées résultat. Nous mesurons notre succès au vôtre." },
+      "objectivity": { "title": "Objectivité", "desc": "Notre indépendance est notre force. Elle nous permet de vous conseiller sans compromis." },
+      "expertise": { "title": "Expertise", "desc": "Nous intervenons là où nous excellons. Chaque mission est conduite avec la rigueur que votre confiance exige." }
+    }
+  },
+  "logiciels": {
+    "label": "Éditeur logiciel",
+    "title": "Nos solutions logicielles",
+    "subtitle": "Des logiciels métier conçus pour répondre aux besoins spécifiques des entreprises, de la finance à l'analyse de processus."
+  },
+  "blog": {
+    "label": "Ressources",
+    "title": "Blog & Actualités",
+    "subtitle": "Finance, stratégie, management, lean, droit, économie et informatique — les ressources de nos consultants pour les dirigeants.",
+    "readmore": "Lire l'article"
+  },
+  "contact": {
+    "label": "Parlons de votre projet",
+    "title": "Prenons contact",
+    "subtitle": "Décrivez votre besoin et nous vous répondrons rapidement.",
+    "intro": "Quel que soit votre besoin — stratégie, organisation, process, data ou IA — décrivez-nous votre contexte.",
+    "form": {
+      "gender": "Genre",
+      "madame": "Madame",
+      "monsieur": "Monsieur",
+      "autre": "Autre",
+      "firstname": "Prénom *",
+      "firstnamePlaceholder": "Votre prénom",
+      "firstnameRequired": "Prénom requis",
+      "lastname": "Nom *",
+      "lastnamePlaceholder": "Votre nom",
+      "lastnameRequired": "Nom requis",
+      "email": "Email *",
+      "emailPlaceholder": "votre@email.com",
+      "emailInvalid": "Email invalide",
+      "phone": "Téléphone",
+      "company": "Société",
+      "companyPlaceholder": "Nom de votre entreprise",
+      "subject": "Sujet *",
+      "selectSubject": "Sélectionner un sujet",
+      "subjectInvalid": "Sujet invalide",
+      "message": "Message *",
+      "messagePlaceholder": "Décrivez votre besoin...",
+      "messageTooShort": "Message trop court",
+      "send": "Envoyer le message",
+      "sending": "Envoi en cours…",
+      "successTitle": "Message envoyé !",
+      "successDesc": "Nous vous répondrons dans les meilleurs délais.",
+      "tooManyAttempts": "Trop de tentatives. Veuillez patienter quelques minutes.",
+      "unavailable": "Service temporairement indisponible.",
+      "sendError": "Erreur lors de l'envoi. Veuillez réessayer.",
+      "unexpected": "Erreur inattendue."
+    }
+  },
+  "notFound": {
+    "title": "Page introuvable",
+    "desc": "La page que vous cherchez n'existe pas ou a été déplacée.",
+    "home": "Retour à l'accueil",
+    "contact": "Nous contacter"
+  },
+  "common": {
+    "ctaContact": "Prendre contact →",
+    "discover": "Découvrir"
+  }
+}
