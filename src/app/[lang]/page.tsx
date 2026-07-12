@@ -38,9 +38,9 @@ const t = {
     exploreTitle: "Tout ce qu'IO Software peut faire pour vous",
     discover: "Découvrir",
     sections: [
-      { href: "/fr/services", label: "Services", title: "8 domaines d'expertise", desc: "Stratégie, Organisation, Process, Data, IA et Développement logiciel.", color: "#3d5a80" },
+      { href: "/fr/services", label: "Services", title: "9 domaines d'expertise", desc: "Stratégie, Organisation, Process, Data, IA et Développement logiciel.", color: "#3d5a80" },
       { href: "/fr/expertise", label: "Expertise", title: "30 ans d'expérience", desc: "Un partenaire de confiance pour les dirigeants. Présence France & International.", color: "#1e3a5f" },
-      { href: "/fr/logiciels", label: "Logiciels", title: "Éditeur de logiciels", desc: "FinAnalyzer, ProcessMap, DataBridge — des solutions métier conçues pour vos besoins.", color: "#5b5a80" },
+      { href: "/fr/logiciels", label: "Logiciels", title: "Éditeur de logiciels", desc: "FinAnalyzer, ProcessMap, WebForge — des solutions métier conçues pour vos besoins.", color: "#5b5a80" },
       { href: "/fr/blog", label: "Blog", title: "Ressources & Actualités", desc: "Finance, stratégie, management, lean, droit, économie et informatique.", color: "#3f6857" },
     ],
     ctaTitle: "Vous avez un projet ? Parlons-en.",
@@ -52,9 +52,9 @@ const t = {
     exploreTitle: "Everything IO Software can do for you",
     discover: "Discover",
     sections: [
-      { href: "/en/services", label: "Services", title: "8 areas of expertise", desc: "Strategy, Organisation, Process, Data, AI and Software development.", color: "#3d5a80" },
+      { href: "/en/services", label: "Services", title: "9 areas of expertise", desc: "Strategy, Organisation, Process, Data, AI and Software development.", color: "#3d5a80" },
       { href: "/en/expertise", label: "Expertise", title: "30 years of experience", desc: "A trusted partner for executives. France & International presence.", color: "#1e3a5f" },
-      { href: "/en/software", label: "Software", title: "Software publisher", desc: "FinAnalyzer, ProcessMap, DataBridge — business solutions for your needs.", color: "#5b5a80" },
+      { href: "/en/software", label: "Software", title: "Software publisher", desc: "FinAnalyzer, ProcessMap, WebForge — business solutions for your needs.", color: "#5b5a80" },
       { href: "/en/blog", label: "Blog", title: "Resources & News", desc: "Finance, strategy, management, law, economics and IT — insights from our consultants.", color: "#3f6857" },
     ],
     ctaTitle: "Have a project? Let's talk.",

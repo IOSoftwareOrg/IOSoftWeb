@@ -101,6 +101,7 @@ const services: Record<Locale, { slug: string; title: string; desc: string }[]> 
     { slug: "systemes-information", title: "Systèmes d'information", desc: "Conseil en architecture SI, choix des solutions logicielles, conduite du changement et audit." },
     { slug: "redaction-technique", title: "Rédaction technique", desc: "Production de documentations logicielles, manuels utilisateurs, spécifications fonctionnelles." },
     { slug: "developpement-logiciel", title: "Développement logiciel", desc: "Conception et développement d'applications sur mesure, éditeur de logiciels métier." },
+    { slug: "web-agents-autonomes", title: "Web & Agents Autonomes", desc: "Sites web modernes couplés à des agents IA autonomes pour automatiser vos processus et votre relation client." },
   ],
   en: [
     { slug: "conseil-en-management", title: "Management Consulting", desc: "Support for team organisation, human resources management and managerial transformation." },
@@ -111,6 +112,7 @@ const services: Record<Locale, { slug: string; title: string; desc: string }[]> 
     { slug: "systemes-information", title: "Information Systems", desc: "IS architecture consulting, software selection, change management and IT audit." },
     { slug: "redaction-technique", title: "Technical Writing", desc: "Software documentation, user manuals, functional specifications in FR/EN." },
     { slug: "developpement-logiciel", title: "Software Development", desc: "Custom application design and development, business software publisher." },
+    { slug: "web-agents-autonomes", title: "Web & Autonomous Agents", desc: "Modern websites paired with autonomous AI agents to automate your processes and customer relationship." },
   ],
 };
 
