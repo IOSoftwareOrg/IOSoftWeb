@@ -34,7 +34,7 @@ const t = {
     links: [
       { label: "Services", href: "/en/services" },
       { label: "Expertise", href: "/en/expertise" },
-      { label: "Software", href: "/en/logiciels" },
+      { label: "Software", href: "/en/software" },
       { label: "Blog", href: "/en/blog" },
       { label: "Contact", href: "/en/contact" },
     ],

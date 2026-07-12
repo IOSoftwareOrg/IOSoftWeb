@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Logiciels from "@/components/Logiciels";
 import { hasLocale, type Locale } from "@/lib/i18n";
+import { logicielsSegment } from "@/lib/routes";
 import { notFound } from "next/navigation";
 
 const BASE_URL = "https://www.io-software.fr";
 
 const meta = {
-  fr: { title: "Logiciels", description: "IO Software éditeur de logiciels métier : FinAnalyzer, ProcessMap, DataBridge. Solutions sur mesure pour vos besoins spécifiques." },
-  en: { title: "Software", description: "IO Software business software publisher: FinAnalyzer, ProcessMap, DataBridge. Custom solutions for your specific needs." },
+  fr: { title: "Logiciels", description: "IO Software éditeur de logiciels métier : FinAnalyzer, ProcessMap, WebForge. Solutions sur mesure pour vos besoins spécifiques." },
+  en: { title: "Software", description: "IO Software business software publisher: FinAnalyzer, ProcessMap, WebForge. Custom solutions for your specific needs." },
 };
 
 const hero = {
@@ -18,7 +19,14 @@ const hero = {
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
   if (!hasLocale(lang)) return {};
-  return { title: meta[lang].title, description: meta[lang].description, alternates: { canonical: `${BASE_URL}/${lang}/logiciels`, languages: { fr: `${BASE_URL}/fr/logiciels`, en: `${BASE_URL}/en/logiciels` } } };
+  return {
+    title: meta[lang].title,
+    description: meta[lang].description,
+    alternates: {
+      canonical: `${BASE_URL}/${lang}/${logicielsSegment(lang)}`,
+      languages: { fr: `${BASE_URL}/fr/logiciels`, en: `${BASE_URL}/en/software` },
+    },
+  };
 }
 
 export default async function LogicielsPage({ params }: { params: Promise<{ lang: string }> }) {

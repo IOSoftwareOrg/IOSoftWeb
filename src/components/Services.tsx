@@ -120,7 +120,7 @@ export default function Services({ hideHeader }: { hideHeader?: boolean } = {}) 
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service) => {
-            const className = "group p-6 rounded-xl border border-[#e2e8f0] hover:border-[#1e3a5f] hover:shadow-lg transition-all duration-300 flex flex-col";
+            const className = "group p-6 rounded-sm border border-[#e2e8f0] hover:border-[#1e3a5f] transition-colors duration-300 flex flex-col";
             const inner = (
               <>
                 <div className="w-12 h-12 bg-[#1e3a5f]/8 rounded-lg flex items-center justify-center text-[#1e3a5f] mb-4 group-hover:bg-[#1e3a5f] group-hover:text-white transition-colors">
@@ -130,7 +130,7 @@ export default function Services({ hideHeader }: { hideHeader?: boolean } = {}) 
                 <p className="text-sm text-[#64748b] leading-relaxed mb-4">{service.description}</p>
                 <div className="flex flex-wrap gap-1.5 mt-auto">
                   {service.tags.map((tag) => (
-                    <span key={tag} className="text-xs bg-[#f1f5f9] text-[#64748b] px-2 py-0.5 rounded-full">
+                    <span key={tag} className="text-xs bg-[#f1f5f9] text-[#64748b] px-2 py-0.5 rounded-sm">
                       {tag}
                     </span>
                   ))}

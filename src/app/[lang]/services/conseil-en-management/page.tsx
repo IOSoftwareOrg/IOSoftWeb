@@ -115,7 +115,7 @@ export default async function ConseilManagementPage({ params }: { params: Promis
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-8">
             {d.sections.map((s) => (
-              <div key={s.title} className="bg-[#f8fafc] rounded-2xl p-8 border border-[#e2e8f0]">
+              <div key={s.title} className="bg-[#f8fafc] rounded-sm p-8 border border-[#e2e8f0]">
                 <h2 className="text-lg font-bold text-[#0f172a] mb-6 pb-4 border-b border-[#e2e8f0]">{s.title}</h2>
                 <ul className="space-y-3">
                   {s.items.map((item) => (
