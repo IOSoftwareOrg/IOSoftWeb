@@ -25,7 +25,7 @@ export default function RelatedServices({ services, lang = "fr" }: { services: R
             <Link
               key={s.href}
               href={s.href}
-              className="group flex flex-col justify-between p-8 rounded-2xl border border-[#e2e8f0] hover:border-[#1e3a5f] hover:shadow-lg transition-all duration-300"
+              className="group flex flex-col justify-between p-8 rounded-sm border border-[#e2e8f0] hover:border-[#1e3a5f] transition-colors duration-300"
             >
               <div>
                 <h3 className="font-bold text-[#0f172a] mb-2 group-hover:text-[#1e3a5f] transition-colors">{s.title}</h3>
