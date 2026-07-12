@@ -2,7 +2,14 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { articles, categories } from "@/lib/articles";
+import {
+  articles,
+  categories,
+  getArticleTitle,
+  getArticleExcerpt,
+  getArticleDate,
+  getCategoryLabel,
+} from "@/lib/articles";
 import type { Category } from "@/lib/articles";
 import type { Locale } from "@/lib/i18n";
 
@@ -78,7 +85,7 @@ export default function Blog({ hideHeader, lang = "fr" }: { hideHeader?: boolean
                     : "border-[#e2e8f0] bg-white text-[#64748b] hover:border-[#1e3a5f] hover:text-[#1e3a5f]"
                 }`}
               >
-                {cat} ({count})
+                {getCategoryLabel(cat, lang)} ({count})
               </button>
             );
           })}
@@ -94,15 +101,15 @@ export default function Blog({ hideHeader, lang = "fr" }: { hideHeader?: boolean
               <div className="p-6 flex flex-col flex-1">
                 <div className="flex items-start justify-between gap-2 mb-3">
                   <h3 className="font-bold text-[#0f172a] leading-snug group-hover:text-[#1e3a5f] transition-colors flex-1">
-                    {article.title}
+                    {getArticleTitle(article, lang)}
                   </h3>
                   <span className="text-xs font-semibold text-[#c9a84c] uppercase tracking-widest shrink-0 mt-0.5">
-                    {article.category}
+                    {getCategoryLabel(article.category, lang)}
                   </span>
                 </div>
-                <p className="text-sm text-[#64748b] leading-relaxed mb-4 line-clamp-3">{article.excerpt}</p>
+                <p className="text-sm text-[#64748b] leading-relaxed mb-4 line-clamp-3">{getArticleExcerpt(article, lang)}</p>
                 <div className="flex items-center justify-between mt-auto">
-                  <span className="text-xs text-[#94a3b8]">{article.date}</span>
+                  <span className="text-xs text-[#94a3b8]">{getArticleDate(article, lang)}</span>
                   <Link
                     href={`/${lang}/blog/${article.slug}`}
                     className="text-xs font-semibold text-[#1e3a5f] hover:text-[#c9a84c] transition-colors"
