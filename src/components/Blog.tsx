@@ -64,7 +64,7 @@ export default function Blog({ hideHeader, lang = "fr" }: { hideHeader?: boolean
         <div className="flex flex-wrap gap-2 mb-10">
           <button
             onClick={() => setActiveCategory(null)}
-            className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
+            className={`text-xs px-3 py-1.5 rounded-sm border transition-colors ${
               activeCategory === null
                 ? "bg-[#1e3a5f] border-[#1e3a5f] text-white"
                 : "border-[#e2e8f0] bg-white text-[#64748b] hover:border-[#1e3a5f] hover:text-[#1e3a5f]"
@@ -79,7 +79,7 @@ export default function Blog({ hideHeader, lang = "fr" }: { hideHeader?: boolean
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat === activeCategory ? null : cat)}
-                className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
+                className={`text-xs px-3 py-1.5 rounded-sm border transition-colors ${
                   activeCategory === cat
                     ? "bg-[#1e3a5f] border-[#1e3a5f] text-white"
                     : "border-[#e2e8f0] bg-white text-[#64748b] hover:border-[#1e3a5f] hover:text-[#1e3a5f]"
@@ -95,7 +95,7 @@ export default function Blog({ hideHeader, lang = "fr" }: { hideHeader?: boolean
           {filtered.map((article) => (
             <article
               key={article.slug}
-              className="bg-white rounded-xl overflow-hidden border border-[#e2e8f0] hover:shadow-md transition-shadow group flex flex-col"
+              className="bg-white rounded-sm overflow-hidden border border-[#e2e8f0] hover:border-[#1e3a5f] transition-colors group flex flex-col"
             >
               <div className="h-2 bg-[#1e3a5f] group-hover:bg-[#c9a84c] transition-colors" />
               <div className="p-6 flex flex-col flex-1">

@@ -87,7 +87,7 @@ export default async function ArticlePage({
               </svg>
               Retour au blog
             </Link>
-            <span className="inline-block bg-[#c9a84c]/20 text-[#c9a84c] text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full shrink-0">
+            <span className="inline-block bg-[#c9a84c]/20 text-[#c9a84c] text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-sm shrink-0">
               {article.category}
             </span>
           </div>
