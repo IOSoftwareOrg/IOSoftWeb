@@ -71,7 +71,7 @@ export default function Contact({ hideHeader, lang = "fr" }: { hideHeader?: bool
             <p className="text-white/70 leading-relaxed mb-10">{d.intro}</p>
           </div>
 
-          <div className="bg-white rounded-2xl p-8">
+          <div className="bg-white rounded-sm p-8">
             {state.success ? (
               <div className="text-center py-8">
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">

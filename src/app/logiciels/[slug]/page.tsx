@@ -51,9 +51,9 @@ export default async function LogicielPage({
   return (
     <>
       {/* Hero */}
-      <section className={`bg-gradient-to-br ${logiciel.color} pt-32 pb-16`}>
+      <section className="pt-32 pb-16" style={{ backgroundColor: logiciel.accentColor }}>
         <div className="max-w-6xl mx-auto px-6 relative">
-          <span className="absolute top-0 right-0 bg-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full">
+          <span className="absolute top-0 right-0 bg-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-sm">
             {logiciel.category}
           </span>
           <Link
@@ -78,13 +78,13 @@ export default async function LogicielPage({
             <h2 className="text-2xl font-bold text-[#0f172a] mt-3 mb-4">Ce que vous vivez aujourd&apos;hui</h2>
             <p className="text-[#64748b] leading-relaxed">{logiciel.probleme}</p>
           </div>
-          <div className="bg-[#f8fafc] rounded-2xl p-8">
+          <div className="bg-[#f8fafc] rounded-sm p-8">
             <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">La solution</span>
             <h2 className="text-2xl font-bold text-[#0f172a] mt-3 mb-4">Ce que {logiciel.name} change</h2>
             <p className="text-[#64748b] leading-relaxed">{logiciel.solution}</p>
             {logiciel.diagram && (
               <div
-                className="mt-6 w-full rounded-xl overflow-hidden"
+                className="mt-6 w-full rounded-sm overflow-hidden"
                 dangerouslySetInnerHTML={{ __html: logiciel.diagram }}
               />
             )}
@@ -113,7 +113,7 @@ export default async function LogicielPage({
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {logiciel.fonctionnalites.map((f) => (
-              <div key={f.titre} className="bg-white rounded-xl p-6 border border-[#e2e8f0]">
+              <div key={f.titre} className="bg-white rounded-sm p-6 border border-[#e2e8f0]">
                 <h3 className="font-bold text-[#0f172a] mb-2">{f.titre}</h3>
                 <p className="text-sm text-[#64748b] leading-relaxed">{f.description}</p>
               </div>
@@ -139,7 +139,7 @@ export default async function LogicielPage({
               ))}
             </ul>
           </div>
-          <div className="bg-[#1e3a5f] rounded-2xl p-8 text-white">
+          <div className="bg-[#1e3a5f] rounded-sm p-8 text-white">
             <h3 className="text-xl font-bold mb-4">Intéressé par {logiciel.name} ?</h3>
             <p className="text-white/70 mb-6 text-sm">
               Parlons de votre contexte et voyons comment {logiciel.name} peut répondre à vos besoins.

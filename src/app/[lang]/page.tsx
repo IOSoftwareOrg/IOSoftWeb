@@ -38,13 +38,12 @@ const t = {
     exploreTitle: "Tout ce qu'IO Software peut faire pour vous",
     discover: "Découvrir",
     sections: [
-      { href: "/fr/services", label: "Services", title: "8 domaines d'expertise", desc: "Stratégie, Organisation, Process, Data, IA et Développement logiciel.", color: "from-blue-600 to-blue-800" },
-      { href: "/fr/expertise", label: "Expertise", title: "30 ans d'expérience", desc: "Un partenaire de confiance pour les dirigeants. Présence France & International.", color: "from-[#1e3a5f] to-[#0f172a]" },
-      { href: "/fr/logiciels", label: "Logiciels", title: "Éditeur de logiciels", desc: "FinAnalyzer, ProcessMap, DataBridge — des solutions métier conçues pour vos besoins.", color: "from-violet-600 to-violet-900" },
-      { href: "/fr/blog", label: "Blog", title: "Ressources & Actualités", desc: "Finance, stratégie, management, lean, droit, économie et informatique.", color: "from-emerald-600 to-emerald-900" },
+      { href: "/fr/services", label: "Services", title: "9 domaines d'expertise", desc: "Stratégie, Organisation, Process, Data, IA et Développement logiciel.", color: "#3d5a80" },
+      { href: "/fr/expertise", label: "Expertise", title: "30 ans d'expérience", desc: "Un partenaire de confiance pour les dirigeants. Présence France & International.", color: "#1e3a5f" },
+      { href: "/fr/logiciels", label: "Logiciels", title: "Éditeur de logiciels", desc: "FinAnalyzer, ProcessMap, WebForge — des solutions métier conçues pour vos besoins.", color: "#5b5a80" },
+      { href: "/fr/blog", label: "Blog", title: "Ressources & Actualités", desc: "Finance, stratégie, management, lean, droit, économie et informatique.", color: "#3f6857" },
     ],
     ctaTitle: "Vous avez un projet ? Parlons-en.",
-    ctaSubtitle: "Réponse garantie sous 24 heures ouvrées.",
     ctaButton: "Prendre contact →",
     ctaHref: "/fr/contact",
   },
@@ -53,13 +52,12 @@ const t = {
     exploreTitle: "Everything IO Software can do for you",
     discover: "Discover",
     sections: [
-      { href: "/en/services", label: "Services", title: "8 areas of expertise", desc: "Strategy, Organisation, Process, Data, AI and Software development.", color: "from-blue-600 to-blue-800" },
-      { href: "/en/expertise", label: "Expertise", title: "30 years of experience", desc: "A trusted partner for executives. France & International presence.", color: "from-[#1e3a5f] to-[#0f172a]" },
-      { href: "/en/logiciels", label: "Software", title: "Software publisher", desc: "FinAnalyzer, ProcessMap, DataBridge — business solutions for your needs.", color: "from-violet-600 to-violet-900" },
-      { href: "/en/blog", label: "Blog", title: "Resources & News", desc: "Finance, strategy, management, law, economics and IT — insights from our consultants.", color: "from-emerald-600 to-emerald-900" },
+      { href: "/en/services", label: "Services", title: "9 areas of expertise", desc: "Strategy, Organisation, Process, Data, AI and Software development.", color: "#3d5a80" },
+      { href: "/en/expertise", label: "Expertise", title: "30 years of experience", desc: "A trusted partner for executives. France & International presence.", color: "#1e3a5f" },
+      { href: "/en/software", label: "Software", title: "Software publisher", desc: "FinAnalyzer, ProcessMap, WebForge — business solutions for your needs.", color: "#5b5a80" },
+      { href: "/en/blog", label: "Blog", title: "Resources & News", desc: "Finance, strategy, management, law, economics and IT — insights from our consultants.", color: "#3f6857" },
     ],
     ctaTitle: "Have a project? Let's talk.",
-    ctaSubtitle: "Response guaranteed within 24 business hours.",
     ctaButton: "Get in touch →",
     ctaHref: "/en/contact",
   },
@@ -93,9 +91,9 @@ if (!hasLocale(lang)) notFound();
               <Link
                 key={s.href}
                 href={s.href}
-                className="group rounded-2xl overflow-hidden border border-[#e2e8f0] hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col"
+                className="group rounded-sm overflow-hidden border border-[#e2e8f0] hover:border-[#1e3a5f] transition-colors duration-300 flex flex-col"
               >
-                <div className={`bg-gradient-to-br ${s.color} p-6 text-white`}>
+                <div className="p-6 text-white" style={{ backgroundColor: s.color }}>
                   <div className="mb-3 opacity-80">{icons[i]}</div>
                   <p className="text-xs font-semibold uppercase tracking-widest text-white/60 mb-1">{s.label}</p>
                   <p className="text-lg font-bold leading-snug">{s.title}</p>
@@ -117,8 +115,7 @@ if (!hasLocale(lang)) notFound();
 
       <section id="contact" className="bg-[#c9a84c] py-16">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">{d.ctaTitle}</h2>
-          <p className="text-white/80 mb-8">{d.ctaSubtitle}</p>
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-8">{d.ctaTitle}</h2>
           <Link href={d.ctaHref} className="inline-block bg-white text-[#1e3a5f] font-bold px-8 py-4 rounded-md hover:bg-[#f1f5f9] transition-colors">
             {d.ctaButton}
           </Link>

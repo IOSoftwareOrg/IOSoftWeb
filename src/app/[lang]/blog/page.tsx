@@ -21,9 +21,16 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   return { title: meta[lang].title, description: meta[lang].description, alternates: { canonical: `${BASE_URL}/${lang}/blog`, languages: { fr: `${BASE_URL}/fr/blog`, en: `${BASE_URL}/en/blog` } } };
 }
 
-export default async function BlogPage({ params }: { params: Promise<{ lang: string }> }) {
+export default async function BlogPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ lang: string }>;
+  searchParams: Promise<{ q?: string }>;
+}) {
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
+  const { q } = await searchParams;
   const d = hero[lang as Locale];
 
   return (
@@ -35,7 +42,7 @@ export default async function BlogPage({ params }: { params: Promise<{ lang: str
           <p className="text-white/70 mt-4 max-w-xl">{d.subtitle}</p>
         </div>
       </section>
-      <Blog hideHeader lang={lang as Locale} />
+      <Blog hideHeader lang={lang as Locale} initialQuery={q ?? ""} />
     </>
   );
 }

@@ -35,12 +35,11 @@
     "sections": {
       "services": { "title": "8 domaines d'expertise", "desc": "Stratégie, Organisation, Process, Data, IA et Développement logiciel." },
       "expertise": { "title": "30 ans d'expérience", "desc": "Un partenaire de confiance pour les dirigeants. Présence France & International dans des secteurs exigeants." },
-      "software": { "title": "Éditeur de logiciels", "desc": "FinAnalyzer, ProcessMap, DataBridge — des solutions métier conçues pour les besoins réels des entreprises." },
+      "software": { "title": "Éditeur de logiciels", "desc": "FinAnalyzer, ProcessMap, WebForge — des solutions métier conçues pour les besoins réels des entreprises." },
       "blog": { "title": "Ressources & Actualités", "desc": "Finance, stratégie, management, lean, droit, économie et informatique — les insights de nos consultants." }
     },
     "cta": {
       "title": "Vous avez un projet ? Parlons-en.",
-      "subtitle": "Réponse garantie sous 24 heures ouvrées.",
       "button": "Prendre contact →"
     }
   },

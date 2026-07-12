@@ -4,7 +4,6 @@ export interface Logiciel {
   category: string;
   tagline: string;
   description: string;
-  color: string;
   accentColor: string;
   icon: string;
   probleme: string;
@@ -23,8 +22,7 @@ export const logiciels: Logiciel[] = [
     tagline: "L'analyse financière au service des décideurs",
     description:
       "Outil d'analyse financière et de contrôle de gestion. Tableaux de bord, ratios, consolidation et reporting pour PME.",
-    color: "from-blue-500 to-blue-700",
-    accentColor: "#3b82f6",
+    accentColor: "#3d5a80",
     icon: "📊",
     probleme:
       "Les PME passent des heures à consolider des données Excel disparates, à recalculer des ratios à la main et à produire des reportings qui sont déjà obsolètes au moment où ils sont présentés.",
@@ -81,8 +79,7 @@ export const logiciels: Logiciel[] = [
     tagline: "Révélez ce que vos processus cachent vraiment",
     description:
       "Visualisation et analyse de vos processus métier à partir des logs systèmes. Identifiez les dérives et optimisez vos flux.",
-    color: "from-emerald-500 to-emerald-700",
-    accentColor: "#10b981",
+    accentColor: "#3f6857",
     icon: "🔍",
     probleme:
       "Vos processus théoriques ne ressemblent jamais à ce qui se passe réellement. Les goulots d'étranglement, les contournements et les inefficacités restent invisibles jusqu'à ce qu'ils coûtent trop cher.",
@@ -181,61 +178,60 @@ export const logiciels: Logiciel[] = [
 </svg>`,
   },
   {
-    slug: "databridge",
-    name: "DataBridge",
-    category: "Data",
-    tagline: "Vos données, enfin prêtes à être exploitées",
+    slug: "webforge",
+    name: "WebForge",
+    category: "Web & Agents IA",
+    tagline: "Un site qui agit, pas seulement qui informe",
     description:
-      "Connecteur et transformateur de données multi-sources. Agrégation, nettoyage et mise à disposition pour vos équipes BI.",
-    color: "from-violet-500 to-violet-700",
-    accentColor: "#8b5cf6",
-    icon: "🔗",
+      "Plateforme de création de sites web couplés à des agents IA autonomes. Générez, déployez et supervisez des agents qui interagissent avec vos visiteurs.",
+    accentColor: "#5b5a80",
+    icon: "🤖",
     probleme:
-      "Vos données sont éparpillées entre votre ERP, votre CRM, vos fichiers Excel et vos applications métiers. Chaque analyse nécessite des heures d'extraction et de réconciliation manuelle, avec des risques d'erreurs à chaque étape.",
+      "Votre site web informe, mais il ne fait rien d'autre. Chaque question laissée sans réponse immédiate, chaque lead mal qualifié, chaque formulaire abandonné est une opportunité perdue — et ajouter un vrai support conversationnel ou une automatisation sur mesure nécessite historiquement une équipe technique dédiée.",
     solution:
-      "DataBridge connecte toutes vos sources de données, les nettoie, les transforme et les met à disposition de vos équipes dans un format exploitable. Vos analystes passent moins de temps à préparer les données et plus de temps à les analyser.",
+      "WebForge combine la création de sites modernes avec le déploiement d'agents IA autonomes directement intégrés à votre site. Vos visiteurs obtiennent des réponses immédiates, vos leads sont qualifiés automatiquement, et votre équipe garde la main grâce à une supervision complète.",
     fonctionnalites: [
       {
-        titre: "Connecteurs natifs",
+        titre: "Génération de sites sur mesure",
         description:
-          "Connexion native avec les principaux ERP (SAP, Sage, Cegid), CRM (Salesforce, HubSpot), bases de données (MySQL, PostgreSQL, SQL Server) et fichiers plats.",
+          "Sites Next.js/React générés et personnalisés selon votre identité, optimisés SEO et performance dès la mise en ligne.",
       },
       {
-        titre: "Pipeline de transformation",
+        titre: "Agents conversationnels intégrés",
         description:
-          "Définissez vos règles de transformation, de normalisation et d'enrichissement des données via une interface visuelle intuitive. Sans code.",
+          "Déployez un agent capable de répondre aux questions, qualifier les demandes et orienter vos visiteurs, directement sur votre site.",
       },
       {
-        titre: "Détection et correction d'anomalies",
+        titre: "Automatisation des workflows",
         description:
-          "Identification automatique des doublons, valeurs aberrantes, données manquantes et incohérences. Règles de correction configurables.",
+          "Formulaires, prises de rendez-vous, relances — automatisez les tâches répétitives sans développement supplémentaire.",
       },
       {
-        titre: "Orchestration et planification",
+        titre: "Supervision et garde-fous",
         description:
-          "Planifiez vos pipelines de données (temps réel, batch horaire, quotidien). Alertes en cas d'échec ou d'anomalie détectée.",
+          "Définissez précisément ce que vos agents peuvent faire, avec des limites d'action claires et un contrôle humain à tout moment.",
       },
       {
-        titre: "Data catalog intégré",
+        titre: "Intégrations natives",
         description:
-          "Documentez automatiquement vos sources, transformations et datasets. Vos équipes savent toujours d'où viennent les données et comment les interpréter.",
+          "Connectez vos agents à votre CRM, votre messagerie et vos outils métier pour une automatisation de bout en bout.",
       },
       {
-        titre: "API et export BI",
+        titre: "Analyse de performance",
         description:
-          "Exposez vos données via API REST ou connectez directement Power BI, Tableau, Metabase et tout outil BI du marché.",
+          "Suivez les conversations, les conversions et les optimisations recommandées par l'IA pour améliorer continuellement votre site.",
       },
     ],
     profils: [
-      "Data analysts et Data engineers",
-      "Responsables BI et reporting",
-      "DSI souhaitant moderniser leur architecture data",
-      "Dirigeants voulant une vue consolidée de leur activité",
+      "Dirigeants de PME souhaitant une présence digitale qui convertit",
+      "Responsables marketing et communication",
+      "Équipes commerciales cherchant à qualifier leurs leads automatiquement",
+      "DSI souhaitant déployer des agents IA sans développement lourd",
     ],
     benefices: [
-      { valeur: "-70%", label: "de temps passé à préparer les données" },
-      { valeur: "50+", label: "connecteurs sources disponibles" },
-      { valeur: "99,9%", label: "de fiabilité sur les pipelines automatisés" },
+      { valeur: "24/7", label: "disponibilité de vos agents pour vos visiteurs" },
+      { valeur: "-60%", label: "de leads non qualifiés grâce à l'automatisation" },
+      { valeur: "2 sem.", label: "pour lancer un site avec son premier agent" },
     ],
   },
 ];

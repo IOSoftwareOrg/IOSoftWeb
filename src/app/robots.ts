@@ -4,7 +4,7 @@ const BASE_URL = "https://www.io-software.fr";
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: { userAgent: "*", allow: "/" },
+    rules: { userAgent: "*", allow: "/", disallow: "/design-test" },
     sitemap: `${BASE_URL}/sitemap.xml`,
   };
 }
