@@ -54,7 +54,7 @@ const t = {
     sections: [
       { href: "/en/services", label: "Services", title: "8 areas of expertise", desc: "Strategy, Organisation, Process, Data, AI and Software development.", color: "from-blue-600 to-blue-800" },
       { href: "/en/expertise", label: "Expertise", title: "30 years of experience", desc: "A trusted partner for executives. France & International presence.", color: "from-[#1e3a5f] to-[#0f172a]" },
-      { href: "/en/logiciels", label: "Software", title: "Software publisher", desc: "FinAnalyzer, ProcessMap, DataBridge — business solutions for your needs.", color: "from-violet-600 to-violet-900" },
+      { href: "/en/software", label: "Software", title: "Software publisher", desc: "FinAnalyzer, ProcessMap, DataBridge — business solutions for your needs.", color: "from-violet-600 to-violet-900" },
       { href: "/en/blog", label: "Blog", title: "Resources & News", desc: "Finance, strategy, management, law, economics and IT — insights from our consultants.", color: "from-emerald-600 to-emerald-900" },
     ],
     ctaTitle: "Have a project? Let's talk.",

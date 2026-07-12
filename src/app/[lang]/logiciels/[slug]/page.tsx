@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { logiciels, getLogicielBySlug } from "@/lib/logiciels";
 import { hasLocale, locales, type Locale } from "@/lib/i18n";
+import { logicielsSegment } from "@/lib/routes";
 
 const BASE_URL = "https://www.io-software.fr";
 
@@ -17,7 +18,10 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   return {
     title: `${logiciel.name} — ${logiciel.tagline}`,
     description: logiciel.description,
-    alternates: { canonical: `${BASE_URL}/${lang}/logiciels/${slug}`, languages: { fr: `${BASE_URL}/fr/logiciels/${slug}`, en: `${BASE_URL}/en/logiciels/${slug}` } },
+    alternates: {
+      canonical: `${BASE_URL}/${lang}/${logicielsSegment(lang as Locale)}/${slug}`,
+      languages: { fr: `${BASE_URL}/fr/logiciels/${slug}`, en: `${BASE_URL}/en/software/${slug}` },
+    },
   };
 }
 
@@ -38,7 +42,7 @@ export default async function LogicielPage({ params }: { params: Promise<{ lang:
       <section className={`bg-gradient-to-br ${logiciel.color} pt-32 pb-16`}>
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex items-center gap-2 text-white/50 text-sm mb-6">
-            <Link href={`/${lang}/logiciels`} className="text-white hover:text-white/80 transition-colors">{d.back}</Link>
+            <Link href={`/${lang}/${logicielsSegment(lang as Locale)}`} className="text-white hover:text-white/80 transition-colors">{d.back}</Link>
             <span>/</span>
             <span className="text-white/80">{logiciel.name}</span>
           </div>

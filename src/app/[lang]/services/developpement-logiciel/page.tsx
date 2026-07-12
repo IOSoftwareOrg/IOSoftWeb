@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import RelatedServices from "@/components/RelatedServices";
 import { hasLocale, locales, type Locale } from "@/lib/i18n";
+import { logicielsSegment } from "@/lib/routes";
 import { notFound } from "next/navigation";
 
 const BASE_URL = "https://www.io-software.fr";
@@ -115,10 +116,10 @@ export default async function DevLogicielPage({ params }: { params: Promise<{ la
                 ) : (
                   <p className="text-sm text-[#475569] leading-relaxed">
                     {d.finDesc}{" "}
-                    <Link href={`/${lang}/logiciels/finanalyzer`} className="text-[#1e3a5f] font-semibold hover:text-[#c9a84c] transition-colors">FinAnalyzer</Link>,{" "}
-                    <Link href={`/${lang}/logiciels/processmap`} className="text-[#1e3a5f] font-semibold hover:text-[#c9a84c] transition-colors">ProcessMap</Link>{" "}
+                    <Link href={`/${lang}/${logicielsSegment(lang as Locale)}/finanalyzer`} className="text-[#1e3a5f] font-semibold hover:text-[#c9a84c] transition-colors">FinAnalyzer</Link>,{" "}
+                    <Link href={`/${lang}/${logicielsSegment(lang as Locale)}/processmap`} className="text-[#1e3a5f] font-semibold hover:text-[#c9a84c] transition-colors">ProcessMap</Link>{" "}
                     {lang === "fr" ? "et" : "and"}{" "}
-                    <Link href={`/${lang}/logiciels/databridge`} className="text-[#1e3a5f] font-semibold hover:text-[#c9a84c] transition-colors">DataBridge</Link>.
+                    <Link href={`/${lang}/${logicielsSegment(lang as Locale)}/databridge`} className="text-[#1e3a5f] font-semibold hover:text-[#c9a84c] transition-colors">DataBridge</Link>.
                   </p>
                 )}
               </div>
@@ -153,7 +154,7 @@ export default async function DevLogicielPage({ params }: { params: Promise<{ la
               <p className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest mb-3">{d.logLabel}</p>
               <h2 className="text-2xl font-bold text-white mb-4">{d.logTitle}</h2>
               <p className="text-white/70 leading-relaxed mb-8">{d.logText}</p>
-              <Link href={`/${lang}/logiciels`} className="inline-block bg-[#c9a84c] hover:bg-[#b8943d] text-white font-bold px-8 py-4 rounded-md transition-colors">{d.logBtn}</Link>
+              <Link href={`/${lang}/${logicielsSegment(lang as Locale)}`} className="inline-block bg-[#c9a84c] hover:bg-[#b8943d] text-white font-bold px-8 py-4 rounded-md transition-colors">{d.logBtn}</Link>
             </div>
             <div className="grid grid-cols-3 gap-4">
               {["FinAnalyzer", "ProcessMap", "DataBridge"].map((name) => (
