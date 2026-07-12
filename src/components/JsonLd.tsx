@@ -11,7 +11,7 @@ export default function JsonLd() {
           "@type": "SearchAction",
           target: {
             "@type": "EntryPoint",
-            urlTemplate: "https://www.io-software.fr/blog?q={search_term_string}",
+            urlTemplate: "https://www.io-software.fr/fr/blog?q={search_term_string}",
           },
           "query-input": "required name=search_term_string",
         },
