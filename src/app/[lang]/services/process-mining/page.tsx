@@ -137,7 +137,7 @@ export default async function ProcessMiningPage({ params }: { params: Promise<{ 
           <h2 className="text-2xl font-bold text-[#0f172a] mb-8">{d.etapesTitle}</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {d.etapes.map((e) => (
-              <div key={e.num} className="bg-[#f8fafc] rounded-2xl p-6 border border-[#e2e8f0]">
+              <div key={e.num} className="bg-[#f8fafc] rounded-sm p-6 border border-[#e2e8f0]">
                 <p className="text-3xl font-bold text-[#c9a84c] mb-3">{e.num}</p>
                 <h3 className="font-bold text-[#0f172a] mb-2">{e.title}</h3>
                 <p className="text-sm text-[#475569] leading-relaxed">{e.desc}</p>
@@ -158,7 +158,7 @@ export default async function ProcessMiningPage({ params }: { params: Promise<{ 
             )}
           </p>
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-2xl p-8 border border-[#e2e8f0]">
+            <div className="bg-white rounded-sm p-8 border border-[#e2e8f0]">
               <h3 className="text-xl font-bold text-[#0f172a] mb-6 pb-4 border-b border-[#e2e8f0]">{d.uipathTitle}</h3>
               <ul className="space-y-4">
                 {d.uipath.map((item) => (
@@ -166,7 +166,7 @@ export default async function ProcessMiningPage({ params }: { params: Promise<{ 
                 ))}
               </ul>
             </div>
-            <div className="bg-white rounded-2xl p-8 border border-[#e2e8f0]">
+            <div className="bg-white rounded-sm p-8 border border-[#e2e8f0]">
               <h3 className="text-xl font-bold text-[#0f172a] mb-6 pb-4 border-b border-[#e2e8f0]">{d.celonisTitle}</h3>
               <ul className="space-y-4">
                 {d.celonis.map((item) => (
@@ -183,7 +183,7 @@ export default async function ProcessMiningPage({ params }: { params: Promise<{ 
           <h2 className="text-2xl font-bold text-[#0f172a] mb-8">{d.avantagesTitle}</h2>
           <div className="grid sm:grid-cols-2 gap-6">
             {d.avantages.map((a) => (
-              <div key={a.title} className="flex items-start gap-4 p-6 bg-[#f8fafc] rounded-xl border border-[#e2e8f0]">
+              <div key={a.title} className="flex items-start gap-4 p-6 bg-[#f8fafc] rounded-sm border border-[#e2e8f0]">
                 <div className="w-8 h-8 bg-[#1e3a5f] rounded-lg flex items-center justify-center shrink-0">{checkIconWhite}</div>
                 <div><h3 className="font-bold text-[#0f172a] mb-1">{a.title}</h3><p className="text-sm text-[#475569] leading-relaxed">{a.desc}</p></div>
               </div>

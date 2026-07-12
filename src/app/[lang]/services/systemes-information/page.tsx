@@ -95,7 +95,7 @@ export default async function SIPage({ params }: { params: Promise<{ lang: strin
               <h2 className="text-2xl font-bold text-[#0f172a] mt-2 mb-4">{d.s1Title}</h2>
               <p className="text-[#475569] leading-relaxed">{d.s1Text}</p>
             </div>
-            <div className="bg-[#f8fafc] rounded-2xl p-8 border border-[#e2e8f0]">
+            <div className="bg-[#f8fafc] rounded-sm p-8 border border-[#e2e8f0]">
               <p className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest mb-4">{d.s1CovLabel}</p>
               <ul className="space-y-3">
                 {d.s1Cov.map((item) => <li key={item} className="flex items-start gap-3">{checkIcon}<span className="text-sm text-[#475569]">{item}</span></li>)}
@@ -108,7 +108,7 @@ export default async function SIPage({ params }: { params: Promise<{ lang: strin
       <section className="py-16 bg-[#f8fafc]">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-start">
-            <div className="bg-white rounded-2xl p-8 border border-[#e2e8f0]">
+            <div className="bg-white rounded-sm p-8 border border-[#e2e8f0]">
               <p className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest mb-4">{d.s2IntervLabel}</p>
               <ul className="space-y-3">
                 {d.s2Interv.map((item) => <li key={item} className="flex items-start gap-3">{checkIcon}<span className="text-sm text-[#475569]">{item}</span></li>)}
@@ -129,7 +129,7 @@ export default async function SIPage({ params }: { params: Promise<{ lang: strin
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-8">
             {[d.moa, d.moe].map((item) => (
-              <div key={item.title} className="bg-white/10 rounded-2xl p-8">
+              <div key={item.title} className="bg-white/10 rounded-sm p-8">
                 <p className="text-3xl font-bold text-[#c9a84c] mb-1">{item.title}</p>
                 <p className="text-white/50 text-sm uppercase tracking-widest mb-4">{item.sub}</p>
                 <p className="text-white/70 text-sm leading-relaxed">{item.desc}</p>

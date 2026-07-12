@@ -109,7 +109,7 @@ export default async function DevLogicielPage({ params }: { params: Promise<{ la
           <h2 className="text-2xl font-bold text-[#0f172a] mb-8">{d.competTitle}</h2>
           <div className="grid sm:grid-cols-2 gap-6">
             {d.compet.map((c) => (
-              <div key={c.title} className="bg-[#f8fafc] rounded-2xl p-8 border border-[#e2e8f0]">
+              <div key={c.title} className="bg-[#f8fafc] rounded-sm p-8 border border-[#e2e8f0]">
                 <h3 className="font-bold text-[#0f172a] mb-3">{c.title}</h3>
                 {c.desc ? (
                   <p className="text-sm text-[#475569] leading-relaxed">{c.desc}</p>
@@ -136,7 +136,7 @@ export default async function DevLogicielPage({ params }: { params: Promise<{ la
           </div>
           <div className="grid sm:grid-cols-2 gap-6">
             {d.ia.map((item) => (
-              <div key={item.title} className="bg-white rounded-2xl p-8 border border-[#e2e8f0]">
+              <div key={item.title} className="bg-white rounded-sm p-8 border border-[#e2e8f0]">
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 bg-[#1e3a5f] rounded-lg flex items-center justify-center shrink-0 mt-0.5">{boltIcon}</div>
                   <div><h3 className="font-bold text-[#0f172a] mb-2">{item.title}</h3><p className="text-sm text-[#475569] leading-relaxed">{item.desc}</p></div>
@@ -158,7 +158,7 @@ export default async function DevLogicielPage({ params }: { params: Promise<{ la
             </div>
             <div className="grid grid-cols-3 gap-4">
               {["FinAnalyzer", "ProcessMap", "DataBridge"].map((name) => (
-                <div key={name} className="bg-white/10 rounded-xl p-5 text-center"><p className="text-white font-semibold text-sm">{name}</p></div>
+                <div key={name} className="bg-white/10 rounded-sm p-5 text-center"><p className="text-white font-semibold text-sm">{name}</p></div>
               ))}
             </div>
           </div>

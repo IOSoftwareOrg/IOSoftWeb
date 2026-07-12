@@ -66,13 +66,13 @@ export default function Expertise({ hideHeader, lang = "fr" }: { hideHeader?: bo
               <p className="text-sm font-semibold text-[#0f172a] mb-3">{d.sectors}</p>
               <div className="flex flex-wrap gap-2">
                 {d.sectorsList.map((s) => (
-                  <span key={s} className="text-sm border border-[#1e3a5f]/20 text-[#1e3a5f] px-3 py-1 rounded-full bg-white">{s}</span>
+                  <span key={s} className="text-sm border border-[#1e3a5f]/20 text-[#1e3a5f] px-3 py-1 rounded-sm bg-white">{s}</span>
                 ))}
               </div>
             </div>
           </div>
 
-          <div className="bg-[#1e3a5f] rounded-2xl p-8 text-white">
+          <div className="bg-[#1e3a5f] rounded-sm p-8 text-white">
             <p className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest mb-6">{d.why}</p>
             <ul className="space-y-5">
               {d.highlights.map((item) => (
@@ -89,7 +89,7 @@ export default function Expertise({ hideHeader, lang = "fr" }: { hideHeader?: bo
 
         <div className="grid md:grid-cols-3 gap-6">
           {d.values.map((v, i) => (
-            <div key={v.title} className="bg-white rounded-xl p-6 border border-[#e2e8f0]">
+            <div key={v.title} className="bg-white rounded-sm p-6 border border-[#e2e8f0]">
               <div className="mb-4">{icons[i]}</div>
               <h4 className="font-bold text-[#0f172a] mb-2">{v.title}</h4>
               <p className="text-sm text-[#64748b] leading-relaxed">{v.description}</p>

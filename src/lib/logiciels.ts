@@ -4,7 +4,6 @@ export interface Logiciel {
   category: string;
   tagline: string;
   description: string;
-  color: string;
   accentColor: string;
   icon: string;
   probleme: string;
@@ -23,8 +22,7 @@ export const logiciels: Logiciel[] = [
     tagline: "L'analyse financière au service des décideurs",
     description:
       "Outil d'analyse financière et de contrôle de gestion. Tableaux de bord, ratios, consolidation et reporting pour PME.",
-    color: "from-blue-500 to-blue-700",
-    accentColor: "#3b82f6",
+    accentColor: "#3d5a80",
     icon: "📊",
     probleme:
       "Les PME passent des heures à consolider des données Excel disparates, à recalculer des ratios à la main et à produire des reportings qui sont déjà obsolètes au moment où ils sont présentés.",
@@ -81,8 +79,7 @@ export const logiciels: Logiciel[] = [
     tagline: "Révélez ce que vos processus cachent vraiment",
     description:
       "Visualisation et analyse de vos processus métier à partir des logs systèmes. Identifiez les dérives et optimisez vos flux.",
-    color: "from-emerald-500 to-emerald-700",
-    accentColor: "#10b981",
+    accentColor: "#3f6857",
     icon: "🔍",
     probleme:
       "Vos processus théoriques ne ressemblent jamais à ce qui se passe réellement. Les goulots d'étranglement, les contournements et les inefficacités restent invisibles jusqu'à ce qu'ils coûtent trop cher.",
@@ -187,8 +184,7 @@ export const logiciels: Logiciel[] = [
     tagline: "Vos données, enfin prêtes à être exploitées",
     description:
       "Connecteur et transformateur de données multi-sources. Agrégation, nettoyage et mise à disposition pour vos équipes BI.",
-    color: "from-violet-500 to-violet-700",
-    accentColor: "#8b5cf6",
+    accentColor: "#5b5a80",
     icon: "🔗",
     probleme:
       "Vos données sont éparpillées entre votre ERP, votre CRM, vos fichiers Excel et vos applications métiers. Chaque analyse nécessite des heures d'extraction et de réconciliation manuelle, avec des risques d'erreurs à chaque étape.",
