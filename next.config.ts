@@ -59,8 +59,19 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async rewrites() {
+    return [
+      // /en/software est l'URL publique EN de la page /en/logiciels (route interne)
+      { source: "/en/software", destination: "/en/logiciels" },
+      { source: "/en/software/:slug", destination: "/en/logiciels/:slug" },
+    ];
+  },
   async redirects() {
     return [
+      // /en/logiciels → /en/software (nouvelle URL canonique EN)
+      { source: "/en/logiciels", destination: "/en/software", permanent: true },
+      { source: "/en/logiciels/:slug", destination: "/en/software/:slug", permanent: true },
+
       // Pages principales
       { source: "/services/", destination: "/services", permanent: true },
       { source: "/expertise/", destination: "/expertise", permanent: true },
