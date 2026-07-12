@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import type { Locale } from "@/lib/i18n";
+import { logicielsSegment, switchLocalePath } from "@/lib/routes";
 
 const t = {
   fr: {
@@ -49,15 +50,14 @@ export default function Navbar({ lang }: { lang: Locale }) {
   const navLinks = [
     { label: labels.services, href: `/${lang}/services` },
     { label: labels.expertise, href: `/${lang}/expertise` },
-    { label: labels.software, href: `/${lang}/logiciels` },
+    { label: labels.software, href: `/${lang}/${logicielsSegment(lang)}` },
     { label: labels.blog, href: `/${lang}/blog` },
     { label: labels.contact, href: `/${lang}/contact` },
   ];
 
   function switchLang() {
     const otherLang = lang === "fr" ? "en" : "fr";
-    // Replace the current lang prefix with the other lang
-    const newPath = pathname.replace(`/${lang}`, `/${otherLang}`);
+    const newPath = switchLocalePath(pathname, lang, otherLang);
     router.push(newPath);
   }
 

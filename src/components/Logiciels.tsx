@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { logiciels } from "@/lib/logiciels";
 import type { Locale } from "@/lib/i18n";
+import { logicielsSegment } from "@/lib/routes";
 
 const t = {
   fr: {
@@ -50,7 +51,7 @@ export default function Logiciels({ hideHeader, lang = "fr" }: { hideHeader?: bo
               <div className="p-6">
                 <p className="text-sm text-[#64748b] leading-relaxed mb-4">{logiciel.description}</p>
                 <Link
-                  href={`/${lang}/logiciels/${logiciel.slug}`}
+                  href={`/${lang}/${logicielsSegment(lang)}/${logiciel.slug}`}
                   className="text-sm font-semibold text-[#1e3a5f] hover:text-[#c9a84c] transition-colors flex items-center gap-1"
                 >
                   {d.learnMore}
