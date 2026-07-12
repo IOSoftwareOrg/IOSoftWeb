@@ -44,7 +44,6 @@ const t = {
       { href: "/fr/blog", label: "Blog", title: "Ressources & Actualités", desc: "Finance, stratégie, management, lean, droit, économie et informatique.", color: "from-emerald-600 to-emerald-900" },
     ],
     ctaTitle: "Vous avez un projet ? Parlons-en.",
-    ctaSubtitle: "Réponse garantie sous 24 heures ouvrées.",
     ctaButton: "Prendre contact →",
     ctaHref: "/fr/contact",
   },
@@ -59,7 +58,6 @@ const t = {
       { href: "/en/blog", label: "Blog", title: "Resources & News", desc: "Finance, strategy, management, law, economics and IT — insights from our consultants.", color: "from-emerald-600 to-emerald-900" },
     ],
     ctaTitle: "Have a project? Let's talk.",
-    ctaSubtitle: "Response guaranteed within 24 business hours.",
     ctaButton: "Get in touch →",
     ctaHref: "/en/contact",
   },
@@ -117,8 +115,7 @@ if (!hasLocale(lang)) notFound();
 
       <section id="contact" className="bg-[#c9a84c] py-16">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">{d.ctaTitle}</h2>
-          <p className="text-white/80 mb-8">{d.ctaSubtitle}</p>
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-8">{d.ctaTitle}</h2>
           <Link href={d.ctaHref} className="inline-block bg-white text-[#1e3a5f] font-bold px-8 py-4 rounded-md hover:bg-[#f1f5f9] transition-colors">
             {d.ctaButton}
           </Link>
