@@ -29,7 +29,6 @@ const t = {
 export default function Navbar({ lang }: { lang: Locale }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
   const labels = t[lang];
@@ -37,16 +36,12 @@ export default function Navbar({ lang }: { lang: Locale }) {
   const isHome = pathname === `/${lang}` || pathname === `/${lang}/`;
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
-  const dark = mounted && isHome && !scrolled;
+  const dark = isHome && !scrolled;
 
   const navLinks = [
     { label: labels.services, href: `/${lang}/services` },

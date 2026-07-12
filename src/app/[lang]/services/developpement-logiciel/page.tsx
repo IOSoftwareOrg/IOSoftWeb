@@ -41,7 +41,7 @@ const data = {
     ],
     logLabel: "Éditeur de logiciels",
     logTitle: "Découvrez nos logiciels métier",
-    logText: "IO Software est également éditeur de solutions logicielles métier. FinAnalyzer, ProcessMap, DataBridge — des outils conçus pour répondre aux besoins réels des entreprises, issus de nos missions de conseil.",
+    logText: "IO Software est également éditeur de solutions logicielles métier. FinAnalyzer, ProcessMap, WebForge — des outils conçus pour répondre aux besoins réels des entreprises, issus de nos missions de conseil.",
     logBtn: "Voir nos logiciels →",
     finDesc: "IO Software est également éditeur de logiciels métier. Découvrez nos solutions",
     related: [
@@ -72,7 +72,7 @@ const data = {
     ],
     logLabel: "Software publisher",
     logTitle: "Discover our business software",
-    logText: "IO Software is also a publisher of business software solutions. FinAnalyzer, ProcessMap, DataBridge — tools designed to meet real enterprise needs, born from our consulting missions.",
+    logText: "IO Software is also a publisher of business software solutions. FinAnalyzer, ProcessMap, WebForge — tools designed to meet real enterprise needs, born from our consulting missions.",
     logBtn: "View our software →",
     finDesc: "IO Software is also a business software publisher. Discover our solutions",
     related: [
@@ -119,7 +119,7 @@ export default async function DevLogicielPage({ params }: { params: Promise<{ la
                     <Link href={`/${lang}/${logicielsSegment(lang as Locale)}/finanalyzer`} className="text-[#1e3a5f] font-semibold hover:text-[#c9a84c] transition-colors">FinAnalyzer</Link>,{" "}
                     <Link href={`/${lang}/${logicielsSegment(lang as Locale)}/processmap`} className="text-[#1e3a5f] font-semibold hover:text-[#c9a84c] transition-colors">ProcessMap</Link>{" "}
                     {lang === "fr" ? "et" : "and"}{" "}
-                    <Link href={`/${lang}/${logicielsSegment(lang as Locale)}/databridge`} className="text-[#1e3a5f] font-semibold hover:text-[#c9a84c] transition-colors">DataBridge</Link>.
+                    <Link href={`/${lang}/${logicielsSegment(lang as Locale)}/webforge`} className="text-[#1e3a5f] font-semibold hover:text-[#c9a84c] transition-colors">WebForge</Link>.
                   </p>
                 )}
               </div>
@@ -157,7 +157,7 @@ export default async function DevLogicielPage({ params }: { params: Promise<{ la
               <Link href={`/${lang}/${logicielsSegment(lang as Locale)}`} className="inline-block bg-[#c9a84c] hover:bg-[#b8943d] text-white font-bold px-8 py-4 rounded-md transition-colors">{d.logBtn}</Link>
             </div>
             <div className="grid grid-cols-3 gap-4">
-              {["FinAnalyzer", "ProcessMap", "DataBridge"].map((name) => (
+              {["FinAnalyzer", "ProcessMap", "WebForge"].map((name) => (
                 <div key={name} className="bg-white/10 rounded-sm p-5 text-center"><p className="text-white font-semibold text-sm">{name}</p></div>
               ))}
             </div>

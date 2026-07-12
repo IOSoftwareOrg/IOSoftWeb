@@ -6,8 +6,8 @@ import { notFound } from "next/navigation";
 const BASE_URL = "https://www.io-software.fr";
 
 const meta = {
-  fr: { title: "Services", description: "Conseil en Management, Stratégie, Finance d'entreprise, Data, Process Mining, Systèmes d'information, Rédaction technique et Développement logiciel." },
-  en: { title: "Services", description: "Management Consulting, Strategy, Corporate Finance, Data, Process Mining, Information Systems, Technical Writing and Software Development." },
+  fr: { title: "Services", description: "Conseil en Management, Stratégie, Finance d'entreprise, Data, Process Mining, Systèmes d'information, Rédaction technique, Développement logiciel et Web & Agents Autonomes." },
+  en: { title: "Services", description: "Management Consulting, Strategy, Corporate Finance, Data, Process Mining, Information Systems, Technical Writing, Software Development and Web & Autonomous Agents." },
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
@@ -36,6 +36,7 @@ const t = {
       { slug: "systemes-information", title: "Systèmes d'information", desc: "Conseil en architecture SI, choix des solutions logicielles, conduite du changement et audit.", tags: ["SI", "Architecture", "Audit"] },
       { slug: "redaction-technique", title: "Rédaction technique", desc: "Production de documentations logicielles, manuels utilisateurs, spécifications fonctionnelles.", tags: ["Documentation", "Spécifications", "Manuels"] },
       { slug: "developpement-logiciel", title: "Développement logiciel", desc: "Conception et développement d'applications sur mesure, éditeur de logiciels métier.", tags: ["Développement", "Sur mesure", "Éditeur"] },
+      { slug: "web-agents-autonomes", title: "Web & Agents Autonomes", desc: "Sites web modernes couplés à des agents IA autonomes pour automatiser vos processus et votre relation client.", tags: ["Agents IA", "Web", "Automatisation"] },
     ],
   },
   en: {
@@ -52,6 +53,7 @@ const t = {
       { slug: "systemes-information", title: "Information Systems", desc: "IS architecture consulting, software selection, change management and IT audit.", tags: ["IS", "Architecture", "Audit"] },
       { slug: "redaction-technique", title: "Technical Writing", desc: "Software documentation, user manuals, functional specifications in FR/EN.", tags: ["Documentation", "Specifications", "Manuals"] },
       { slug: "developpement-logiciel", title: "Software Development", desc: "Custom application design and development, business software publisher.", tags: ["Development", "Custom", "Publisher"] },
+      { slug: "web-agents-autonomes", title: "Web & Autonomous Agents", desc: "Modern websites paired with autonomous AI agents to automate your processes and customer relationship.", tags: ["AI Agents", "Web", "Automation"] },
     ],
   },
 };
