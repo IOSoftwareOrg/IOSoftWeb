@@ -38,10 +38,10 @@ const t = {
     exploreTitle: "Tout ce qu'IO Software peut faire pour vous",
     discover: "Découvrir",
     sections: [
-      { href: "/fr/services", label: "Services", title: "8 domaines d'expertise", desc: "Stratégie, Organisation, Process, Data, IA et Développement logiciel.", color: "from-blue-600 to-blue-800" },
-      { href: "/fr/expertise", label: "Expertise", title: "30 ans d'expérience", desc: "Un partenaire de confiance pour les dirigeants. Présence France & International.", color: "from-[#1e3a5f] to-[#0f172a]" },
-      { href: "/fr/logiciels", label: "Logiciels", title: "Éditeur de logiciels", desc: "FinAnalyzer, ProcessMap, DataBridge — des solutions métier conçues pour vos besoins.", color: "from-violet-600 to-violet-900" },
-      { href: "/fr/blog", label: "Blog", title: "Ressources & Actualités", desc: "Finance, stratégie, management, lean, droit, économie et informatique.", color: "from-emerald-600 to-emerald-900" },
+      { href: "/fr/services", label: "Services", title: "8 domaines d'expertise", desc: "Stratégie, Organisation, Process, Data, IA et Développement logiciel.", color: "#1d4ed8" },
+      { href: "/fr/expertise", label: "Expertise", title: "30 ans d'expérience", desc: "Un partenaire de confiance pour les dirigeants. Présence France & International.", color: "#1e3a5f" },
+      { href: "/fr/logiciels", label: "Logiciels", title: "Éditeur de logiciels", desc: "FinAnalyzer, ProcessMap, DataBridge — des solutions métier conçues pour vos besoins.", color: "#6d28d9" },
+      { href: "/fr/blog", label: "Blog", title: "Ressources & Actualités", desc: "Finance, stratégie, management, lean, droit, économie et informatique.", color: "#047857" },
     ],
     ctaTitle: "Vous avez un projet ? Parlons-en.",
     ctaButton: "Prendre contact →",
@@ -52,10 +52,10 @@ const t = {
     exploreTitle: "Everything IO Software can do for you",
     discover: "Discover",
     sections: [
-      { href: "/en/services", label: "Services", title: "8 areas of expertise", desc: "Strategy, Organisation, Process, Data, AI and Software development.", color: "from-blue-600 to-blue-800" },
-      { href: "/en/expertise", label: "Expertise", title: "30 years of experience", desc: "A trusted partner for executives. France & International presence.", color: "from-[#1e3a5f] to-[#0f172a]" },
-      { href: "/en/software", label: "Software", title: "Software publisher", desc: "FinAnalyzer, ProcessMap, DataBridge — business solutions for your needs.", color: "from-violet-600 to-violet-900" },
-      { href: "/en/blog", label: "Blog", title: "Resources & News", desc: "Finance, strategy, management, law, economics and IT — insights from our consultants.", color: "from-emerald-600 to-emerald-900" },
+      { href: "/en/services", label: "Services", title: "8 areas of expertise", desc: "Strategy, Organisation, Process, Data, AI and Software development.", color: "#1d4ed8" },
+      { href: "/en/expertise", label: "Expertise", title: "30 years of experience", desc: "A trusted partner for executives. France & International presence.", color: "#1e3a5f" },
+      { href: "/en/software", label: "Software", title: "Software publisher", desc: "FinAnalyzer, ProcessMap, DataBridge — business solutions for your needs.", color: "#6d28d9" },
+      { href: "/en/blog", label: "Blog", title: "Resources & News", desc: "Finance, strategy, management, law, economics and IT — insights from our consultants.", color: "#047857" },
     ],
     ctaTitle: "Have a project? Let's talk.",
     ctaButton: "Get in touch →",
@@ -91,9 +91,9 @@ if (!hasLocale(lang)) notFound();
               <Link
                 key={s.href}
                 href={s.href}
-                className="group rounded-2xl overflow-hidden border border-[#e2e8f0] hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col"
+                className="group rounded-sm overflow-hidden border border-[#e2e8f0] hover:border-[#1e3a5f] transition-colors duration-300 flex flex-col"
               >
-                <div className={`bg-gradient-to-br ${s.color} p-6 text-white`}>
+                <div className="p-6 text-white" style={{ backgroundColor: s.color }}>
                   <div className="mb-3 opacity-80">{icons[i]}</div>
                   <p className="text-xs font-semibold uppercase tracking-widest text-white/60 mb-1">{s.label}</p>
                   <p className="text-lg font-bold leading-snug">{s.title}</p>

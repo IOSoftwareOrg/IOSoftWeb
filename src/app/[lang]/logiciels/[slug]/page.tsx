@@ -39,7 +39,7 @@ export default async function LogicielPage({ params }: { params: Promise<{ lang:
 
   return (
     <>
-      <section className={`bg-gradient-to-br ${logiciel.color} pt-32 pb-16`}>
+      <section className="pt-32 pb-16" style={{ backgroundColor: logiciel.accentColor }}>
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex items-center gap-2 text-white/50 text-sm mb-6">
             <Link href={`/${lang}/${logicielsSegment(lang as Locale)}`} className="text-white hover:text-white/80 transition-colors">{d.back}</Link>

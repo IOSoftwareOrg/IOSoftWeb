@@ -78,13 +78,13 @@ export default async function ServicesPage({ params }: { params: Promise<{ lang:
               <Link
                 key={service.slug}
                 href={`/${lang}/services/${service.slug}`}
-                className="group p-6 rounded-xl border border-[#e2e8f0] hover:border-[#1e3a5f] hover:shadow-lg transition-all duration-300 flex flex-col"
+                className="group p-6 rounded-sm border border-[#e2e8f0] hover:border-[#1e3a5f] transition-colors duration-300 flex flex-col"
               >
                 <h3 className="font-semibold text-[#0f172a] mb-2 group-hover:text-[#1e3a5f]">{service.title}</h3>
                 <p className="text-sm text-[#64748b] leading-relaxed mb-4">{service.desc}</p>
                 <div className="flex flex-wrap gap-1.5 mt-auto">
                   {service.tags.map((tag) => (
-                    <span key={tag} className="text-xs bg-[#f1f5f9] text-[#64748b] px-2 py-0.5 rounded-full">{tag}</span>
+                    <span key={tag} className="text-xs bg-[#f1f5f9] text-[#64748b] px-2 py-0.5 rounded-sm">{tag}</span>
                   ))}
                 </div>
               </Link>
