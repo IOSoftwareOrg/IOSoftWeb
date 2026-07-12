@@ -40,7 +40,7 @@ const t = {
     sections: [
       { href: "/fr/services", label: "Services", title: "9 domaines d'expertise", desc: "Stratégie, Organisation, Process, Data, IA et Développement logiciel.", color: "from-blue-600 to-blue-800" },
       { href: "/fr/expertise", label: "Expertise", title: "30 ans d'expérience", desc: "Un partenaire de confiance pour les dirigeants. Présence France & International.", color: "from-[#1e3a5f] to-[#0f172a]" },
-      { href: "/fr/logiciels", label: "Logiciels", title: "Éditeur de logiciels", desc: "FinAnalyzer, ProcessMap — des solutions métier conçues pour vos besoins.", color: "from-violet-600 to-violet-900" },
+      { href: "/fr/logiciels", label: "Logiciels", title: "Éditeur de logiciels", desc: "FinAnalyzer, ProcessMap, WebForge — des solutions métier conçues pour vos besoins.", color: "from-violet-600 to-violet-900" },
       { href: "/fr/blog", label: "Blog", title: "Ressources & Actualités", desc: "Finance, stratégie, management, lean, droit, économie et informatique.", color: "from-emerald-600 to-emerald-900" },
     ],
     ctaTitle: "Vous avez un projet ? Parlons-en.",
@@ -54,7 +54,7 @@ const t = {
     sections: [
       { href: "/en/services", label: "Services", title: "9 areas of expertise", desc: "Strategy, Organisation, Process, Data, AI and Software development.", color: "from-blue-600 to-blue-800" },
       { href: "/en/expertise", label: "Expertise", title: "30 years of experience", desc: "A trusted partner for executives. France & International presence.", color: "from-[#1e3a5f] to-[#0f172a]" },
-      { href: "/en/software", label: "Software", title: "Software publisher", desc: "FinAnalyzer, ProcessMap — business solutions for your needs.", color: "from-violet-600 to-violet-900" },
+      { href: "/en/software", label: "Software", title: "Software publisher", desc: "FinAnalyzer, ProcessMap, WebForge — business solutions for your needs.", color: "from-violet-600 to-violet-900" },
       { href: "/en/blog", label: "Blog", title: "Resources & News", desc: "Finance, strategy, management, law, economics and IT — insights from our consultants.", color: "from-emerald-600 to-emerald-900" },
     ],
     ctaTitle: "Have a project? Let's talk.",
