@@ -7,8 +7,8 @@ import { notFound } from "next/navigation";
 const BASE_URL = "https://www.io-software.fr";
 
 const meta = {
-  fr: { title: "Logiciels", description: "IO Software éditeur de logiciels métier : FinAnalyzer, ProcessMap, DataBridge. Solutions sur mesure pour vos besoins spécifiques." },
-  en: { title: "Software", description: "IO Software business software publisher: FinAnalyzer, ProcessMap, DataBridge. Custom solutions for your specific needs." },
+  fr: { title: "Logiciels", description: "IO Software éditeur de logiciels métier : FinAnalyzer, ProcessMap. Solutions sur mesure pour vos besoins spécifiques." },
+  en: { title: "Software", description: "IO Software business software publisher: FinAnalyzer, ProcessMap. Custom solutions for your specific needs." },
 };
 
 const hero = {

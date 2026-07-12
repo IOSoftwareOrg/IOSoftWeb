@@ -180,64 +180,6 @@ export const logiciels: Logiciel[] = [
   </defs>
 </svg>`,
   },
-  {
-    slug: "databridge",
-    name: "DataBridge",
-    category: "Data",
-    tagline: "Vos données, enfin prêtes à être exploitées",
-    description:
-      "Connecteur et transformateur de données multi-sources. Agrégation, nettoyage et mise à disposition pour vos équipes BI.",
-    color: "from-violet-500 to-violet-700",
-    accentColor: "#8b5cf6",
-    icon: "🔗",
-    probleme:
-      "Vos données sont éparpillées entre votre ERP, votre CRM, vos fichiers Excel et vos applications métiers. Chaque analyse nécessite des heures d'extraction et de réconciliation manuelle, avec des risques d'erreurs à chaque étape.",
-    solution:
-      "DataBridge connecte toutes vos sources de données, les nettoie, les transforme et les met à disposition de vos équipes dans un format exploitable. Vos analystes passent moins de temps à préparer les données et plus de temps à les analyser.",
-    fonctionnalites: [
-      {
-        titre: "Connecteurs natifs",
-        description:
-          "Connexion native avec les principaux ERP (SAP, Sage, Cegid), CRM (Salesforce, HubSpot), bases de données (MySQL, PostgreSQL, SQL Server) et fichiers plats.",
-      },
-      {
-        titre: "Pipeline de transformation",
-        description:
-          "Définissez vos règles de transformation, de normalisation et d'enrichissement des données via une interface visuelle intuitive. Sans code.",
-      },
-      {
-        titre: "Détection et correction d'anomalies",
-        description:
-          "Identification automatique des doublons, valeurs aberrantes, données manquantes et incohérences. Règles de correction configurables.",
-      },
-      {
-        titre: "Orchestration et planification",
-        description:
-          "Planifiez vos pipelines de données (temps réel, batch horaire, quotidien). Alertes en cas d'échec ou d'anomalie détectée.",
-      },
-      {
-        titre: "Data catalog intégré",
-        description:
-          "Documentez automatiquement vos sources, transformations et datasets. Vos équipes savent toujours d'où viennent les données et comment les interpréter.",
-      },
-      {
-        titre: "API et export BI",
-        description:
-          "Exposez vos données via API REST ou connectez directement Power BI, Tableau, Metabase et tout outil BI du marché.",
-      },
-    ],
-    profils: [
-      "Data analysts et Data engineers",
-      "Responsables BI et reporting",
-      "DSI souhaitant moderniser leur architecture data",
-      "Dirigeants voulant une vue consolidée de leur activité",
-    ],
-    benefices: [
-      { valeur: "-70%", label: "de temps passé à préparer les données" },
-      { valeur: "50+", label: "connecteurs sources disponibles" },
-      { valeur: "99,9%", label: "de fiabilité sur les pipelines automatisés" },
-    ],
-  },
 ];
 
 export function getLogicielBySlug(slug: string): Logiciel | undefined {
