@@ -180,6 +180,64 @@ export const logiciels: Logiciel[] = [
   </defs>
 </svg>`,
   },
+  {
+    slug: "webforge",
+    name: "WebForge",
+    category: "Web & Agents IA",
+    tagline: "Un site qui agit, pas seulement qui informe",
+    description:
+      "Plateforme de création de sites web couplés à des agents IA autonomes. Générez, déployez et supervisez des agents qui interagissent avec vos visiteurs.",
+    color: "from-indigo-500 to-indigo-700",
+    accentColor: "#6366f1",
+    icon: "🤖",
+    probleme:
+      "Votre site web informe, mais il ne fait rien d'autre. Chaque question laissée sans réponse immédiate, chaque lead mal qualifié, chaque formulaire abandonné est une opportunité perdue — et ajouter un vrai support conversationnel ou une automatisation sur mesure nécessite historiquement une équipe technique dédiée.",
+    solution:
+      "WebForge combine la création de sites modernes avec le déploiement d'agents IA autonomes directement intégrés à votre site. Vos visiteurs obtiennent des réponses immédiates, vos leads sont qualifiés automatiquement, et votre équipe garde la main grâce à une supervision complète.",
+    fonctionnalites: [
+      {
+        titre: "Génération de sites sur mesure",
+        description:
+          "Sites Next.js/React générés et personnalisés selon votre identité, optimisés SEO et performance dès la mise en ligne.",
+      },
+      {
+        titre: "Agents conversationnels intégrés",
+        description:
+          "Déployez un agent capable de répondre aux questions, qualifier les demandes et orienter vos visiteurs, directement sur votre site.",
+      },
+      {
+        titre: "Automatisation des workflows",
+        description:
+          "Formulaires, prises de rendez-vous, relances — automatisez les tâches répétitives sans développement supplémentaire.",
+      },
+      {
+        titre: "Supervision et garde-fous",
+        description:
+          "Définissez précisément ce que vos agents peuvent faire, avec des limites d'action claires et un contrôle humain à tout moment.",
+      },
+      {
+        titre: "Intégrations natives",
+        description:
+          "Connectez vos agents à votre CRM, votre messagerie et vos outils métier pour une automatisation de bout en bout.",
+      },
+      {
+        titre: "Analyse de performance",
+        description:
+          "Suivez les conversations, les conversions et les optimisations recommandées par l'IA pour améliorer continuellement votre site.",
+      },
+    ],
+    profils: [
+      "Dirigeants de PME souhaitant une présence digitale qui convertit",
+      "Responsables marketing et communication",
+      "Équipes commerciales cherchant à qualifier leurs leads automatiquement",
+      "DSI souhaitant déployer des agents IA sans développement lourd",
+    ],
+    benefices: [
+      { valeur: "24/7", label: "disponibilité de vos agents pour vos visiteurs" },
+      { valeur: "-60%", label: "de leads non qualifiés grâce à l'automatisation" },
+      { valeur: "2 sem.", label: "pour lancer un site avec son premier agent" },
+    ],
+  },
 ];
 
 export function getLogicielBySlug(slug: string): Logiciel | undefined {

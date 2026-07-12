@@ -35,7 +35,7 @@
     "sections": {
       "services": { "title": "8 areas of expertise", "desc": "Strategy, Organisation, Process, Data, AI and Software development." },
       "expertise": { "title": "30 years of experience", "desc": "A trusted partner for executives. France & International presence in demanding sectors." },
-      "software": { "title": "Software publisher", "desc": "FinAnalyzer, ProcessMap — business solutions designed for real enterprise needs." },
+      "software": { "title": "Software publisher", "desc": "FinAnalyzer, ProcessMap, WebForge — business solutions designed for real enterprise needs." },
       "blog": { "title": "Resources & News", "desc": "Finance, strategy, management, law, economics and IT — insights from our consultants for executives." }
     },
     "cta": {
