@@ -46,6 +46,8 @@ export default function JsonLd() {
           "Intelligence artificielle",
           "Systèmes d'information",
           "Développement logiciel",
+          "Agents IA autonomes",
+          "Développement web",
         ],
         sameAs: [],
       },

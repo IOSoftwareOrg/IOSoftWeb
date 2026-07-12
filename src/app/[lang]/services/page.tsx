@@ -6,8 +6,8 @@ import { notFound } from "next/navigation";
 const BASE_URL = "https://www.io-software.fr";
 
 const meta = {
-  fr: { title: "Services", description: "Conseil en Management, Stratégie, Finance d'entreprise, Data, Process Mining, Systèmes d'information, Rédaction technique et Développement logiciel." },
-  en: { title: "Services", description: "Management Consulting, Strategy, Corporate Finance, Data, Process Mining, Information Systems, Technical Writing and Software Development." },
+  fr: { title: "Services", description: "Conseil en Management, Stratégie, Finance d'entreprise, Data, Process Mining, Systèmes d'information, Rédaction technique, Développement logiciel et Web & Agents Autonomes." },
+  en: { title: "Services", description: "Management Consulting, Strategy, Corporate Finance, Data, Process Mining, Information Systems, Technical Writing, Software Development and Web & Autonomous Agents." },
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
@@ -36,6 +36,7 @@ const t = {
       { slug: "systemes-information", title: "Systèmes d'information", desc: "Conseil en architecture SI, choix des solutions logicielles, conduite du changement et audit.", tags: ["SI", "Architecture", "Audit"] },
       { slug: "redaction-technique", title: "Rédaction technique", desc: "Production de documentations logicielles, manuels utilisateurs, spécifications fonctionnelles.", tags: ["Documentation", "Spécifications", "Manuels"] },
       { slug: "developpement-logiciel", title: "Développement logiciel", desc: "Conception et développement d'applications sur mesure, éditeur de logiciels métier.", tags: ["Développement", "Sur mesure", "Éditeur"] },
+      { slug: "web-agents-autonomes", title: "Web & Agents Autonomes", desc: "Sites web modernes couplés à des agents IA autonomes pour automatiser vos processus et votre relation client.", tags: ["Agents IA", "Web", "Automatisation"] },
     ],
   },
   en: {
@@ -52,6 +53,7 @@ const t = {
       { slug: "systemes-information", title: "Information Systems", desc: "IS architecture consulting, software selection, change management and IT audit.", tags: ["IS", "Architecture", "Audit"] },
       { slug: "redaction-technique", title: "Technical Writing", desc: "Software documentation, user manuals, functional specifications in FR/EN.", tags: ["Documentation", "Specifications", "Manuals"] },
       { slug: "developpement-logiciel", title: "Software Development", desc: "Custom application design and development, business software publisher.", tags: ["Development", "Custom", "Publisher"] },
+      { slug: "web-agents-autonomes", title: "Web & Autonomous Agents", desc: "Modern websites paired with autonomous AI agents to automate your processes and customer relationship.", tags: ["AI Agents", "Web", "Automation"] },
     ],
   },
 };
@@ -78,13 +80,13 @@ export default async function ServicesPage({ params }: { params: Promise<{ lang:
               <Link
                 key={service.slug}
                 href={`/${lang}/services/${service.slug}`}
-                className="group p-6 rounded-xl border border-[#e2e8f0] hover:border-[#1e3a5f] hover:shadow-lg transition-all duration-300 flex flex-col"
+                className="group p-6 rounded-sm border border-[#e2e8f0] hover:border-[#1e3a5f] transition-colors duration-300 flex flex-col"
               >
                 <h3 className="font-semibold text-[#0f172a] mb-2 group-hover:text-[#1e3a5f]">{service.title}</h3>
                 <p className="text-sm text-[#64748b] leading-relaxed mb-4">{service.desc}</p>
                 <div className="flex flex-wrap gap-1.5 mt-auto">
                   {service.tags.map((tag) => (
-                    <span key={tag} className="text-xs bg-[#f1f5f9] text-[#64748b] px-2 py-0.5 rounded-full">{tag}</span>
+                    <span key={tag} className="text-xs bg-[#f1f5f9] text-[#64748b] px-2 py-0.5 rounded-sm">{tag}</span>
                   ))}
                 </div>
               </Link>

@@ -9,7 +9,7 @@ const BASE_URL = "https://www.io-software.fr";
 const serviceSlugsList = [
   "conseil-en-management", "strategie-developpement", "finance-entreprise",
   "data-consulting", "process-mining", "systemes-information",
-  "redaction-technique", "developpement-logiciel",
+  "redaction-technique", "developpement-logiciel", "web-agents-autonomes",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

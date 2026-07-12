@@ -40,9 +40,9 @@ export default function Logiciels({ hideHeader, lang = "fr" }: { hideHeader?: bo
           {logiciels.map((logiciel) => (
             <div
               key={logiciel.slug}
-              className="group rounded-2xl overflow-hidden border border-[#e2e8f0] hover:shadow-xl transition-shadow duration-300"
+              className="group rounded-sm overflow-hidden border border-[#e2e8f0] hover:border-[#1e3a5f] transition-colors duration-300"
             >
-              <div className={`bg-gradient-to-br ${logiciel.color} p-8 flex items-end`}>
+              <div className="p-8 flex items-end" style={{ backgroundColor: logiciel.accentColor }}>
                 <div>
                   <span className="text-xs font-semibold text-white/70 uppercase tracking-widest">{logiciel.category}</span>
                   <h3 className="text-2xl font-bold text-white mt-1">{logiciel.name}</h3>

@@ -119,7 +119,7 @@ export default async function RedactionPage({ params }: { params: Promise<{ lang
               <p className="text-[#475569] leading-relaxed mb-4">{d.interlocP1}</p>
               <p className="text-[#475569] leading-relaxed">{d.interlocP2}</p>
             </div>
-            <div className="bg-[#1e3a5f] rounded-2xl p-8 text-white">
+            <div className="bg-[#1e3a5f] rounded-sm p-8 text-white">
               <p className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest mb-6">{d.secteursLabel}</p>
               <ul className="space-y-3">
                 {d.secteurs.map((s) => <li key={s} className="flex items-center gap-3">{checkIconSm}<span className="text-white/80 text-sm">{s}</span></li>)}
@@ -138,7 +138,7 @@ export default async function RedactionPage({ params }: { params: Promise<{ lang
             </div>
             <div className="md:col-span-2 grid sm:grid-cols-2 gap-6">
               {d.langs.map((l) => (
-                <div key={l.lang} className="bg-white rounded-2xl p-6 border border-[#e2e8f0]">
+                <div key={l.lang} className="bg-white rounded-sm p-6 border border-[#e2e8f0]">
                   <p className="text-3xl mb-3">{l.flag}</p>
                   <h3 className="font-bold text-[#0f172a] mb-2">{l.lang}</h3>
                   <p className="text-sm text-[#475569] leading-relaxed">{l.desc}</p>
@@ -157,7 +157,7 @@ export default async function RedactionPage({ params }: { params: Promise<{ lang
               <p className="text-[#475569] leading-relaxed mb-4">{d.norméeP1}</p>
               <p className="text-[#475569] leading-relaxed">{d.norméeP2}</p>
             </div>
-            <div className="bg-[#f8fafc] rounded-2xl p-8 border border-[#e2e8f0]">
+            <div className="bg-[#f8fafc] rounded-sm p-8 border border-[#e2e8f0]">
               <p className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest mb-6">{d.normesLabel}</p>
               <div className="flex flex-wrap gap-3">
                 {normes.map((n) => <span key={n} className="bg-[#1e3a5f] text-white text-sm font-semibold px-4 py-2 rounded-lg">{n}</span>)}
@@ -173,7 +173,7 @@ export default async function RedactionPage({ params }: { params: Promise<{ lang
           <p className="text-[#475569] leading-relaxed max-w-3xl mb-8">{d.qualText}</p>
           <div className="grid sm:grid-cols-2 gap-6">
             {d.docs.map((t) => (
-              <div key={t.title} className="bg-white rounded-2xl p-6 border border-[#e2e8f0] flex items-start gap-4">
+              <div key={t.title} className="bg-white rounded-sm p-6 border border-[#e2e8f0] flex items-start gap-4">
                 <div className="w-8 h-8 bg-[#1e3a5f] rounded-lg flex items-center justify-center shrink-0 mt-0.5">{docIcon}</div>
                 <div><h3 className="font-bold text-[#0f172a] mb-1">{t.title}</h3><p className="text-sm text-[#475569] leading-relaxed">{t.desc}</p></div>
               </div>

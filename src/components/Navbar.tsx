@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import type { Locale } from "@/lib/i18n";
 import { logicielsSegment, switchLocalePath } from "@/lib/routes";
+import Search from "@/components/Search";
 
 const t = {
   fr: {
@@ -28,7 +29,6 @@ const t = {
 export default function Navbar({ lang }: { lang: Locale }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
   const labels = t[lang];
@@ -36,16 +36,12 @@ export default function Navbar({ lang }: { lang: Locale }) {
   const isHome = pathname === `/${lang}` || pathname === `/${lang}/`;
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
-  const dark = mounted && isHome && !scrolled;
+  const dark = isHome && !scrolled;
 
   const navLinks = [
     { label: labels.services, href: `/${lang}/services` },
@@ -79,73 +75,77 @@ export default function Navbar({ lang }: { lang: Locale }) {
           </span>
         </Link>
 
-        {/* Desktop */}
-        <ul className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-[#c9a84c] ${
-                  pathname === link.href
-                    ? "text-[#c9a84c]"
-                    : dark
-                    ? "text-white"
-                    : "text-[#0f172a]"
+        <div className="flex items-center gap-4 md:gap-8">
+          <Search lang={lang} dark={dark} />
+
+          {/* Desktop */}
+          <ul className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className={`text-sm font-medium transition-colors hover:text-[#c9a84c] ${
+                    pathname === link.href
+                      ? "text-[#c9a84c]"
+                      : dark
+                      ? "text-white"
+                      : "text-[#0f172a]"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+            {/* Language switcher */}
+            <li>
+              <button
+                onClick={switchLang}
+                className={`text-sm font-semibold border rounded-md px-3 py-1.5 transition-colors ${
+                  dark
+                    ? "border-white/30 text-white hover:border-white"
+                    : "border-[#1e3a5f]/30 text-[#1e3a5f] hover:border-[#1e3a5f]"
                 }`}
+                aria-label={lang === "fr" ? "Switch to English" : "Passer en français"}
               >
-                {link.label}
+                {lang === "fr" ? "EN" : "FR"}
+              </button>
+            </li>
+            <li>
+              <Link
+                href={`/${lang}/contact`}
+                className="text-sm font-semibold bg-[#c9a84c] text-white px-4 py-2 rounded-md hover:bg-[#b8943d] transition-colors"
+              >
+                {labels.cta}
               </Link>
             </li>
-          ))}
-          {/* Language switcher */}
-          <li>
+          </ul>
+
+          {/* Mobile toggle */}
+          <div className="md:hidden flex items-center gap-3">
             <button
               onClick={switchLang}
-              className={`text-sm font-semibold border rounded-md px-3 py-1.5 transition-colors ${
+              className={`text-sm font-semibold border rounded-md px-2 py-1 transition-colors ${
                 dark
-                  ? "border-white/30 text-white hover:border-white"
-                  : "border-[#1e3a5f]/30 text-[#1e3a5f] hover:border-[#1e3a5f]"
+                  ? "border-white/30 text-white"
+                  : "border-[#1e3a5f]/30 text-[#1e3a5f]"
               }`}
-              aria-label={lang === "fr" ? "Switch to English" : "Passer en français"}
             >
               {lang === "fr" ? "EN" : "FR"}
             </button>
-          </li>
-          <li>
-            <Link
-              href={`/${lang}/contact`}
-              className="text-sm font-semibold bg-[#c9a84c] text-white px-4 py-2 rounded-md hover:bg-[#b8943d] transition-colors"
+            <button
+              className={`transition-colors ${dark ? "text-white" : "text-[#1e3a5f]"}`}
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Menu"
             >
-              {labels.cta}
-            </Link>
-          </li>
-        </ul>
-
-        {/* Mobile toggle */}
-        <div className="md:hidden flex items-center gap-3">
-          <button
-            onClick={switchLang}
-            className={`text-sm font-semibold border rounded-md px-2 py-1 transition-colors ${
-              dark
-                ? "border-white/30 text-white"
-                : "border-[#1e3a5f]/30 text-[#1e3a5f]"
-            }`}
-          >
-            {lang === "fr" ? "EN" : "FR"}
-          </button>
-          <button
-            className={`transition-colors ${dark ? "text-white" : "text-[#1e3a5f]"}`}
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Menu"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {menuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {menuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
       </nav>
 

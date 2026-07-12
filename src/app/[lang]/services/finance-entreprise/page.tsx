@@ -102,7 +102,7 @@ export default async function FinancePage({ params }: { params: Promise<{ lang: 
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-8">
             {d.pillars.map((item) => (
-              <div key={item.title} className="text-center p-8 bg-[#f8fafc] rounded-2xl border border-[#e2e8f0]">
+              <div key={item.title} className="text-center p-8 bg-[#f8fafc] rounded-sm border border-[#e2e8f0]">
                 <h3 className="text-xl font-bold text-[#1e3a5f] mb-3">{item.title}</h3>
                 <p className="text-sm text-[#475569] leading-relaxed">{item.desc}</p>
               </div>
@@ -116,7 +116,7 @@ export default async function FinancePage({ params }: { params: Promise<{ lang: 
           <h2 className="text-2xl font-bold text-[#0f172a] mb-8">{d.methodTitle}</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {d.etapes.map((e) => (
-              <div key={e.num} className="bg-white rounded-2xl p-6 border border-[#e2e8f0]">
+              <div key={e.num} className="bg-white rounded-sm p-6 border border-[#e2e8f0]">
                 <p className="text-3xl font-bold text-[#c9a84c] mb-3">{e.num}</p>
                 <h3 className="font-bold text-[#0f172a] mb-2">{e.title}</h3>
                 <p className="text-sm text-[#475569] leading-relaxed">{e.desc}</p>
@@ -138,7 +138,7 @@ export default async function FinancePage({ params }: { params: Promise<{ lang: 
                 ))}
               </ul>
             </div>
-            <div className="bg-[#1e3a5f] rounded-2xl p-8 text-white">
+            <div className="bg-[#1e3a5f] rounded-sm p-8 text-white">
               <p className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest mb-6">{d.youGetLabel}</p>
               <ul className="space-y-5">
                 {d.youGet.map((item) => (
