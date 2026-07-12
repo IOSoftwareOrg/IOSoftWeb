@@ -122,7 +122,7 @@ export default async function DataConsultingPage({ params }: { params: Promise<{
           <h2 className="text-2xl font-bold text-[#0f172a] mb-8">{d.domainesTitle}</h2>
           <div className="grid sm:grid-cols-2 gap-6">
             {d.domaines.map((s) => (
-              <div key={s.title} className="bg-[#f8fafc] rounded-2xl p-8 border border-[#e2e8f0]">
+              <div key={s.title} className="bg-[#f8fafc] rounded-sm p-8 border border-[#e2e8f0]">
                 <h3 className="font-bold text-[#0f172a] mb-3">{s.title}</h3>
                 <p className="text-sm text-[#475569] leading-relaxed">{s.desc}</p>
               </div>
@@ -150,7 +150,7 @@ export default async function DataConsultingPage({ params }: { params: Promise<{
           <h2 className="text-2xl font-bold text-[#0f172a] mb-8">{d.casTitle}</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {d.cas.map((c) => (
-              <div key={c.num} className="bg-[#1e3a5f] rounded-2xl p-8 text-white">
+              <div key={c.num} className="bg-[#1e3a5f] rounded-sm p-8 text-white">
                 <p className="text-4xl font-bold text-[#c9a84c] mb-1">{c.num}</p>
                 <p className="text-sm font-semibold text-white/60 uppercase tracking-widest mb-4">{c.label}</p>
                 <p className="text-sm text-white/70 leading-relaxed">{c.desc}</p>
@@ -165,7 +165,7 @@ export default async function DataConsultingPage({ params }: { params: Promise<{
           <h2 className="text-2xl font-bold text-[#0f172a] mb-8">{d.etapesTitle}</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {d.etapes.map((e) => (
-              <div key={e.num} className="bg-white rounded-2xl p-6 border border-[#e2e8f0]">
+              <div key={e.num} className="bg-white rounded-sm p-6 border border-[#e2e8f0]">
                 <p className="text-3xl font-bold text-[#c9a84c] mb-3">{e.num}</p>
                 <h3 className="font-bold text-[#0f172a] mb-2">{e.title}</h3>
                 <p className="text-sm text-[#475569] leading-relaxed">{e.desc}</p>
