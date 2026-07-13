@@ -1,6 +1,7 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
+import { sendGAEvent } from "@next/third-parties/google";
 import { sendContactForm, type ContactState } from "@/app/actions/contact";
 import type { Locale } from "@/lib/i18n";
 
@@ -55,6 +56,12 @@ const t = {
 export default function Contact({ hideHeader, lang = "fr" }: { hideHeader?: boolean; lang?: Locale } = {}) {
   const [state, action, pending] = useActionState(sendContactForm, INITIAL);
   const d = t[lang];
+
+  useEffect(() => {
+    if (state.success) {
+      sendGAEvent("event", "generate_lead");
+    }
+  }, [state.success]);
   const inputClass = "w-full border border-[#e2e8f0] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/30 focus:border-[#1e3a5f]";
 
   return (
