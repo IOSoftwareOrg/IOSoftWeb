@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState, useEffect, useRef, useState } from "react";
-import { sendGAEvent } from "@next/third-parties/google";
+import { sendGTMEvent } from "@next/third-parties/google";
 import { sendContactForm, type ContactState } from "@/app/actions/contact";
 import type { Locale } from "@/lib/i18n";
 
@@ -66,7 +66,7 @@ export default function Contact({ hideHeader, lang = "fr" }: { hideHeader?: bool
 
   useEffect(() => {
     if (state.success) {
-      sendGAEvent("event", "generate_lead");
+      sendGTMEvent({ event: "generate_lead" });
     }
   }, [state.success]);
 
