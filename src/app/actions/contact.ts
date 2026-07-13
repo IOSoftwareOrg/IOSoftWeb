@@ -24,48 +24,71 @@ function isRateLimited(ip: string): boolean {
 const subjectsFr = ["Conseil en Management", "Conseil en Stratégie", "Finance d'entreprise", "Data Consulting", "Process Mining", "Systèmes d'information", "Développement logiciel", "Autre"] as const;
 const subjectsEn = ["Management Consulting", "Strategy & Development", "Corporate Finance", "Data Consulting", "Process Mining", "Information Systems", "Software Development", "Other"] as const;
 
+// Clés de message génériques, traduites au moment de construire fieldErrors (voir validationMessages)
 const schema = z.object({
   genre: z.enum(["Madame", "Monsieur", "Autre", "Ms", "Mr", "Other", ""]).optional(),
-  firstname: z.string().min(1, "First name required").max(100),
-  name: z.string().min(1, "Last name required").max(100),
-  email: z.string().email("Invalid email"),
+  firstname: z.string().min(1, "firstname_required").max(100),
+  name: z.string().min(1, "lastname_required").max(100),
+  email: z.string().email("invalid_email"),
   phoneCode: z.string().max(10).optional(),
   phone: z.string().max(20).optional(),
   company: z.string().max(200).optional(),
-  subject: z.enum([...subjectsFr, ...subjectsEn] as [string, ...string[]], { message: "Invalid subject" }),
-  message: z.string().min(10, "Message too short").max(5000),
+  subject: z.enum([...subjectsFr, ...subjectsEn] as [string, ...string[]], { message: "invalid_subject" }),
+  message: z.string().min(10, "message_too_short").max(5000),
   lang: z.enum(["fr", "en"]).optional(),
   // honeypot — doit rester vide
-  _hp: z.string().max(0, "Bot detected"),
+  _hp: z.string().max(0, "bot_detected"),
 });
+
+const validationMessages = {
+  fr: {
+    firstname_required: "Prénom requis",
+    lastname_required: "Nom requis",
+    invalid_email: "Email invalide",
+    invalid_subject: "Sujet invalide",
+    message_too_short: "Message trop court (10 caractères minimum)",
+  },
+  en: {
+    firstname_required: "First name required",
+    lastname_required: "Last name required",
+    invalid_email: "Invalid email",
+    invalid_subject: "Invalid subject",
+    message_too_short: "Message too short (minimum 10 characters)",
+  },
+} satisfies Record<"fr" | "en", Record<string, string>>;
 
 export type ContactState = {
   success?: boolean;
   error?: string;
   fieldErrors?: Partial<Record<keyof z.infer<typeof schema>, string>>;
+  values?: Record<string, string>;
 };
 
 export async function sendContactForm(
   _prev: ContactState,
   formData: FormData
 ): Promise<ContactState> {
+  const raw = Object.fromEntries(formData.entries()) as Record<string, string>;
+  const { _hp: _ignored, ...values } = raw;
+  const uiLang = raw.lang === "en" ? "en" : "fr";
+
   const headersList = await headers();
   const ip = headersList.get("x-forwarded-for")?.split(",")[0].trim();
   if (ip && isRateLimited(ip)) {
-    return { error: "Trop de tentatives. Veuillez patienter quelques minutes." };
+    return { error: "Trop de tentatives. Veuillez patienter quelques minutes.", values };
   }
 
-  const raw = Object.fromEntries(formData.entries());
   const parsed = schema.safeParse(raw);
 
   if (!parsed.success) {
     const fieldErrors: ContactState["fieldErrors"] = {};
     for (const issue of parsed.error.issues) {
       const key = issue.path[0] as keyof z.infer<typeof schema>;
-      if (key === "_hp") return { error: "Erreur inattendue." }; // bot silencieux
-      fieldErrors[key] = issue.message;
+      if (key === "_hp") return { error: "Erreur inattendue.", values }; // bot silencieux
+      const messageKey = issue.message as keyof (typeof validationMessages)["fr"];
+      fieldErrors[key] = validationMessages[uiLang][messageKey] ?? issue.message;
     }
-    return { fieldErrors };
+    return { fieldErrors, values };
   }
 
   const { genre, firstname, name, email, phoneCode, phone, company, subject, message, lang } =
@@ -77,7 +100,7 @@ export async function sendContactForm(
 
   if (!apiKey || !toEmail) {
     console.error("Brevo env vars missing");
-    return { error: "Service temporairement indisponible." };
+    return { error: "Service temporairement indisponible.", values };
   }
 
   const client = new BrevoClient({ apiKey, environment: BrevoEnvironment.Default });
@@ -144,6 +167,6 @@ export async function sendContactForm(
     return { success: true };
   } catch (err) {
     console.error("Brevo send error:", err);
-    return { error: "Erreur lors de l'envoi. Veuillez réessayer." };
+    return { error: "Erreur lors de l'envoi. Veuillez réessayer.", values };
   }
 }
