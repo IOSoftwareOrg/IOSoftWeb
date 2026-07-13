@@ -66,7 +66,7 @@ export default async function LangLayout({
       <Navbar lang={lang as Locale} />
       <main className="flex-1">{children}</main>
       <Footer lang={lang as Locale} />
-      <GoogleTagManager gtmId="GTM-N6QD7X" />
+      <GoogleTagManager gtmId="GTM-5CMBC632" />
     </>
   );
 }
