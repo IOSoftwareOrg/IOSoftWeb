@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
-import { GoogleTagManager } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { hasLocale, locales, type Locale } from "@/lib/i18n";
 import { notFound } from "next/navigation";
 
@@ -67,6 +67,8 @@ export default async function LangLayout({
       <main className="flex-1">{children}</main>
       <Footer lang={lang as Locale} />
       <GoogleTagManager gtmId="GTM-N6QD7X" />
+      {/* Tag GA4 direct temporaire — valide le flux de test G-RZTB4221BS independamment de GTM, a retirer une fois la config GTM confirmee */}
+      <GoogleAnalytics gaId="G-RZTB4221BS" />
     </>
   );
 }
