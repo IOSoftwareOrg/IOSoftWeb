@@ -169,6 +169,47 @@ function escapeHtml(value: string): string {
   return value.replace(/</g, "&lt;");
 }
 
+// Détection de langue déterministe (heuristique sur mots-outils) : demander au modèle de
+// "suivre la langue du visiteur" via une simple instruction dans le prompt système ne suffit
+// pas de façon fiable (le prompt lui-même est écrit en français, ce qui biaise souvent la
+// réponse) — on détecte donc la langue du dernier message et on l'impose explicitement.
+const FR_STOPWORDS = new Set([
+  "je", "tu", "il", "elle", "nous", "vous", "ils", "elles", "le", "la", "les", "un", "une", "des",
+  "et", "est", "sont", "avec", "pour", "dans", "sur", "votre", "notre", "vos", "nos", "bonjour",
+  "merci", "société", "aimerions", "voudrions", "avez", "avons", "êtes", "sommes", "pouvez",
+  "pourriez", "besoin", "entreprise", "svp", "plaît", "nouveau", "nouvelle", "avoir", "faire",
+  "que", "qui", "de", "du", "au", "aux", "ce", "cette", "ces", "mon", "ma", "mes",
+]);
+const EN_STOPWORDS = new Set([
+  "i", "you", "he", "she", "we", "they", "the", "a", "an", "and", "is", "are", "with", "for",
+  "in", "on", "your", "our", "hello", "hi", "thanks", "thank", "company", "would", "like",
+  "need", "business", "please", "could", "can", "help", "new", "have", "has", "to", "of",
+  "this", "that", "these", "want", "want", "my",
+]);
+
+function detectMessageLanguage(text: string): Locale | null {
+  const words = text
+    .toLowerCase()
+    .replace(/[^\p{L}\s']/gu, " ")
+    .split(/\s+/)
+    .filter(Boolean);
+  let frScore = 0;
+  let enScore = 0;
+  for (const word of words) {
+    if (FR_STOPWORDS.has(word)) frScore++;
+    if (EN_STOPWORDS.has(word)) enScore++;
+  }
+  if (frScore === 0 && enScore === 0) return null;
+  if (frScore === enScore) return null;
+  return frScore > enScore ? "fr" : "en";
+}
+
+function languageDirective(detected: Locale): string {
+  return detected === "en"
+    ? "Directive: the visitor's latest message is in English — reply in English, no matter what language the rest of this prompt is written in."
+    : "Consigne : le dernier message du visiteur est en français — réponds en français, quelle que soit la langue du reste de ce prompt.";
+}
+
 // Garde-fou anti-doublon : au cas où le client renverrait qualified:false par erreur
 // (bug, plusieurs onglets, rejoue de requête), on évite de renvoyer plusieurs emails
 // Brevo pour le même email en peu de temps.
@@ -267,9 +308,13 @@ export async function POST(request: Request) {
   const { lang, qualified: alreadyQualified } = parsed.data;
   const history = parsed.data.messages.slice(-20);
 
+  const lastUserMessage = [...history].reverse().find((m) => m.role === "user");
+  const detectedLang = lastUserMessage ? detectMessageLanguage(lastUserMessage.content) : null;
+
   const conversation: GroqMessage[] = [
     { role: "system", content: buildSystemPrompt(lang) },
     ...history.map((m) => ({ role: m.role, content: m.content }) as GroqMessage),
+    ...(detectedLang ? [{ role: "system" as const, content: languageDirective(detectedLang) }] : []),
   ];
 
   const askForContactFallback =
@@ -323,10 +368,11 @@ export async function POST(request: Request) {
       );
     }
 
+    const closingLang = detectedLang ?? lang;
     const closingInstruction =
-      lang === "en"
-        ? "The lead has just been registered successfully. Write a short, warm, personalized closing message for the visitor now, in the same language they've been using in this conversation — do not repeat any previous message verbatim."
-        : "Le lead vient d'être enregistré avec succès. Rédige maintenant un court message de clôture chaleureux et personnalisé pour le visiteur, dans la même langue que celle utilisée par le visiteur dans cette conversation — ne recopie aucun message précédent mot pour mot.";
+      closingLang === "en"
+        ? "The lead has just been registered successfully. Write a short, warm, personalized closing message for the visitor now, in English — do not repeat any previous message verbatim."
+        : "Le lead vient d'être enregistré avec succès. Rédige maintenant un court message de clôture chaleureux et personnalisé pour le visiteur, en français — ne recopie aucun message précédent mot pour mot.";
 
     const followUp: GroqMessage[] = [
       ...conversation,
@@ -341,7 +387,7 @@ export async function POST(request: Request) {
     return NextResponse.json({
       reply:
         closingText ??
-        (lang === "en"
+        (closingLang === "en"
           ? "Thank you, your request has been forwarded to our team — a consultant will contact you shortly."
           : "Merci, votre demande a été transmise à notre équipe — un consultant va vous recontacter rapidement."),
       qualified: true,
