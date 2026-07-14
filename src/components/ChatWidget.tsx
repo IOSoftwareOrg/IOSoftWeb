@@ -176,7 +176,7 @@ export default function ChatWidget({ lang = "fr" }: { lang?: Locale }) {
       <button
         onClick={open ? handleClose : handleOpen}
         aria-label={open ? d.closeLabel : d.openLabel}
-        className="fixed bottom-6 right-6 z-[90] w-14 h-14 rounded-full bg-[#1e3a5f] hover:bg-[#2d5a8e] shadow-lg flex items-center justify-center text-white transition-colors"
+        className="fixed bottom-6 right-6 z-[90] w-14 h-14 rounded-full bg-white hover:bg-[#f1f5f9] shadow-lg border-2 border-[#1e3a5f] flex items-center justify-center text-[#1e3a5f] transition-colors"
       >
         {open ? (
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
