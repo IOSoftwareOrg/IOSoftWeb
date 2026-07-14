@@ -85,9 +85,10 @@ ${serviceList}
 Your goals, in order:
 1. Understand the visitor's need in a few exchanges: what problem they're facing, which of the services above is relevant.
 2. Once the need is clear, collect their name and email (company and phone are welcome but optional) so a consultant can follow up.
-3. As soon as you have name, email, and a summary of the need, call the submit_qualified_lead tool. Call it only once, only when you actually have this information — never invent data.
+3. As soon as you have name, email, and a summary of the need, call the submit_qualified_lead tool. Call it only once, only when you actually have this information.
 
 Strict rules:
+- NEVER invent or guess a name or email. Only call submit_qualified_lead if the visitor themselves typed their name and email out in the conversation — copy them exactly as given. If you don't have them yet, simply keep asking.
 - Never give a price quote, a delivery deadline, or any contractual commitment. If asked, say a consultant will discuss this directly with them.
 - Stay strictly within the scope of IO Software's services listed above. Politely redirect if asked about anything else.
 - Always be transparent that you are an AI assistant, not a human.
@@ -103,9 +104,10 @@ ${serviceList}
 Tes objectifs, dans l'ordre :
 1. Comprendre en quelques échanges le besoin du visiteur : quel problème il rencontre, quel service ci-dessus est pertinent.
 2. Une fois le besoin clair, récupérer son nom et son email (société et téléphone bienvenus mais facultatifs) pour qu'un consultant puisse le recontacter.
-3. Dès que tu as le nom, l'email et un résumé du besoin, appelle l'outil submit_qualified_lead. Ne l'appelle qu'une seule fois, seulement quand tu disposes réellement de ces informations — n'invente jamais de données.
+3. Dès que tu as le nom, l'email et un résumé du besoin, appelle l'outil submit_qualified_lead. Ne l'appelle qu'une seule fois, seulement quand tu disposes réellement de ces informations.
 
 Règles strictes :
+- N'invente et ne devine JAMAIS un nom ou un email. N'appelle submit_qualified_lead que si le visiteur a lui-même écrit son nom et son email en toutes lettres dans la conversation — recopie-les exactement tels qu'il les a donnés. Si tu ne les as pas encore, continue simplement à les demander.
 - Ne jamais donner de devis, de délai, ou d'engagement contractuel. Si on te le demande, dis qu'un consultant en discutera directement avec le visiteur.
 - Rester strictement dans le périmètre des services IO Software listés ci-dessus. Rediriger poliment si on te pose une autre question.
 - Toujours être transparent sur le fait que tu es un assistant IA, pas un humain.
@@ -124,7 +126,7 @@ type GroqMessage = {
   tool_call_id?: string;
 };
 
-async function callGroq(messages: GroqMessage[], apiKey: string, withTools: boolean) {
+async function callGroq(messages: GroqMessage[], apiKey: string, toolChoice: "auto" | "none") {
   const res = await fetch(GROQ_API_URL, {
     method: "POST",
     headers: {
@@ -134,7 +136,8 @@ async function callGroq(messages: GroqMessage[], apiKey: string, withTools: bool
     body: JSON.stringify({
       model: MODEL,
       messages,
-      ...(withTools ? { tools: [submitLeadTool], tool_choice: "auto" } : {}),
+      tools: [submitLeadTool],
+      tool_choice: toolChoice,
       temperature: 0.4,
     }),
   });
@@ -149,6 +152,15 @@ async function callGroq(messages: GroqMessage[], apiKey: string, withTools: bool
 
 function escapeHtml(value: string): string {
   return value.replace(/</g, "&lt;");
+}
+
+// Garde-fou anti-hallucination : un modèle peut inventer un email plausible pour satisfaire
+// un paramètre requis du tool call. On n'accepte le lead que si cet email a été tapé mot pour
+// mot par le visiteur lui-même dans la conversation.
+function conversationHasEmail(history: { role: string; content: string }[], email: string): boolean {
+  const needle = email.trim().toLowerCase();
+  if (!needle) return false;
+  return history.some((m) => m.role === "user" && m.content.toLowerCase().includes(needle));
 }
 
 async function notifyLead(
@@ -230,8 +242,13 @@ export async function POST(request: Request) {
     ...history.map((m) => ({ role: m.role, content: m.content }) as GroqMessage),
   ];
 
+  const askForContactFallback =
+    lang === "en"
+      ? "Could you confirm your name and email address so I can pass your request on to a consultant?"
+      : "Pouvez-vous me confirmer votre nom et votre adresse email pour que je transmette votre demande à un consultant ?";
+
   try {
-    const first = await callGroq(conversation, apiKey, true);
+    const first = await callGroq(conversation, apiKey, "auto");
     const firstMessage = first.choices?.[0]?.message;
     const toolCall = firstMessage?.tool_calls?.find(
       (tc: { function: { name: string } }) => tc.function.name === "submit_qualified_lead"
@@ -250,8 +267,9 @@ export async function POST(request: Request) {
       leadArgs = null;
     }
 
-    if (!leadArgs) {
-      return NextResponse.json({ reply: firstMessage?.content ?? "", qualified: false });
+    if (!leadArgs || !conversationHasEmail(history, leadArgs.email)) {
+      console.warn("Chat: tool call écarté (email absent de la conversation) —", toolCall.function.arguments);
+      return NextResponse.json({ reply: firstMessage?.content || askForContactFallback, qualified: false });
     }
 
     await notifyLead(
@@ -260,13 +278,19 @@ export async function POST(request: Request) {
       lang
     );
 
+    const closingInstruction =
+      lang === "en"
+        ? "The lead has just been registered successfully. Write a short, warm, personalized closing message for the visitor now, in English — do not repeat any previous message verbatim."
+        : "Le lead vient d'être enregistré avec succès. Rédige maintenant un court message de clôture chaleureux et personnalisé pour le visiteur, en français — ne recopie aucun message précédent mot pour mot.";
+
     const followUp: GroqMessage[] = [
       ...conversation,
       { role: "assistant", content: firstMessage.content ?? null, tool_calls: firstMessage.tool_calls },
-      { role: "tool", tool_call_id: toolCall.id, content: "Lead enregistré avec succès. Un consultant va recontacter le visiteur." },
+      { role: "tool", tool_call_id: toolCall.id, content: JSON.stringify({ status: "registered" }) },
+      { role: "system", content: closingInstruction },
     ];
 
-    const second = await callGroq(followUp, apiKey, false);
+    const second = await callGroq(followUp, apiKey, "none");
     const closingText = second.choices?.[0]?.message?.content;
 
     return NextResponse.json({
