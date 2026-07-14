@@ -44,10 +44,17 @@ export default function ChatWidget({ lang = "fr" }: { lang?: Locale }) {
   const [pending, setPending] = useState(false);
   const qualifiedRef = useRef(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
   }, [messages, pending]);
+
+  useEffect(() => {
+    if (open && !pending) {
+      inputRef.current?.focus();
+    }
+  }, [open, pending]);
 
   function handleOpen() {
     setOpen(true);
@@ -140,6 +147,7 @@ export default function ChatWidget({ lang = "fr" }: { lang?: Locale }) {
           <form onSubmit={handleSubmit} className="border-t border-[#e2e8f0] p-3 shrink-0">
             <div className="flex gap-2">
               <input
+                ref={inputRef}
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
