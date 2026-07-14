@@ -13,7 +13,7 @@ const t = {
     subtitle: "Assistant IA",
     openLabel: "Ouvrir le chat",
     closeLabel: "Fermer le chat",
-    greeting: "Bonjour 👋 Dites-moi ce dont vous avez besoin, je vous oriente vers le bon interlocuteur chez IO Software.",
+    greeting: "Bonjour, dites-moi ce dont vous avez besoin, je vous oriente vers le bon interlocuteur chez IO Software.",
     placeholder: "Écrivez votre message…",
     send: "Envoyer",
     gdprPrefix: "En discutant ici, vos échanges peuvent être transmis à IO Software pour traiter votre demande. ",
@@ -26,7 +26,7 @@ const t = {
     subtitle: "AI Assistant",
     openLabel: "Open chat",
     closeLabel: "Close chat",
-    greeting: "Hello 👋 Tell me what you need, and I'll point you to the right person at IO Software.",
+    greeting: "Hello, tell me what you need, and I'll point you to the right person at IO Software.",
     placeholder: "Type your message…",
     send: "Send",
     gdprPrefix: "By chatting here, your messages may be shared with IO Software to process your request. ",
@@ -176,7 +176,7 @@ export default function ChatWidget({ lang = "fr" }: { lang?: Locale }) {
       <button
         onClick={open ? handleClose : handleOpen}
         aria-label={open ? d.closeLabel : d.openLabel}
-        className="fixed bottom-6 right-6 z-[90] w-14 h-14 rounded-full bg-[#1e3a5f] hover:bg-[#2d5a8e] shadow-lg flex items-center justify-center text-white transition-colors"
+        className="fixed bottom-6 right-6 z-[90] w-14 h-14 rounded-full bg-white hover:bg-[#f1f5f9] shadow-lg border-2 border-[#1e3a5f] flex items-center justify-center text-[#1e3a5f] transition-colors"
       >
         {open ? (
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
