@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import ChatWidget from "@/components/ChatWidget";
+import { GoogleTagManager } from "@next/third-parties/google";
 import { hasLocale, locales, type Locale } from "@/lib/i18n";
 import { notFound } from "next/navigation";
 
@@ -66,7 +67,8 @@ export default async function LangLayout({
       <Navbar lang={lang as Locale} />
       <main className="flex-1">{children}</main>
       <Footer lang={lang as Locale} />
-      <GoogleAnalytics gaId="G-42XYCYT1HZ" />
+      <ChatWidget lang={lang as Locale} />
+      <GoogleTagManager gtmId="GTM-5CMBC632" />
     </>
   );
 }
