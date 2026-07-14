@@ -76,7 +76,7 @@ export default function ChatWidget({ lang = "fr" }: { lang?: Locale }) {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: nextMessages, lang }),
+        body: JSON.stringify({ messages: nextMessages, lang, qualified: qualifiedRef.current }),
       });
 
       if (!res.ok) {

@@ -31,6 +31,9 @@ const messageSchema = z.object({
 const bodySchema = z.object({
   messages: z.array(messageSchema).min(1).max(40),
   lang: z.enum(["fr", "en"]).default("fr"),
+  // true une fois qu'une réponse précédente a renvoyé qualified:true — empêche de rappeler
+  // l'outil de qualification (et donc de renvoyer un email Brevo) à chaque tour suivant.
+  qualified: z.boolean().optional().default(false),
 });
 
 const leadArgsSchema = z.object({
@@ -154,6 +157,21 @@ function escapeHtml(value: string): string {
   return value.replace(/</g, "&lt;");
 }
 
+// Garde-fou anti-doublon : au cas où le client renverrait qualified:false par erreur
+// (bug, plusieurs onglets, rejoue de requête), on évite de renvoyer plusieurs emails
+// Brevo pour le même email en peu de temps.
+const NOTIFY_DEDUPE_WINDOW_MS = 60 * 60 * 1000;
+const recentlyNotified = new Map<string, number>();
+
+function alreadyNotifiedRecently(email: string): boolean {
+  const now = Date.now();
+  const key = email.trim().toLowerCase();
+  const last = recentlyNotified.get(key);
+  if (last && now - last < NOTIFY_DEDUPE_WINDOW_MS) return true;
+  recentlyNotified.set(key, now);
+  return false;
+}
+
 // Garde-fou anti-hallucination : un modèle peut inventer un email plausible pour satisfaire
 // un paramètre requis du tool call. On n'accepte le lead que si cet email a été tapé mot pour
 // mot par le visiteur lui-même dans la conversation.
@@ -234,7 +252,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Requête invalide." }, { status: 400 });
   }
 
-  const { lang } = parsed.data;
+  const { lang, qualified: alreadyQualified } = parsed.data;
   const history = parsed.data.messages.slice(-20);
 
   const conversation: GroqMessage[] = [
@@ -246,6 +264,19 @@ export async function POST(request: Request) {
     lang === "en"
       ? "Could you confirm your name and email address so I can pass your request on to a consultant?"
       : "Pouvez-vous me confirmer votre nom et votre adresse email pour que je transmette votre demande à un consultant ?";
+
+  // Le lead a déjà été qualifié et transmis lors d'un tour précédent de cette conversation :
+  // on continue à discuter normalement, sans jamais rappeler l'outil de qualification.
+  if (alreadyQualified) {
+    try {
+      const res = await callGroq(conversation, apiKey, "none");
+      const reply = res.choices?.[0]?.message?.content ?? "";
+      return NextResponse.json({ reply, qualified: true });
+    } catch (err) {
+      console.error("Chat route error (post-qualification):", err);
+      return NextResponse.json({ error: "Erreur lors du traitement de votre message." }, { status: 502 });
+    }
+  }
 
   try {
     const first = await callGroq(conversation, apiKey, "auto");
@@ -272,11 +303,13 @@ export async function POST(request: Request) {
       return NextResponse.json({ reply: firstMessage?.content || askForContactFallback, qualified: false });
     }
 
-    await notifyLead(
-      leadArgs,
-      history.map((m) => ({ role: m.role, content: m.content })),
-      lang
-    );
+    if (!alreadyNotifiedRecently(leadArgs.email)) {
+      await notifyLead(
+        leadArgs,
+        history.map((m) => ({ role: m.role, content: m.content })),
+        lang
+      );
+    }
 
     const closingInstruction =
       lang === "en"
