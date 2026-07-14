@@ -14,11 +14,11 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://*.google-analytics.com",
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: https:",
       "font-src 'self'",
-      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com",
+      "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com",
       "frame-ancestors 'none'",
     ].join("; "),
   },
@@ -35,21 +35,6 @@ const nextConfig: NextConfig = {
           { key: "Cache-Control", value: "public, max-age=0, s-maxage=60, stale-while-revalidate=300" },
         ],
       },
-      // Assets statiques Next.js — immuables en prod, pas de cache en dev
-      ...(process.env.NODE_ENV === "production" ? [
-        {
-          source: "/_next/static/(.*)",
-          headers: [
-            { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
-          ],
-        },
-        {
-          source: "/_next/image(.*)",
-          headers: [
-            { key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=3600" },
-          ],
-        },
-      ] : []),
       // Fichiers publics (favicon, robots, sitemap, og-images…) — 1 semaine
       {
         source: "/(favicon.*|robots.txt|sitemap.xml|.*\\.png|.*\\.jpg|.*\\.svg|.*\\.webp|.*\\.woff2?)",
