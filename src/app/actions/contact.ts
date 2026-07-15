@@ -72,7 +72,8 @@ export async function sendContactForm(
   formData: FormData
 ): Promise<ContactState> {
   const raw = Object.fromEntries(formData.entries()) as Record<string, string>;
-  const { _hp: _ignored, ...values } = raw;
+  const values = { ...raw };
+  delete values._hp;
   const uiLang = raw.lang === "en" ? "en" : "fr";
 
   const headersList = await headers();

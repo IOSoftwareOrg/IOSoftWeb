@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Design test — Corporate sobre",
@@ -40,9 +41,9 @@ export default function CorporateDesignTestPage() {
     <div className="min-h-screen bg-white text-[#171717]">
       <div className="sticky top-0 z-10 bg-[#171717] text-white text-xs px-6 py-3 flex flex-wrap items-center justify-between gap-2">
         <span>Bac à sable — direction Corporate sobre, exploration approfondie. Rien n&apos;est appliqué au site en production.</span>
-        <a href="/design-test" className="underline underline-offset-2 opacity-80 hover:opacity-100">
+        <Link href="/design-test" className="underline underline-offset-2 opacity-80 hover:opacity-100">
           ← Retour à la comparaison des 3 directions
-        </a>
+        </Link>
       </div>
 
       {/* Nav */}
