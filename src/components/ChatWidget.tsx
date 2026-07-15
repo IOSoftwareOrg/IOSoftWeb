@@ -58,13 +58,14 @@ export default function ChatWidget({ lang = "fr" }: { lang?: Locale }) {
 
   function handleOpen() {
     setOpen(true);
-    sendGTMEvent({ event: "chat_opened" });
+    sendGTMEvent({ event: "chat_opened", lang });
   }
 
   function handleClose() {
     setOpen(false);
-    if (messages.some((m) => m.role === "user") && !qualifiedRef.current) {
-      sendGTMEvent({ event: "chat_abandoned" });
+    const messageCount = messages.filter((m) => m.role === "user").length;
+    if (messageCount > 0 && !qualifiedRef.current) {
+      sendGTMEvent({ event: "chat_abandoned", lang, message_count: messageCount });
     }
   }
 
@@ -74,10 +75,11 @@ export default function ChatWidget({ lang = "fr" }: { lang?: Locale }) {
     if (!text || pending) return;
 
     const nextMessages = [...messages, { role: "user", content: text } as ChatMessage];
+    const messageCount = nextMessages.filter((m) => m.role === "user").length;
     setMessages(nextMessages);
     setInput("");
     setPending(true);
-    sendGTMEvent({ event: "chat_message_sent" });
+    sendGTMEvent({ event: "chat_message_sent", lang, message_count: messageCount });
 
     try {
       const res = await fetch("/api/chat", {
@@ -97,7 +99,7 @@ export default function ChatWidget({ lang = "fr" }: { lang?: Locale }) {
 
       if (data.qualified && !qualifiedRef.current) {
         qualifiedRef.current = true;
-        sendGTMEvent({ event: "chat_qualified" });
+        sendGTMEvent({ event: "chat_qualified", lang, message_count: messageCount });
       }
     } catch (err) {
       console.error("Chat widget error:", err);
