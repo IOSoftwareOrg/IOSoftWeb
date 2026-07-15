@@ -3,6 +3,7 @@
 import { z } from "zod";
 import { BrevoClient, BrevoEnvironment } from "@getbrevo/brevo";
 import { headers } from "next/headers";
+import { servicesCatalog } from "@/lib/services-catalog";
 
 // Rate limiter en mémoire : max 3 soumissions par IP par fenêtre de 10 minutes
 const WINDOW_MS = 10 * 60 * 1000;
@@ -21,8 +22,8 @@ function isRateLimited(ip: string): boolean {
   return false;
 }
 
-const subjectsFr = ["Conseil en Management", "Conseil en Stratégie", "Finance d'entreprise", "Data Consulting", "Process Mining", "Systèmes d'information", "Développement logiciel", "Autre"] as const;
-const subjectsEn = ["Management Consulting", "Strategy & Development", "Corporate Finance", "Data Consulting", "Process Mining", "Information Systems", "Software Development", "Other"] as const;
+const subjectsFr = [...servicesCatalog.fr.map((s) => s.title), "Autre"] as const;
+const subjectsEn = [...servicesCatalog.en.map((s) => s.title), "Other"] as const;
 
 // Clés de message génériques, traduites au moment de construire fieldErrors (voir validationMessages)
 const schema = z.object({
@@ -33,7 +34,7 @@ const schema = z.object({
   phoneCode: z.string().max(10).optional(),
   phone: z.string().max(20).optional(),
   company: z.string().max(200).optional(),
-  subject: z.enum([...subjectsFr, ...subjectsEn] as [string, ...string[]], { message: "invalid_subject" }),
+  subject: z.enum([...subjectsFr, ...subjectsEn] as unknown as [string, ...string[]], { message: "invalid_subject" }),
   message: z.string().min(10, "message_too_short").max(5000),
   lang: z.enum(["fr", "en"]).optional(),
   // honeypot — doit rester vide

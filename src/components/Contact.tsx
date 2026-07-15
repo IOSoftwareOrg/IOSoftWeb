@@ -3,6 +3,7 @@
 import { useActionState, useEffect, useRef, useState } from "react";
 import { sendGTMEvent } from "@next/third-parties/google";
 import { sendContactForm, type ContactState } from "@/app/actions/contact";
+import { servicesCatalog } from "@/lib/services-catalog";
 import type { Locale } from "@/lib/i18n";
 
 const INITIAL: ContactState = {};
@@ -30,7 +31,7 @@ const t = {
     phone: "Téléphone", phonePlaceholder: "06 12 34 56 78",
     company: "Société", companyPlaceholder: "Nom de votre entreprise",
     subject: "Sujet *", selectSubject: "Sélectionner un sujet",
-    subjects: ["Conseil en Management", "Conseil en Stratégie", "Finance d'entreprise", "Data Consulting", "Process Mining", "Systèmes d'information", "Développement logiciel", "Autre"],
+    subjects: [...servicesCatalog.fr.map((s) => s.title), "Autre"],
     message: "Message *", messagePlaceholder: "Décrivez votre besoin...",
     send: "Envoyer le message", sending: "Envoi en cours…",
     successTitle: "Message envoyé !", successDesc: "Nous vous répondrons dans les meilleurs délais.",
@@ -46,14 +47,14 @@ const t = {
     phone: "Phone", phonePlaceholder: "+44 7700 900000",
     company: "Company", companyPlaceholder: "Your company name",
     subject: "Subject *", selectSubject: "Select a subject",
-    subjects: ["Management Consulting", "Strategy & Development", "Corporate Finance", "Data Consulting", "Process Mining", "Information Systems", "Software Development", "Other"],
+    subjects: [...servicesCatalog.en.map((s) => s.title), "Other"],
     message: "Message *", messagePlaceholder: "Describe your need...",
     send: "Send message", sending: "Sending...",
     successTitle: "Message sent!", successDesc: "We will get back to you as soon as possible.",
   },
 };
 
-export default function Contact({ hideHeader, lang = "fr" }: { hideHeader?: boolean; lang?: Locale } = {}) {
+export default function Contact({ hideHeader, lang = "fr", initialSubject }: { hideHeader?: boolean; lang?: Locale; initialSubject?: string } = {}) {
   const [state, action, pending] = useActionState(sendContactForm, INITIAL);
   const d = t[lang];
   // Contrôlés : après une Server Action, React réinitialise nativement le <form> (y compris les champs
@@ -62,7 +63,9 @@ export default function Contact({ hideHeader, lang = "fr" }: { hideHeader?: bool
   const formRef = useRef<HTMLFormElement>(null);
   const [genre, setGenre] = useState("");
   const [phoneCode, setPhoneCode] = useState("+33");
-  const [subject, setSubject] = useState("");
+  // Préremplissage uniquement si on arrive depuis la page d'un service (?subject=...) avec une valeur
+  // reconnue — sinon (page d'accueil, nav, contact direct) le champ reste vide comme avant.
+  const [subject, setSubject] = useState(initialSubject && d.subjects.includes(initialSubject) ? initialSubject : "");
 
   useEffect(() => {
     if (state.success) {
