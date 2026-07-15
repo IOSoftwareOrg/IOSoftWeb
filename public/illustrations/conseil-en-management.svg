@@ -1,0 +1,42 @@
+<svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="mgmt-illus-title mgmt-illus-desc">
+  <title id="mgmt-illus-title">Organigramme avec un leader identifié</title>
+  <desc id="mgmt-illus-desc">Un organigramme à trois niveaux dont le nœud sommital, représentant le leader identifié, est mis en évidence en or au-dessus de son équipe.</desc>
+  <defs>
+    <filter id="mgmt-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#0a1830" flood-opacity="0.4" />
+    </filter>
+    <filter id="mgmt-glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="30" />
+    </filter>
+  </defs>
+
+  <circle cx="240" cy="180" r="150" fill="#c9a84c" opacity="0.15" filter="url(#mgmt-glow)" />
+
+  <g filter="url(#mgmt-shadow)">
+    <rect x="60" y="40" width="360" height="280" rx="20" fill="#ffffff" />
+  </g>
+
+  <line x1="240" y1="110" x2="150" y2="190" stroke="#cbd5e1" stroke-width="2.5" />
+  <line x1="240" y1="110" x2="330" y2="190" stroke="#cbd5e1" stroke-width="2.5" />
+  <line x1="150" y1="190" x2="110" y2="265" stroke="#cbd5e1" stroke-width="2.5" />
+  <line x1="150" y1="190" x2="190" y2="265" stroke="#cbd5e1" stroke-width="2.5" />
+  <line x1="330" y1="190" x2="290" y2="265" stroke="#cbd5e1" stroke-width="2.5" />
+  <line x1="330" y1="190" x2="370" y2="265" stroke="#cbd5e1" stroke-width="2.5" />
+
+  <circle cx="110" cy="265" r="15" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5" />
+  <circle cx="190" cy="265" r="15" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5" />
+  <circle cx="290" cy="265" r="15" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5" />
+  <circle cx="370" cy="265" r="15" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5" />
+
+  <circle cx="150" cy="190" r="19" fill="#ffffff" stroke="#1e3a5f" stroke-width="2" />
+  <circle cx="150" cy="184" r="5.3" fill="#1e3a5f" />
+  <ellipse cx="150" cy="200" rx="8" ry="6.5" fill="#1e3a5f" />
+
+  <circle cx="330" cy="190" r="19" fill="#ffffff" stroke="#1e3a5f" stroke-width="2" />
+  <circle cx="330" cy="184" r="5.3" fill="#1e3a5f" />
+  <ellipse cx="330" cy="200" rx="8" ry="6.5" fill="#1e3a5f" />
+
+  <circle cx="240" cy="110" r="26" fill="#c9a84c" />
+  <circle cx="240" cy="102" r="7.3" fill="#ffffff" />
+  <ellipse cx="240" cy="124" rx="11" ry="9" fill="#ffffff" />
+</svg>

@@ -1,0 +1,48 @@
+<svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="swotart-illus-title swotart-illus-desc">
+  <title id="swotart-illus-title">Les quatre colonnes de la matrice SWOT</title>
+  <desc id="swotart-illus-desc">Quatre colonnes colorées côte à côte, chacune surmontée d'une icône dans un badge circulaire — flèche haut, flèche bas, étincelle, triangle d'alerte — représentant forces, faiblesses, opportunités et menaces.</desc>
+  <defs>
+    <filter id="swotart-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0a1830" flood-opacity="0.35" />
+    </filter>
+    <filter id="swotart-shadow-sm" x="-60%" y="-60%" width="220%" height="220%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0a1830" flood-opacity="0.25" />
+    </filter>
+    <filter id="swotart-glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="24" />
+    </filter>
+    <linearGradient id="swotart-navy" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e3a5f" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+  </defs>
+
+  <circle cx="240" cy="100" r="110" fill="#c9a84c" opacity="0.15" filter="url(#swotart-glow)" />
+
+  <g filter="url(#swotart-shadow)">
+    <rect x="40" y="20" width="400" height="160" rx="16" fill="#ffffff" />
+  </g>
+
+  <rect x="70" y="40" width="85" height="120" fill="#c9a84c" opacity="0.14" />
+  <rect x="155" y="40" width="85" height="120" fill="#64748b" opacity="0.1" />
+  <rect x="240" y="40" width="85" height="120" fill="#c9a84c" />
+  <rect x="325" y="40" width="85" height="120" fill="url(#swotart-navy)" />
+
+  <circle cx="112" cy="75" r="20" fill="#ffffff" filter="url(#swotart-shadow-sm)" />
+  <path d="M112,63 L121,78 L115.5,78 L115.5,88 L108.5,88 L108.5,78 L103,78 Z" fill="#c9a84c" />
+  <rect x="85" y="108" width="54" height="7" rx="3" fill="#c9a84c" />
+
+  <circle cx="197" cy="75" r="20" fill="#ffffff" filter="url(#swotart-shadow-sm)" />
+  <path d="M197,88 L188,73 L193.5,73 L193.5,63 L200.5,63 L200.5,73 L206,73 Z" fill="#64748b" />
+  <rect x="170" y="108" width="54" height="7" rx="3" fill="#64748b" />
+
+  <circle cx="282" cy="75" r="20" fill="#ffffff" filter="url(#swotart-shadow-sm)" />
+  <path d="M282,60 L286,70 L296,73 L286,76 L282,86 L278,76 L268,73 L278,70 Z" fill="#c9a84c" />
+  <rect x="255" y="108" width="54" height="7" rx="3" fill="#ffffff" opacity="0.75" />
+
+  <circle cx="367" cy="75" r="20" fill="#ffffff" filter="url(#swotart-shadow-sm)" />
+  <path d="M367,60 L379,82 L355,82 Z" fill="none" stroke="#1e3a5f" stroke-width="2.4" stroke-linejoin="round" />
+  <line x1="367" y1="67.5" x2="367" y2="74" stroke="#1e3a5f" stroke-width="2.4" stroke-linecap="round" />
+  <circle cx="367" cy="77.5" r="1.4" fill="#1e3a5f" />
+  <rect x="340" y="108" width="54" height="7" rx="3" fill="#ffffff" opacity="0.75" />
+</svg>

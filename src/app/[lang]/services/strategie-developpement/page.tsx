@@ -27,6 +27,7 @@ const data = {
     label: "Nos services", title: "Stratégie & Développement",
     quote: "« Connaissez l'ennemi et connaissez vous vous-même ; en cent batailles vous ne courrez jamais aucun danger. »",
     quoteAuthor: "— Sun Tzu, L'Art de la guerre",
+    illustrationAlt: "Illustration d'une grille d'analyse SWOT présentant ses quatre quadrants : forces, faiblesses, opportunités, menaces",
     intro1: "Dès le milieu des années 1960, de nombreux modèles d'analyse stratégique sont venus des États-Unis (LCAG, SWOT, etc.). Depuis, la réflexion stratégique n'a cessé d'évoluer, de s'affiner et de s'enrichir de nouvelles méthodes innovantes.",
     intro2: "Notre activité de consulting en stratégie s'appuie sur une démarche cohérente inspirée des dernières méthodes d'analyse stratégique, enrichie par la puissance de la donnée. À l'issue de notre analyse, vous aurez une vision claire de l'avenir de votre entreprise — croissance interne, croissance externe, relocalisation, évolution de gamme.",
     etapesTitle: "Notre démarche en 5 étapes",
@@ -60,6 +61,7 @@ const data = {
     label: "Our services", title: "Strategy & Development",
     quote: '"Know the enemy and know yourself; in a hundred battles you will never be in peril."',
     quoteAuthor: "— Sun Tzu, The Art of War",
+    illustrationAlt: "Illustration of a SWOT analysis grid showing its four quadrants: strengths, weaknesses, opportunities, threats",
     intro1: "Since the mid-1960s, many strategic analysis models have emerged from the United States (LCAG, SWOT, etc.). Since then, strategic thinking has continued to evolve, be refined and be enriched by new innovative methods.",
     intro2: "Our strategy consulting approach is built on a coherent methodology inspired by the latest strategic analysis methods, enriched by the power of data. By the end of our analysis, you will have a clear vision of your company's future — internal growth, external growth, relocation, product line evolution.",
     etapesTitle: "Our 5-step approach",
@@ -99,17 +101,26 @@ export default async function StrategiePage({ params }: { params: Promise<{ lang
   return (
     <>
       <section className="bg-[#1e3a5f] pt-32 pb-16">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex items-center gap-2 text-white/50 text-sm mb-6">
-            <Link href={`/${lang}/services`} className="text-white hover:text-white/80 transition-colors">Services</Link>
-            <span>/</span><span className="text-white/80">{d.title}</span>
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-[1.3fr_1fr] md:items-center gap-10">
+          <div>
+            <div className="flex items-center gap-2 text-white/50 text-sm mb-6">
+              <Link href={`/${lang}/services`} className="text-white hover:text-white/80 transition-colors">Services</Link>
+              <span>/</span><span className="text-white/80">{d.title}</span>
+            </div>
+            <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">{d.label}</span>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-6">{d.title}</h1>
+            <blockquote className="border-l-2 border-[#c9a84c] pl-6 text-white/70 italic max-w-2xl leading-relaxed">
+              {d.quote}
+              <footer className="mt-2 text-white/40 not-italic text-sm">{d.quoteAuthor}</footer>
+            </blockquote>
           </div>
-          <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">{d.label}</span>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-6">{d.title}</h1>
-          <blockquote className="border-l-2 border-[#c9a84c] pl-6 text-white/70 italic max-w-2xl leading-relaxed">
-            {d.quote}
-            <footer className="mt-2 text-white/40 not-italic text-sm">{d.quoteAuthor}</footer>
-          </blockquote>
+          <img
+            src="/illustrations/strategie-developpement.svg"
+            alt={d.illustrationAlt}
+            width={480}
+            height={360}
+            className="hidden md:block w-full h-auto"
+          />
         </div>
       </section>
 

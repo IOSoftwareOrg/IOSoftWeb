@@ -1,0 +1,45 @@
+<svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="dev-illus-title dev-illus-desc">
+  <title id="dev-illus-title">Fenêtre d'éditeur de code</title>
+  <desc id="dev-illus-desc">Une fenêtre d'éditeur de code avec sa barre de titre et des lignes de code stylisées, représentant le développement d'applications sur mesure.</desc>
+  <defs>
+    <filter id="dev-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#0a1830" flood-opacity="0.4" />
+    </filter>
+    <filter id="dev-glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="30" />
+    </filter>
+  </defs>
+
+  <circle cx="240" cy="180" r="150" fill="#c9a84c" opacity="0.15" filter="url(#dev-glow)" />
+
+  <g filter="url(#dev-shadow)">
+    <rect x="60" y="40" width="360" height="280" rx="20" fill="#ffffff" />
+  </g>
+
+  <clipPath id="dev-editor-clip">
+    <rect x="90" y="76" width="290" height="204" rx="12" />
+  </clipPath>
+  <g clip-path="url(#dev-editor-clip)">
+    <rect x="90" y="76" width="290" height="204" fill="#0f172a" />
+    <rect x="90" y="76" width="290" height="28" fill="#1e3a5f" />
+    <circle cx="104" cy="90" r="3.5" fill="#64748b" />
+    <circle cx="118" cy="90" r="3.5" fill="#64748b" />
+    <circle cx="132" cy="90" r="3.5" fill="#64748b" />
+
+    <rect x="106" y="118" width="50" height="8" rx="2" fill="#c9a84c" />
+    <rect x="160" y="118" width="70" height="8" rx="2" fill="#94a3b8" opacity="0.6" />
+
+    <rect x="126" y="140" width="90" height="8" rx="2" fill="#ffffff" opacity="0.7" />
+
+    <rect x="126" y="162" width="60" height="8" rx="2" fill="#c9a84c" opacity="0.8" />
+    <rect x="192" y="162" width="40" height="8" rx="2" fill="#94a3b8" opacity="0.5" />
+    <rect x="236" y="161" width="2" height="10" fill="#c9a84c" />
+
+    <rect x="106" y="184" width="30" height="8" rx="2" fill="#c9a84c" />
+
+    <rect x="126" y="206" width="110" height="8" rx="2" fill="#ffffff" opacity="0.6" />
+    <rect x="126" y="228" width="75" height="8" rx="2" fill="#94a3b8" opacity="0.5" />
+
+    <rect x="106" y="250" width="20" height="8" rx="2" fill="#c9a84c" opacity="0.8" />
+  </g>
+</svg>

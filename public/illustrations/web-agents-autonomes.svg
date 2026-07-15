@@ -1,0 +1,62 @@
+<svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="wa-illus-title wa-illus-desc">
+  <title id="wa-illus-title">Un site avec chatbot et un agent IA qui réserve un rendez-vous dans un calendrier</title>
+  <desc id="wa-illus-desc">Une fenêtre de site web contenant une bulle de conversation, reliée par une flèche à une icône d'agent puis à un calendrier dont une case est cochée, représentant un agent autonome qui réserve un rendez-vous.</desc>
+  <defs>
+    <filter id="wa-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#0a1830" flood-opacity="0.4" />
+    </filter>
+    <filter id="wa-glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="30" />
+    </filter>
+    <marker id="wa-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 Z" fill="#94a3b8" />
+    </marker>
+  </defs>
+
+  <circle cx="240" cy="180" r="150" fill="#c9a84c" opacity="0.15" filter="url(#wa-glow)" />
+
+  <g filter="url(#wa-shadow)">
+    <rect x="60" y="40" width="360" height="280" rx="20" fill="#ffffff" />
+  </g>
+
+  <clipPath id="wa-browser-clip">
+    <rect x="90" y="90" width="180" height="140" rx="10" />
+  </clipPath>
+  <g clip-path="url(#wa-browser-clip)">
+    <rect x="90" y="90" width="180" height="140" fill="#ffffff" />
+    <rect x="90" y="90" width="180" height="26" fill="#f1f5f9" />
+    <circle cx="104" cy="103" r="3.5" fill="#cbd5e1" />
+    <circle cx="118" cy="103" r="3.5" fill="#cbd5e1" />
+    <circle cx="132" cy="103" r="3.5" fill="#cbd5e1" />
+    <rect x="106" y="136" width="148" height="48" rx="12" fill="#1e3a5f" />
+    <path d="M118,184 L110,196 L128,184 Z" fill="#1e3a5f" />
+    <rect x="118" y="148" width="110" height="7" rx="3" fill="#ffffff" opacity="0.6" />
+    <rect x="118" y="160" width="80" height="7" rx="3" fill="#ffffff" opacity="0.4" />
+  </g>
+  <rect x="90" y="90" width="180" height="140" rx="10" fill="none" stroke="#e2e8f0" />
+
+  <circle cx="255" cy="215" r="22" fill="#c9a84c" stroke="#ffffff" stroke-width="3" />
+  <rect x="245" y="205" width="20" height="16" rx="4" fill="#ffffff" />
+  <circle cx="250" cy="213" r="1.8" fill="#c9a84c" />
+  <circle cx="260" cy="213" r="1.8" fill="#c9a84c" />
+  <line x1="255" y1="205" x2="255" y2="200" stroke="#ffffff" stroke-width="2" />
+  <circle cx="255" cy="199" r="2" fill="#ffffff" />
+
+  <line x1="279" y1="209" x2="324" y2="196" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" marker-end="url(#wa-arrow)" />
+
+  <clipPath id="wa-cal-clip">
+    <rect x="330" y="165" width="76" height="76" rx="10" />
+  </clipPath>
+  <g clip-path="url(#wa-cal-clip)">
+    <rect x="330" y="165" width="76" height="76" fill="#ffffff" />
+    <rect x="330" y="165" width="76" height="20" fill="#1e3a5f" />
+    <rect x="338" y="195" width="16" height="16" rx="3" fill="#f1f5f9" />
+    <rect x="358" y="195" width="16" height="16" rx="3" fill="#f1f5f9" />
+    <rect x="378" y="195" width="16" height="16" rx="3" fill="#f1f5f9" />
+    <rect x="338" y="215" width="16" height="16" rx="3" fill="#f1f5f9" />
+    <rect x="358" y="215" width="16" height="16" rx="3" fill="#c9a84c" />
+    <path d="M361,223 L365,227 L372,219" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+    <rect x="378" y="215" width="16" height="16" rx="3" fill="#f1f5f9" />
+  </g>
+  <rect x="330" y="165" width="76" height="76" rx="10" fill="none" stroke="#e2e8f0" />
+</svg>

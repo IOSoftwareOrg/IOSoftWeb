@@ -33,6 +33,7 @@ const data = {
     label: "Nos services",
     title: "Conseil en Management",
     hero: "Notre activité de conseil en management vise à optimiser les performances opérationnelles de votre structure. Que vous réunissiez deux sites, ouvriez une succursale à l'étranger ou gériez des problématiques comportementales, nous vous apportons les meilleures pratiques issues du monde anglo-saxon pour minimiser les risques d'échec.",
+    illustrationAlt: "Illustration abstraite d'un réseau de personnes connectées représentant une organisation managériale",
     intro: "Il s'agit d'identifier les traits de caractère des populations, de repérer les leaders sur lesquels vous pourrez vous appuyer, de contourner les jeux de pouvoir individuels, d'identifier les détenteurs d'influence — et parfois de définir une nouvelle culture d'entreprise et d'y faire adhérer vos équipes.",
     sections: [
       {
@@ -60,6 +61,7 @@ const data = {
     label: "Our services",
     title: "Management Consulting",
     hero: "Our management consulting activity aims to optimise the operational performance of your organisation. Whether you are merging two sites, opening a branch abroad, or managing behavioural issues, we bring you the best practices from the Anglo-Saxon world to minimise the risks of failure.",
+    illustrationAlt: "Abstract illustration of a connected network of people representing a management organisation",
     intro: "The goal is to identify the character traits of your teams, spot the leaders you can rely on, navigate individual power games, identify key influencers — and sometimes define a new corporate culture that your employees genuinely embrace.",
     sections: [
       {
@@ -93,15 +95,18 @@ export default async function ConseilManagementPage({ params }: { params: Promis
   return (
     <>
       <section className="bg-[#1e3a5f] pt-32 pb-16">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex items-center gap-2 text-white/50 text-sm mb-6">
-            <Link href={`/${lang}/services`} className="text-white hover:text-white/80 transition-colors">Services</Link>
-            <span>/</span>
-            <span className="text-white/80">{d.title}</span>
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-[1.3fr_1fr] md:items-center gap-10">
+          <div>
+            <div className="flex items-center gap-2 text-white/50 text-sm mb-6">
+              <Link href={`/${lang}/services`} className="text-white hover:text-white/80 transition-colors">Services</Link>
+              <span>/</span>
+              <span className="text-white/80">{d.title}</span>
+            </div>
+            <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">{d.label}</span>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-6">{d.title}</h1>
+            <p className="text-white/70 max-w-2xl leading-relaxed">{d.hero}</p>
           </div>
-          <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">{d.label}</span>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-6">{d.title}</h1>
-          <p className="text-white/70 max-w-2xl leading-relaxed">{d.hero}</p>
+          <img src="/illustrations/conseil-en-management.svg" alt={d.illustrationAlt} width={480} height={360} className="hidden md:block w-full h-auto" />
         </div>
       </section>
 

@@ -1,0 +1,41 @@
+<svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="claude-illus-title claude-illus-desc">
+  <title id="claude-illus-title">Conversation avec un assistant IA et panneau de code</title>
+  <desc id="claude-illus-desc">Une bulle de conversation à gauche et un panneau de code stylisé à droite, représentant l'utilisation de l'API Claude via un system prompt structuré.</desc>
+  <defs>
+    <filter id="claude-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0a1830" flood-opacity="0.35" />
+    </filter>
+    <filter id="claude-glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="24" />
+    </filter>
+  </defs>
+
+  <circle cx="240" cy="100" r="110" fill="#c9a84c" opacity="0.15" filter="url(#claude-glow)" />
+
+  <g filter="url(#claude-shadow)">
+    <rect x="40" y="20" width="400" height="160" rx="16" fill="#ffffff" />
+  </g>
+
+  <rect x="80" y="75" width="150" height="65" rx="14" fill="#1e3a5f" />
+  <path d="M95,140 L85,155 L105,140 Z" fill="#1e3a5f" />
+  <rect x="96" y="92" width="110" height="7" rx="3" fill="#ffffff" opacity="0.6" />
+  <rect x="96" y="106" width="80" height="7" rx="3" fill="#ffffff" opacity="0.4" />
+  <rect x="96" y="120" width="95" height="7" rx="3" fill="#ffffff" opacity="0.5" />
+
+  <clipPath id="claude-code-clip">
+    <rect x="260" y="55" width="150" height="95" rx="10" />
+  </clipPath>
+  <g clip-path="url(#claude-code-clip)">
+    <rect x="260" y="55" width="150" height="95" fill="#0f172a" />
+    <rect x="260" y="55" width="150" height="18" fill="#1e3a5f" />
+    <circle cx="270" cy="64" r="2.5" fill="#64748b" />
+    <circle cx="280" cy="64" r="2.5" fill="#64748b" />
+    <circle cx="290" cy="64" r="2.5" fill="#64748b" />
+    <rect x="272" y="82" width="40" height="6" rx="2" fill="#c9a84c" />
+    <rect x="316" y="82" width="50" height="6" rx="2" fill="#94a3b8" opacity="0.6" />
+    <rect x="282" y="96" width="70" height="6" rx="2" fill="#ffffff" opacity="0.6" />
+    <rect x="282" y="110" width="45" height="6" rx="2" fill="#c9a84c" opacity="0.7" />
+    <rect x="331" y="110" width="30" height="6" rx="2" fill="#94a3b8" opacity="0.5" />
+    <rect x="272" y="124" width="25" height="6" rx="2" fill="#c9a84c" />
+  </g>
+</svg>
