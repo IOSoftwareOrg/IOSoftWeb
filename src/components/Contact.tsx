@@ -28,7 +28,7 @@ const t = {
     firstname: "Prénom *", firstnamePlaceholder: "Votre prénom",
     lastname: "Nom *", lastnamePlaceholder: "Votre nom",
     email: "Email *", emailPlaceholder: "votre@email.com",
-    phone: "Téléphone", phonePlaceholder: "06 12 34 56 78",
+    phone: "Téléphone *", phonePlaceholder: "06 12 34 56 78",
     company: "Société", companyPlaceholder: "Nom de votre entreprise",
     subject: "Sujet *", selectSubject: "Sélectionner un sujet",
     subjects: [...servicesCatalog.fr.map((s) => s.title), "Autre"],
@@ -44,7 +44,7 @@ const t = {
     firstname: "First name *", firstnamePlaceholder: "Your first name",
     lastname: "Last name *", lastnamePlaceholder: "Your last name",
     email: "Email *", emailPlaceholder: "your@email.com",
-    phone: "Phone", phonePlaceholder: "+44 7700 900000",
+    phone: "Phone *", phonePlaceholder: "+44 7700 900000",
     company: "Company", companyPlaceholder: "Your company name",
     subject: "Subject *", selectSubject: "Select a subject",
     subjects: [...servicesCatalog.en.map((s) => s.title), "Other"],
@@ -160,8 +160,9 @@ export default function Contact({ hideHeader, lang = "fr", initialSubject }: { h
                     <select name="phoneCode" value={phoneCode} onChange={(e) => setPhoneCode(e.target.value)} className="border border-[#e2e8f0] rounded-lg px-2 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/30 focus:border-[#1e3a5f] bg-white w-36 shrink-0">
                       {phoneCodes.map(({ code, label }) => <option key={code} value={code}>{label}</option>)}
                     </select>
-                    <input type="tel" name="phone" defaultValue={state.values?.phone ?? ""} className={inputClass} placeholder={d.phonePlaceholder} />
+                    <input type="tel" name="phone" required defaultValue={state.values?.phone ?? ""} className={inputClass} placeholder={d.phonePlaceholder} />
                   </div>
+                  {state.fieldErrors?.phone && <p className="text-xs text-red-500 mt-1">{state.fieldErrors.phone}</p>}
                 </div>
 
                 <div>
