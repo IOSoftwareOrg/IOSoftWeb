@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import RelatedServices from "@/components/RelatedServices";
+import { SoftwareDevIllustration } from "@/components/illustrations";
 import { hasLocale, locales, type Locale } from "@/lib/i18n";
 import { logicielsSegment } from "@/lib/routes";
 import { notFound } from "next/navigation";
@@ -24,6 +25,7 @@ const data = {
   fr: {
     label: "Nos services", title: "Développement logiciel",
     hero: "IO Software développe une expertise dans le développement logiciel grâce à son centre de compétences. De l'application métier sur mesure à la création de sites internet assistée par l'IA, nous couvrons l'ensemble du cycle de développement.",
+    illustrationAlt: "Illustration abstraite de chevrons de code assemblés en blocs applicatifs",
     competTitle: "Notre centre de compétences",
     compet: [
       { title: "Applications sur mesure", desc: "Conception et développement d'applications métier adaptées à vos processus spécifiques, de la spécification au déploiement." },
@@ -55,6 +57,7 @@ const data = {
   en: {
     label: "Our services", title: "Software Development",
     hero: "IO Software develops software expertise through its centre of competence. From custom business applications to AI-assisted website creation, we cover the entire development lifecycle.",
+    illustrationAlt: "Abstract illustration of code brackets assembled into application blocks",
     competTitle: "Our centre of competence",
     compet: [
       { title: "Custom applications", desc: "Design and development of business applications adapted to your specific processes, from specification to deployment." },
@@ -93,14 +96,17 @@ export default async function DevLogicielPage({ params }: { params: Promise<{ la
   return (
     <>
       <section className="bg-[#1e3a5f] pt-32 pb-16">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex items-center gap-2 text-white/50 text-sm mb-6">
-            <Link href={`/${lang}/services`} className="text-white hover:text-white/80 transition-colors">Services</Link>
-            <span>/</span><span className="text-white/80">{d.title}</span>
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-[1.3fr_1fr] md:items-center gap-10">
+          <div>
+            <div className="flex items-center gap-2 text-white/50 text-sm mb-6">
+              <Link href={`/${lang}/services`} className="text-white hover:text-white/80 transition-colors">Services</Link>
+              <span>/</span><span className="text-white/80">{d.title}</span>
+            </div>
+            <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">{d.label}</span>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-6">{d.title}</h1>
+            <p className="text-white/70 max-w-2xl leading-relaxed">{d.hero}</p>
           </div>
-          <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">{d.label}</span>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-6">{d.title}</h1>
-          <p className="text-white/70 max-w-2xl leading-relaxed">{d.hero}</p>
+          <SoftwareDevIllustration className="hidden md:block w-full h-auto" label={d.illustrationAlt} />
         </div>
       </section>
 

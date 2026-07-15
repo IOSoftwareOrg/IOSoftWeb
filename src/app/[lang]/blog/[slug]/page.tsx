@@ -13,9 +13,102 @@ import {
 } from "@/lib/articles";
 import type { Metadata } from "next";
 import { hasLocale, locales, type Locale } from "@/lib/i18n";
+import {
+  ClaudeBestPracticesIllustration,
+  AiManagementIllustration,
+  TaktTimeIllustration,
+  ManagementControlIllustration,
+  FinancialLeverageIllustration,
+  SwotMatrixIllustration,
+  MarketingIllustration,
+  SecurityIllustration,
+  GdpIllustration,
+  BusinessTransferIllustration,
+  TechnostructureIllustration,
+} from "@/components/illustrations";
 
 const BASE_URL = "https://www.io-software.fr";
 const ogLocale = { fr: "fr_FR", en: "en_US" } as const;
+
+const articleIllustrations: Record<string, { Illustration: typeof ClaudeBestPracticesIllustration; alt: Record<Locale, string> }> = {
+  "claude-anthropic-best-practices": {
+    Illustration: ClaudeBestPracticesIllustration,
+    alt: {
+      fr: "Illustration abstraite d'une bulle de dialogue reliée à un réseau de neurones",
+      en: "Abstract illustration of a chat bubble connected to a neural network",
+    },
+  },
+  "ia-management-adapter-organisation": {
+    Illustration: AiManagementIllustration,
+    alt: {
+      fr: "Illustration abstraite d'un organigramme avec un nœud amplifié par une étincelle IA",
+      en: "Abstract illustration of an org chart with one node amplified by an AI spark",
+    },
+  },
+  "takt-time-optimise-gerer-backlog-demandes": {
+    Illustration: TaktTimeIllustration,
+    alt: {
+      fr: "Illustration abstraite d'un flux segmenté avec un chronomètre",
+      en: "Abstract illustration of a segmented flow with a stopwatch",
+    },
+  },
+  "controle-de-gestion-pilier-performance": {
+    Illustration: ManagementControlIllustration,
+    alt: {
+      fr: "Illustration abstraite d'une jauge de pilotage avec barres d'indicateurs clés",
+      en: "Abstract illustration of a steering gauge with key performance bars",
+    },
+  },
+  "effet-de-levier-financier": {
+    Illustration: FinancialLeverageIllustration,
+    alt: {
+      fr: "Illustration abstraite d'un levier financier avec une courbe ascendante",
+      en: "Abstract illustration of a financial lever with an ascending curve",
+    },
+  },
+  "matrice-swot-analyse-strategique": {
+    Illustration: SwotMatrixIllustration,
+    alt: {
+      fr: "Illustration abstraite d'une grille en quatre quadrants",
+      en: "Abstract illustration of a four-quadrant grid",
+    },
+  },
+  "le-marketing-definition": {
+    Illustration: MarketingIllustration,
+    alt: {
+      fr: "Illustration abstraite d'un mégaphone et d'une cible avec cercles concentriques",
+      en: "Abstract illustration of a megaphone and a target with concentric circles",
+    },
+  },
+  "securiser-son-site-internet": {
+    Illustration: SecurityIllustration,
+    alt: {
+      fr: "Illustration abstraite d'un cadenas protégeant une fenêtre de navigateur",
+      en: "Abstract illustration of a padlock protecting a browser window",
+    },
+  },
+  pib: {
+    Illustration: GdpIllustration,
+    alt: {
+      fr: "Illustration abstraite d'un globe surmonté d'une courbe économique ascendante",
+      en: "Abstract illustration of a globe topped with an ascending economic curve",
+    },
+  },
+  "transmission-entreprise-artisanale": {
+    Illustration: BusinessTransferIllustration,
+    alt: {
+      fr: "Illustration abstraite d'un relais générationnel entre deux cercles",
+      en: "Abstract illustration of a generational handover between two circles",
+    },
+  },
+  "technostructure-organisation-entreprise": {
+    Illustration: TechnostructureIllustration,
+    alt: {
+      fr: "Illustration abstraite d'une pyramide hiérarchique de nœuds connectés",
+      en: "Abstract illustration of a hierarchical pyramid of connected nodes",
+    },
+  },
+};
 
 export async function generateStaticParams() {
   return locales.flatMap((lang) => articles.map((a) => ({ lang, slug: a.slug })));
@@ -61,6 +154,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ lang: 
   const content = getArticleContent(article, lang);
   const displayDate = getArticleDate(article, lang);
   const url = `${BASE_URL}/${lang}/blog/${slug}`;
+  const illustration = articleIllustrations[slug];
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -93,6 +187,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ lang: 
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">{title}</h1>
           <p className="text-white/60 text-sm">{displayDate} · IO Software</p>
+          {illustration && (
+            <illustration.Illustration className="w-full h-auto mt-8 rounded-lg" label={illustration.alt[lang as Locale]} />
+          )}
         </div>
       </section>
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import RelatedServices from "@/components/RelatedServices";
+import { TechnicalWritingIllustration } from "@/components/illustrations";
 import { hasLocale, locales, type Locale } from "@/lib/i18n";
 import { notFound } from "next/navigation";
 
@@ -25,6 +26,7 @@ const data = {
   fr: {
     label: "Nos services", title: "Rédaction technique",
     hero: "Professionnels de la communication technique et de la documentation logicielle depuis plus de 20 ans pour de grands éditeurs, nous concevons et mettons à jour votre documentation utilisateurs en anglais et en français.",
+    illustrationAlt: "Illustration abstraite d'un document technique ouvert avec lignes de texte structurées",
     interlocTitle: "Votre interlocuteur idéal",
     interlocP1: "Si vous recherchez des rédacteurs techniques rigoureux et autonomes, maîtrisant les langages informatiques et les outils techniques, capables de synthétiser et de structurer tout type d'information pour l'adapter à un utilisateur cible — vous avez trouvé votre interlocuteur.",
     interlocP2: "Nos expériences multiples dans des secteurs variés — banque, commerce, pharmacie — nous ont amenés à développer une capacité d'adaptation fondamentale pour la rédaction technique de tout produit destiné à un marché particulier.",
@@ -59,6 +61,7 @@ const data = {
   en: {
     label: "Our services", title: "Technical Writing",
     hero: "Technical communication and software documentation professionals for over 20 years, working for major publishers. We design and update your user documentation in both English and French.",
+    illustrationAlt: "Abstract illustration of an open technical document with structured text lines",
     interlocTitle: "Your ideal partner",
     interlocP1: "If you are looking for rigorous and autonomous technical writers, mastering computer languages and technical tools, capable of synthesising and structuring any type of information to adapt it to a target user — you have found your partner.",
     interlocP2: "Our multiple experiences across varied sectors — banking, commerce, pharmacy — have led us to develop a fundamental adaptability for the technical writing of any product intended for a particular market.",
@@ -100,14 +103,17 @@ export default async function RedactionPage({ params }: { params: Promise<{ lang
   return (
     <>
       <section className="bg-[#1e3a5f] pt-32 pb-16">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex items-center gap-2 text-white/50 text-sm mb-6">
-            <Link href={`/${lang}/services`} className="text-white hover:text-white/80 transition-colors">Services</Link>
-            <span>/</span><span className="text-white/80">{d.title}</span>
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-[1.3fr_1fr] md:items-center gap-10">
+          <div>
+            <div className="flex items-center gap-2 text-white/50 text-sm mb-6">
+              <Link href={`/${lang}/services`} className="text-white hover:text-white/80 transition-colors">Services</Link>
+              <span>/</span><span className="text-white/80">{d.title}</span>
+            </div>
+            <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">{d.label}</span>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-6">{d.title}</h1>
+            <p className="text-white/70 max-w-2xl leading-relaxed">{d.hero}</p>
           </div>
-          <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">{d.label}</span>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-6">{d.title}</h1>
-          <p className="text-white/70 max-w-2xl leading-relaxed">{d.hero}</p>
+          <TechnicalWritingIllustration className="hidden md:block w-full h-auto" label={d.illustrationAlt} />
         </div>
       </section>
 
