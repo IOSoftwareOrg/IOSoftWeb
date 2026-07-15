@@ -68,7 +68,9 @@ export default async function LangLayout({
       <main className="flex-1">{children}</main>
       <Footer lang={lang as Locale} />
       <ChatWidget lang={lang as Locale} />
-      <GoogleTagManager gtmId="GTM-5CMBC632" />
+      {process.env.NEXT_PUBLIC_GTM_ID && (
+        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
+      )}
     </>
   );
 }
