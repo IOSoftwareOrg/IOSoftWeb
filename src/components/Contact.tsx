@@ -9,15 +9,18 @@ import type { Locale } from "@/lib/i18n";
 const INITIAL: ContactState = {};
 
 const phoneCodes = [
-  { code: "+33", label: "🇫🇷 +33" }, { code: "+32", label: "🇧🇪 +32" },
-  { code: "+41", label: "🇨🇭 +41" }, { code: "+352", label: "🇱🇺 +352" },
-  { code: "+1", label: "🇺🇸 +1" }, { code: "+44", label: "🇬🇧 +44" },
-  { code: "+49", label: "🇩🇪 +49" }, { code: "+34", label: "🇪🇸 +34" },
-  { code: "+39", label: "🇮🇹 +39" }, { code: "+31", label: "🇳🇱 +31" },
-  { code: "+351", label: "🇵🇹 +351" }, { code: "+212", label: "🇲🇦 +212" },
-  { code: "+213", label: "🇩🇿 +213" }, { code: "+216", label: "🇹🇳 +216" },
-  { code: "+7", label: "🇷🇺 +7" }, { code: "+48", label: "🇵🇱 +48" },
+  { code: "+33", label: "🇫🇷 +33" },
+  { code: "+44", label: "🇬🇧 +44" },
+  { code: "+1", label: "🇺🇸 +1" },
 ];
+
+// Exemple de format local par indicatif — affiché comme placeholder du champ téléphone,
+// sans le préfixe pays puisque celui-ci est déjà affiché dans le select juste à côté.
+const phoneExamples: Record<string, string> = {
+  "+33": "06 12 34 56 78",
+  "+44": "7700 900000",
+  "+1": "201 555 0123",
+};
 
 const t = {
   fr: {
@@ -160,7 +163,7 @@ export default function Contact({ hideHeader, lang = "fr", initialSubject }: { h
                     <select name="phoneCode" value={phoneCode} onChange={(e) => setPhoneCode(e.target.value)} className="border border-[#e2e8f0] rounded-lg px-2 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/30 focus:border-[#1e3a5f] bg-white w-36 shrink-0">
                       {phoneCodes.map(({ code, label }) => <option key={code} value={code}>{label}</option>)}
                     </select>
-                    <input type="tel" name="phone" required defaultValue={state.values?.phone ?? ""} className={inputClass} placeholder={d.phonePlaceholder} />
+                    <input type="tel" name="phone" required defaultValue={state.values?.phone ?? ""} className={inputClass} placeholder={phoneExamples[phoneCode] ?? d.phonePlaceholder} />
                   </div>
                   {state.fieldErrors?.phone && <p className="text-xs text-red-500 mt-1">{state.fieldErrors.phone}</p>}
                 </div>
