@@ -3,20 +3,24 @@
 import { useActionState, useEffect, useRef, useState } from "react";
 import { sendGTMEvent } from "@next/third-parties/google";
 import { sendContactForm, type ContactState } from "@/app/actions/contact";
+import { servicesCatalog } from "@/lib/services-catalog";
 import type { Locale } from "@/lib/i18n";
 
 const INITIAL: ContactState = {};
 
 const phoneCodes = [
-  { code: "+33", label: "🇫🇷 +33" }, { code: "+32", label: "🇧🇪 +32" },
-  { code: "+41", label: "🇨🇭 +41" }, { code: "+352", label: "🇱🇺 +352" },
-  { code: "+1", label: "🇺🇸 +1" }, { code: "+44", label: "🇬🇧 +44" },
-  { code: "+49", label: "🇩🇪 +49" }, { code: "+34", label: "🇪🇸 +34" },
-  { code: "+39", label: "🇮🇹 +39" }, { code: "+31", label: "🇳🇱 +31" },
-  { code: "+351", label: "🇵🇹 +351" }, { code: "+212", label: "🇲🇦 +212" },
-  { code: "+213", label: "🇩🇿 +213" }, { code: "+216", label: "🇹🇳 +216" },
-  { code: "+7", label: "🇷🇺 +7" }, { code: "+48", label: "🇵🇱 +48" },
+  { code: "+33", label: "🇫🇷 +33" },
+  { code: "+44", label: "🇬🇧 +44" },
+  { code: "+1", label: "🇺🇸 +1" },
 ];
+
+// Exemple de format local par indicatif — affiché comme placeholder du champ téléphone,
+// sans le préfixe pays puisque celui-ci est déjà affiché dans le select juste à côté.
+const phoneExamples: Record<string, string> = {
+  "+33": "06 12 34 56 78",
+  "+44": "7700 900000",
+  "+1": "201 555 0123",
+};
 
 const t = {
   fr: {
@@ -27,10 +31,10 @@ const t = {
     firstname: "Prénom *", firstnamePlaceholder: "Votre prénom",
     lastname: "Nom *", lastnamePlaceholder: "Votre nom",
     email: "Email *", emailPlaceholder: "votre@email.com",
-    phone: "Téléphone", phonePlaceholder: "06 12 34 56 78",
+    phone: "Téléphone *", phonePlaceholder: "06 12 34 56 78",
     company: "Société", companyPlaceholder: "Nom de votre entreprise",
     subject: "Sujet *", selectSubject: "Sélectionner un sujet",
-    subjects: ["Conseil en Management", "Conseil en Stratégie", "Finance d'entreprise", "Data Consulting", "Process Mining", "Systèmes d'information", "Développement logiciel", "Autre"],
+    subjects: [...servicesCatalog.fr.map((s) => s.title), "Autre"],
     message: "Message *", messagePlaceholder: "Décrivez votre besoin...",
     send: "Envoyer le message", sending: "Envoi en cours…",
     successTitle: "Message envoyé !", successDesc: "Nous vous répondrons dans les meilleurs délais.",
@@ -43,17 +47,17 @@ const t = {
     firstname: "First name *", firstnamePlaceholder: "Your first name",
     lastname: "Last name *", lastnamePlaceholder: "Your last name",
     email: "Email *", emailPlaceholder: "your@email.com",
-    phone: "Phone", phonePlaceholder: "+44 7700 900000",
+    phone: "Phone *", phonePlaceholder: "+44 7700 900000",
     company: "Company", companyPlaceholder: "Your company name",
     subject: "Subject *", selectSubject: "Select a subject",
-    subjects: ["Management Consulting", "Strategy & Development", "Corporate Finance", "Data Consulting", "Process Mining", "Information Systems", "Software Development", "Other"],
+    subjects: [...servicesCatalog.en.map((s) => s.title), "Other"],
     message: "Message *", messagePlaceholder: "Describe your need...",
     send: "Send message", sending: "Sending...",
     successTitle: "Message sent!", successDesc: "We will get back to you as soon as possible.",
   },
 };
 
-export default function Contact({ hideHeader, lang = "fr" }: { hideHeader?: boolean; lang?: Locale } = {}) {
+export default function Contact({ hideHeader, lang = "fr", initialSubject }: { hideHeader?: boolean; lang?: Locale; initialSubject?: string } = {}) {
   const [state, action, pending] = useActionState(sendContactForm, INITIAL);
   const d = t[lang];
   // Contrôlés : après une Server Action, React réinitialise nativement le <form> (y compris les champs
@@ -62,7 +66,9 @@ export default function Contact({ hideHeader, lang = "fr" }: { hideHeader?: bool
   const formRef = useRef<HTMLFormElement>(null);
   const [genre, setGenre] = useState("");
   const [phoneCode, setPhoneCode] = useState("+33");
-  const [subject, setSubject] = useState("");
+  // Préremplissage uniquement si on arrive depuis la page d'un service (?subject=...) avec une valeur
+  // reconnue — sinon (page d'accueil, nav, contact direct) le champ reste vide comme avant.
+  const [subject, setSubject] = useState(initialSubject && d.subjects.includes(initialSubject) ? initialSubject : "");
 
   useEffect(() => {
     if (state.success) {
@@ -157,8 +163,9 @@ export default function Contact({ hideHeader, lang = "fr" }: { hideHeader?: bool
                     <select name="phoneCode" value={phoneCode} onChange={(e) => setPhoneCode(e.target.value)} className="border border-[#e2e8f0] rounded-lg px-2 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/30 focus:border-[#1e3a5f] bg-white w-36 shrink-0">
                       {phoneCodes.map(({ code, label }) => <option key={code} value={code}>{label}</option>)}
                     </select>
-                    <input type="tel" name="phone" defaultValue={state.values?.phone ?? ""} className={inputClass} placeholder={d.phonePlaceholder} />
+                    <input type="tel" name="phone" required defaultValue={state.values?.phone ?? ""} className={inputClass} placeholder={phoneExamples[phoneCode] ?? d.phonePlaceholder} />
                   </div>
+                  {state.fieldErrors?.phone && <p className="text-xs text-red-500 mt-1">{state.fieldErrors.phone}</p>}
                 </div>
 
                 <div>

@@ -22,8 +22,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   };
 }
 
-const checkIcon = <svg className="w-4 h-4 text-[#c9a84c] shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>;
-
 const data = {
   fr: {
     label: "Nos services", title: "Stratégie & Développement",
@@ -167,7 +165,7 @@ export default async function StrategiePage({ params }: { params: Promise<{ lang
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">{d.ctaTitle}</h2>
           <p className="text-white/80 mb-8">{d.ctaDesc}</p>
-          <Link href={`/${lang}/contact`} className="inline-block bg-white text-[#1e3a5f] font-bold px-8 py-4 rounded-md hover:bg-[#f1f5f9] transition-colors">{d.ctaBtn}</Link>
+          <Link href={`/${lang}/contact?subject=${encodeURIComponent(d.title)}`} className="inline-block bg-white text-[#1e3a5f] font-bold px-8 py-4 rounded-md hover:bg-[#f1f5f9] transition-colors">{d.ctaBtn}</Link>
         </div>
       </section>
     </>

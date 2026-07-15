@@ -46,266 +46,171 @@ function SectionGrid({ sections }: { sections: { title: string; items: string[] 
   );
 }
 
+function UseCaseCards({ heading, subheading, diagram, cases }: { heading: string; subheading: string; diagram?: string; cases: { title: string; flow: string[]; description: string }[] }) {
+  return (
+    <section className="pb-24 bg-[#f8fafc]">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="text-center mb-14">
+          <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">{heading}</span>
+          <h2 className="text-3xl font-bold text-[#0f172a] mt-3">{subheading}</h2>
+        </div>
+        {diagram && (
+          <div
+            className="max-w-[680px] mx-auto mb-12 bg-white rounded-xl border border-[#e2e8f0] p-4 sm:p-6"
+            dangerouslySetInnerHTML={{ __html: diagram }}
+          />
+        )}
+        <div className="grid md:grid-cols-2 gap-6">
+          {cases.map((uc) => (
+            <div key={uc.title} className="bg-white rounded-xl p-6 border border-[#e2e8f0]">
+              <h3 className="font-bold text-[#0f172a] mb-3">{uc.title}</h3>
+              <div className="flex flex-wrap items-center gap-1.5 text-xs text-[#1e3a5f] font-medium mb-4">
+                {uc.flow.map((step, i) => (
+                  <span key={step} className="flex items-center gap-1.5">
+                    <span className="bg-[#eef2f7] rounded-full px-2.5 py-1">{step}</span>
+                    {i < uc.flow.length - 1 && <span className="text-[#c9a84c]">→</span>}
+                  </span>
+                ))}
+              </div>
+              <p className="text-sm text-[#64748b] leading-relaxed">{uc.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const rdvAgentDiagramFr = `<svg viewBox="0 0 680 570" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="rdv-diag-title-fr rdv-diag-desc-fr" font-family="system-ui, sans-serif">
+  <title id="rdv-diag-title-fr">Agent autonome de prise de rendez-vous — email et chatbot comme points d'entrée</title>
+  <desc id="rdv-diag-desc-fr">Un email reçu ou une conversation avec le chatbot du site déclenchent tous deux la même analyse IA de la demande. L'agent consulte ensuite l'agenda Google ou Outlook, puis réserve automatiquement les créneaux sans ambiguïté ou propose des alternatives nécessitant une validation humaine — dans les deux cas, le rendez-vous finit dans l'agenda.</desc>
+  <rect width="680" height="570" fill="#f8fafc" rx="12"/>
+  <defs><marker id="rdv-arrow-fr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/></marker></defs>
+  <rect x="70" y="40" width="230" height="50" rx="10" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="185" y="61" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">Email reçu</text>
+  <text x="185" y="78" text-anchor="middle" font-size="10" fill="#64748b">Boîte surveillée</text>
+  <rect x="380" y="40" width="230" height="50" rx="10" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="495" y="61" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">Chatbot du site</text>
+  <text x="495" y="78" text-anchor="middle" font-size="10" fill="#64748b">Visiteur qualifié</text>
+  <line x1="185" y1="90" x2="278" y2="138" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#rdv-arrow-fr)"/>
+  <line x1="495" y1="90" x2="402" y2="138" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#rdv-arrow-fr)"/>
+  <rect x="235" y="140" width="210" height="50" rx="10" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="340" y="161" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">Analyse de la demande</text>
+  <text x="340" y="178" text-anchor="middle" font-size="10" fill="#64748b">Intention et contraintes</text>
+  <line x1="340" y1="190" x2="340" y2="218" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#rdv-arrow-fr)"/>
+  <rect x="227" y="220" width="226" height="50" rx="10" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="340" y="241" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">Consultation de l'agenda</text>
+  <text x="340" y="258" text-anchor="middle" font-size="10" fill="#64748b">Google ou Outlook Calendar</text>
+  <line x1="340" y1="270" x2="340" y2="298" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#rdv-arrow-fr)"/>
+  <rect x="228" y="300" width="224" height="50" rx="10" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="340" y="321" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">Créneau clair ?</text>
+  <text x="340" y="338" text-anchor="middle" font-size="10" fill="#64748b">Analyse des disponibilités</text>
+  <line x1="340" y1="350" x2="178" y2="388" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#rdv-arrow-fr)"/>
+  <line x1="340" y1="350" x2="502" y2="388" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#rdv-arrow-fr)"/>
+  <rect x="57" y="390" width="226" height="50" rx="10" fill="#fdf6e6" stroke="#c9a84c" stroke-width="1.5"/>
+  <text x="170" y="411" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">Réservation automatique</text>
+  <text x="170" y="428" text-anchor="middle" font-size="10" fill="#8a6d1f">Créneau confirmé</text>
+  <rect x="397" y="390" width="226" height="50" rx="10" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="510" y="411" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">Proposition de créneaux</text>
+  <text x="510" y="428" text-anchor="middle" font-size="10" fill="#64748b">Validation humaine</text>
+  <line x1="170" y1="440" x2="278" y2="478" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#rdv-arrow-fr)"/>
+  <line x1="510" y1="440" x2="402" y2="478" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#rdv-arrow-fr)"/>
+  <rect x="223" y="480" width="234" height="50" rx="10" fill="#fdf6e6" stroke="#c9a84c" stroke-width="1.5"/>
+  <text x="340" y="501" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">Rendez-vous dans l'agenda</text>
+  <text x="340" y="518" text-anchor="middle" font-size="10" fill="#8a6d1f">Suivi automatique</text>
+</svg>`;
+
+const rdvAgentDiagramEn = `<svg viewBox="0 0 680 570" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="rdv-diag-title-en rdv-diag-desc-en" font-family="system-ui, sans-serif">
+  <title id="rdv-diag-title-en">Autonomous appointment-booking agent — email and chatbot as entry points</title>
+  <desc id="rdv-diag-desc-en">An email received or a conversation with the site's chatbot both trigger the same AI analysis of the request. The agent then checks the Google or Outlook calendar, and either books unambiguous slots automatically or proposes alternatives that require human validation — either way, the appointment ends up in the calendar.</desc>
+  <rect width="680" height="570" fill="#f8fafc" rx="12"/>
+  <defs><marker id="rdv-arrow-en" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/></marker></defs>
+  <rect x="70" y="40" width="230" height="50" rx="10" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="185" y="61" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">Email received</text>
+  <text x="185" y="78" text-anchor="middle" font-size="10" fill="#64748b">Monitored inbox</text>
+  <rect x="380" y="40" width="230" height="50" rx="10" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="495" y="61" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">Site chatbot</text>
+  <text x="495" y="78" text-anchor="middle" font-size="10" fill="#64748b">Qualified visitor</text>
+  <line x1="185" y1="90" x2="278" y2="138" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#rdv-arrow-en)"/>
+  <line x1="495" y1="90" x2="402" y2="138" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#rdv-arrow-en)"/>
+  <rect x="235" y="140" width="210" height="50" rx="10" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="340" y="161" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">Request analysis</text>
+  <text x="340" y="178" text-anchor="middle" font-size="10" fill="#64748b">Intent and constraints</text>
+  <line x1="340" y1="190" x2="340" y2="218" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#rdv-arrow-en)"/>
+  <rect x="227" y="220" width="226" height="50" rx="10" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="340" y="241" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">Calendar check</text>
+  <text x="340" y="258" text-anchor="middle" font-size="10" fill="#64748b">Google or Outlook Calendar</text>
+  <line x1="340" y1="270" x2="340" y2="298" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#rdv-arrow-en)"/>
+  <rect x="228" y="300" width="224" height="50" rx="10" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="340" y="321" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">Clear slot?</text>
+  <text x="340" y="338" text-anchor="middle" font-size="10" fill="#64748b">Availability check</text>
+  <line x1="340" y1="350" x2="178" y2="388" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#rdv-arrow-en)"/>
+  <line x1="340" y1="350" x2="502" y2="388" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#rdv-arrow-en)"/>
+  <rect x="57" y="390" width="226" height="50" rx="10" fill="#fdf6e6" stroke="#c9a84c" stroke-width="1.5"/>
+  <text x="170" y="411" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">Automatic booking</text>
+  <text x="170" y="428" text-anchor="middle" font-size="10" fill="#8a6d1f">Slot confirmed</text>
+  <rect x="397" y="390" width="226" height="50" rx="10" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="510" y="411" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">Proposed time slots</text>
+  <text x="510" y="428" text-anchor="middle" font-size="10" fill="#64748b">Human validation</text>
+  <line x1="170" y1="440" x2="278" y2="478" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#rdv-arrow-en)"/>
+  <line x1="510" y1="440" x2="402" y2="478" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#rdv-arrow-en)"/>
+  <rect x="223" y="480" width="234" height="50" rx="10" fill="#fdf6e6" stroke="#c9a84c" stroke-width="1.5"/>
+  <text x="340" y="501" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">Appointment in calendar</text>
+  <text x="340" y="518" text-anchor="middle" font-size="10" fill="#8a6d1f">Automatic follow-up</text>
+</svg>`;
+
 const content: Record<string, Record<Locale, ServiceContent>> = {
-  "conseil-en-management": {
-    fr: {
-      title: "Conseil en Management",
-      description: "Management des organisations, leadership et management interculturel.",
-      intro: "Il s'agit d'identifier les traits de caractère des populations, de repérer les leaders sur lesquels vous pourrez vous appuyer, de contourner les jeux de pouvoir individuels et d'identifier les détenteurs d'influence — et parfois de définir une nouvelle culture d'entreprise.",
-      body: <SectionGrid sections={[
-        { title: "Management des organisations et des comportements", items: ["Définition de la culture d'entreprise", "Adaptation de l'organisation au sein de la structure", "Identification des jeux individuels : jeux d'alliance et de pouvoir", "Gestion du changement avec identification des leaders"] },
-        { title: "Développer votre leadership", items: ["Participation à la manière de vivre des collaborateurs", "Compréhension mutuelle", "Éviter l'excès de stress", "Comment agir face à un « évitant » ?", "Comment agir face à un « histrionique » ?"] },
-        { title: "Management interculturel", items: ["Identification des groupes culturels", "Définition des traits de caractères types des populations visées", "Gestion de l'expatriation (US, Europe, Asie)"] },
-      ]} />,
-      cta: "Parlons de votre projet de management",
-    },
-    en: {
-      title: "Management Consulting",
-      description: "Organisational management, leadership and intercultural management.",
-      intro: "The goal is to identify the character traits of your teams, spot the leaders you can rely on, navigate individual power games and identify key influencers — and sometimes define a new corporate culture that your employees genuinely embrace.",
-      body: <SectionGrid sections={[
-        { title: "Organisational & behavioural management", items: ["Defining corporate culture", "Adapting the organisation within the structure", "Identifying individual games: alliances and power plays", "Change management with leader identification"] },
-        { title: "Developing your leadership", items: ["Understanding how your teams live and work", "Mutual understanding", "Avoiding excessive stress", "How to manage an 'avoidant' personality?", "How to manage a 'histrionic' personality?"] },
-        { title: "Intercultural management", items: ["Identifying cultural groups", "Defining typical character traits of target populations", "Managing expatriation (US, Europe, Asia)"] },
-      ]} />,
-      cta: "Let's talk about your management project",
-    },
-  },
-
-  "strategie-developpement": {
-    fr: {
-      title: "Stratégie & Développement",
-      description: "Analyse stratégique, SWOT, BCG, PESTEL et développement basé sur la data.",
-      intro: "« Connaissez l'ennemi et connaissez vous vous-même ; en cent batailles vous ne courrez jamais aucun danger. » — Sun Tzu, L'Art de la guerre\n\nNotre activité de consulting en stratégie s'appuie sur une démarche cohérente inspirée des dernières méthodes d'analyse stratégique, enrichie par la puissance de la donnée. À l'issue de notre analyse, vous aurez une vision claire de l'avenir de votre entreprise.",
-      body: <SectionGrid sections={[
-        { title: "Notre démarche en 5 étapes", items: ["Segmentation stratégique de votre entreprise", "Analyse concurrentielle de chacun de vos domaines d'activités", "Construction de l'avantage compétitif durable", "Identification de nouvelles voies de développement stratégique", "Management d'un portefeuille diversifié d'activités"] },
-        { title: "Outils stratégiques", items: ["Analyse SWOT enrichie par la data", "Matrice BCG et gestion du portefeuille produits", "Analyse PESTEL et anticipation de l'environnement", "KPI data-driven via Tableau ou Power BI"] },
-        { title: "Le rôle central de la data", items: ["Analyse des données internes et externes", "Segmentation et positionnement basés sur la data", "Création de valeur grâce à la transformation des données en actions concrètes", "Culture d'entreprise orientée données"] },
-      ]} />,
-      cta: "Définissons ensemble votre stratégie",
-    },
-    en: {
-      title: "Strategy & Development",
-      description: "Strategic analysis, SWOT, BCG, PESTEL and data-driven development.",
-      intro: "\"Know the enemy and know yourself; in a hundred battles you will never be in peril.\" — Sun Tzu, The Art of War\n\nOur strategy consulting approach is built on a coherent methodology inspired by the latest strategic analysis methods, enriched by the power of data. By the end of our analysis, you will have a clear vision of your company's future.",
-      body: <SectionGrid sections={[
-        { title: "Our 5-step approach", items: ["Strategic segmentation of your company", "Competitive analysis of each business area", "Building a sustainable competitive advantage", "Identifying new strategic development paths", "Managing a diversified portfolio of activities"] },
-        { title: "Strategic tools", items: ["Data-enriched SWOT analysis", "BCG matrix and product portfolio management", "PESTEL analysis and environmental anticipation", "Data-driven KPIs via Tableau or Power BI"] },
-        { title: "The central role of data", items: ["Analysis of internal and external data", "Data-based segmentation and positioning", "Value creation through transforming data into concrete actions", "Data-driven corporate culture"] },
-      ]} />,
-      cta: "Let's define your strategy together",
-    },
-  },
-
-  "finance-entreprise": {
-    fr: {
-      title: "Finance d'entreprise",
-      description: "Analyse financière, rentabilité, solvabilité et perspectives de développement.",
-      intro: "La responsabilité du chef d'entreprise est d'assurer une gestion saine des finances de sa société et d'anticiper les investissements futurs pour mener à bien ses projets stratégiques. L'analyse financière permet d'établir la santé financière de l'entreprise autour de trois éléments : la rentabilité, la solvabilité et les perspectives de développement.",
-      body: <SectionGrid sections={[
-        { title: "Diagnostic économique", items: ["Analyse de l'environnement sectoriel et du marché", "Positionnement face à la concurrence", "Organisation interne et stratégie d'évolution", "Analyse des relations fournisseurs et partenaires"] },
-        { title: "Diagnostic financier", items: ["Étude sur plusieurs exercices comptables", "Évolution du CA et des marges commerciales", "Seuil de rentabilité, BFR, CAF", "Politique de financement et structure de la dette", "Rentabilité (EBE) vs taux exigés"] },
-        { title: "Conclusions & recommandations", items: ["Vision claire de la solvabilité de votre entreprise", "Analyse de la rentabilité et des marges", "Perspectives d'évolution et leviers de croissance", "Ratios sélectionnés selon votre secteur d'activité"] },
-      ]} />,
-      cta: "Analysons la santé financière de votre entreprise",
-    },
-    en: {
-      title: "Corporate Finance",
-      description: "Financial analysis, profitability, solvency and development perspectives.",
-      intro: "A business leader's responsibility is to ensure sound financial management and anticipate future investments to achieve strategic goals. Financial analysis establishes your company's financial health across three dimensions: profitability, solvency and development prospects.",
-      body: <SectionGrid sections={[
-        { title: "Economic diagnosis", items: ["Analysis of the sector and market environment", "Competitive positioning", "Internal organisation and growth strategy", "Supplier and partner relationship analysis"] },
-        { title: "Financial diagnosis", items: ["Study across multiple financial years", "Revenue and margin evolution", "Break-even point, working capital, self-financing capacity", "Financing policy and debt structure", "Profitability (EBITDA) vs required rates"] },
-        { title: "Conclusions & recommendations", items: ["Clear view of your company's solvency", "Profitability and margin analysis", "Growth perspectives and key levers", "Ratios selected according to your sector"] },
-      ]} />,
-      cta: "Let's analyse your company's financial health",
-    },
-  },
-
-  "data-consulting": {
-    fr: {
-      title: "Data Consulting",
-      description: "Transformez vos données en actifs stratégiques.",
-      intro: "Dans un monde où la donnée est devenue un moteur de transformation digitale, nous aidons les entreprises à collecter, traiter, analyser et valoriser leurs informations pour booster leur compétitivité et leur capacité d'innovation.",
-      body: <SectionGrid sections={[
-        { title: "Nos domaines d'intervention", items: ["Audit des données (ERP, CRM, IoT…)", "Architecture de données scalable (cloud, data lakes)", "Stratégie analytique et définition des KPIs", "Analyse prédictive et Intelligence Artificielle"] },
-        { title: "L'impact concret", items: ["−20% de délais de production (analyse IoT)", "+15% de ventes (recommandations ML)", "−30% de fraudes (algorithmes machine learning)", "Décisions data-driven réduisant l'incertitude"] },
-        { title: "Les étapes clés", items: ["Diagnostic initial de vos données disponibles", "Feuille de route alignée sur vos priorités métiers", "Déploiement Power BI, Tableau, AWS, Azure, Google Cloud", "Formation et accompagnement des équipes"] },
-      ]} />,
-      cta: "Transformez vos données en levier de croissance",
-    },
-    en: {
-      title: "Data Consulting",
-      description: "Transform your data into strategic assets.",
-      intro: "In a world where data has become a driver of digital transformation, we help companies collect, process, analyse and leverage their information to boost competitiveness and innovation capacity.",
-      body: <SectionGrid sections={[
-        { title: "Our areas of intervention", items: ["Data audit (ERP, CRM, IoT…)", "Scalable data architecture (cloud, data lakes)", "Analytics strategy and KPI definition", "Predictive analysis and Artificial Intelligence"] },
-        { title: "Concrete impact", items: ["−20% production delays (IoT analysis)", "+15% sales increase (ML recommendations)", "−30% fraud reduction (machine learning algorithms)", "Data-driven decisions reducing uncertainty"] },
-        { title: "Key steps", items: ["Initial diagnosis of your available data", "Roadmap aligned with your business priorities", "Power BI, Tableau, AWS, Azure, Google Cloud deployment", "Team training and support"] },
-      ]} />,
-      cta: "Transform your data into a growth lever",
-    },
-  },
-
-  "process-mining": {
-    fr: {
-      title: "Process Mining",
-      description: "Cartographiez et optimisez vos processus métiers.",
-      intro: "Le Process Mining est une approche innovante qui permet d'extraire des informations à partir des données d'événements de votre organisation pour analyser et optimiser ses processus métiers. Nous travaillons avec deux leaders du marché : UIPath et Celonis.",
-      body: <SectionGrid sections={[
-        { title: "Les étapes du Process Mining", items: ["Collecte des données : extraction des logs (ERP, CRM…)", "Modélisation : création de modèles de processus visuels", "Analyse : identification des inefficacités et divergences", "Optimisation : mise en œuvre des recommandations"] },
-        { title: "UIPath — Automatisation & Process Mining", items: ["Cartographie des processus et zones d'automatisation", "Recommandations IA pour réduire les temps d'exécution", "Visualisation en continu des améliorations en temps réel"] },
-        { title: "Celonis — Leader en Process Mining", items: ["Discovery des processus à partir des données SI", "Optimisation et prédiction avec algorithmes avancés", "Intégration native ERP (SAP, etc.)"] },
-      ]} />,
-      cta: "Optimisez vos processus avec le Process Mining",
-    },
-    en: {
-      title: "Process Mining",
-      description: "Map and optimise your business processes.",
-      intro: "Process Mining is an innovative approach that extracts information from your organisation's event data to analyse and optimise business processes. We work with two market leaders: UIPath and Celonis.",
-      body: <SectionGrid sections={[
-        { title: "The Process Mining steps", items: ["Data collection: log extraction (ERP, CRM…)", "Modelling: creating visual process models", "Analysis: identifying inefficiencies and deviations", "Optimisation: implementing recommendations"] },
-        { title: "UIPath — Automation & Process Mining", items: ["Process mapping and automation opportunity identification", "AI recommendations to reduce execution times", "Real-time continuous improvement visualisation"] },
-        { title: "Celonis — Process Mining Leader", items: ["Process discovery from IS data", "Optimisation and prediction with advanced algorithms", "Native ERP integration (SAP, etc.)"] },
-      ]} />,
-      cta: "Optimise your processes with Process Mining",
-    },
-  },
-
-  "systemes-information": {
-    fr: {
-      title: "Systèmes d'information",
-      description: "Maintenance informatique et alignement SI. MOA et MOE.",
-      intro: "Nous intervenons en MOA aussi bien qu'en MOE et prenons en charge tous vos projets, de leurs lignes budgétaires à leur réalisation.",
-      body: <SectionGrid sections={[
-        { title: "Maintenance informatique", items: ["Ordinateurs de bureau et portables", "Imprimantes et périphériques", "Réseaux locaux (LAN et WAN)", "Mises à niveau logicielles et antivirus", "Sécurité avancée et surf anonyme"] },
-        { title: "Alignement du système d'information", items: ["Mise en place de sauvegardes, Datamarts, Big Data", "Data Gouvernance et Data Quality", "ERP (Enterprise Resource Planning)", "BPM (Business Process Management)", "Modélisation de processus et Process Mining"] },
-        { title: "Accompagnement global", items: ["Conseil en choix de matériel", "Formation à la prise en main des nouveaux outils", "Sécurisation du système informatique", "MOA : définition des besoins et pilotage", "MOE : réalisation technique et mise en production"] },
-      ]} />,
-      cta: "Parlons de votre système d'information",
-    },
-    en: {
-      title: "Information Systems",
-      description: "IT maintenance and IS alignment. Business and technical project management.",
-      intro: "We act as both business owner (MOA) and technical implementer (MOE), taking full responsibility for your projects from budget lines to delivery.",
-      body: <SectionGrid sections={[
-        { title: "IT maintenance", items: ["Desktop computers and laptops", "Printers and peripherals", "Local networks (LAN and WAN)", "Software updates and antivirus", "Advanced security and anonymous browsing"] },
-        { title: "Information system alignment", items: ["Backup systems, Datamarts, Big Data", "Data Governance and Data Quality", "ERP (Enterprise Resource Planning)", "BPM (Business Process Management)", "Process modelling and Process Mining"] },
-        { title: "Full support", items: ["Hardware selection consulting", "Training on new tools", "IT system security", "MOA: requirements definition and project steering", "MOE: technical implementation and go-live"] },
-      ]} />,
-      cta: "Let's talk about your information system",
-    },
-  },
-
-  "redaction-technique": {
-    fr: {
-      title: "Rédaction technique",
-      description: "Documentation bilingue FR/EN. Normes ISO/IEC 82079, S1000D, DITA XML.",
-      intro: "Professionnels de la communication technique et de la documentation logicielle depuis plus de 20 ans pour de grands éditeurs, nous concevons et mettons à jour votre documentation utilisateurs en anglais et en français.",
-      body: <SectionGrid sections={[
-        { title: "Rédaction multilingue", items: ["Maîtrise native du français", "Anglais professionnel après immersion en environnement anglo-saxon", "Traductions FR ↔ EN avec double compétence linguistique", "Lisibilité et adaptation au lecteur cible"] },
-        { title: "Rédaction normée", items: ["ISO/IEC 82079", "S1000D", "ATA 2300", "Format DITA XML", "Best practices selon les exigences clients"] },
-        { title: "Types de documents", items: ["Documentations administrateur de logiciels", "Manuels utilisateurs et modes d'emploi", "Spécifications fonctionnelles et techniques", "Contenus SEO et web grand public"] },
-      ]} />,
-      cta: "Parlons de votre projet de documentation",
-    },
-    en: {
-      title: "Technical Writing",
-      description: "Bilingual FR/EN documentation. ISO/IEC 82079, S1000D, DITA XML standards.",
-      intro: "Technical communication and software documentation professionals for over 20 years, working for major publishers. We design and update your user documentation in both English and French.",
-      body: <SectionGrid sections={[
-        { title: "Multilingual writing", items: ["Native French proficiency", "Professional English after immersion in Anglo-Saxon environments", "FR ↔ EN translation with dual linguistic expertise", "Readability and adaptation to the target reader"] },
-        { title: "Standards-compliant writing", items: ["ISO/IEC 82079", "S1000D", "ATA 2300", "DITA XML format", "Client best practices and style guides"] },
-        { title: "Document types", items: ["Software administrator documentation", "User manuals and operating instructions", "Functional and technical specifications", "SEO content and general public materials"] },
-      ]} />,
-      cta: "Let's talk about your documentation project",
-    },
-  },
-
-  "developpement-logiciel": {
-    fr: {
-      title: "Développement logiciel",
-      description: "Applications sur mesure, sites internet par l'IA et logiciels métier.",
-      intro: "IO Software développe une expertise dans le développement logiciel grâce à son centre de compétences. De l'application métier sur mesure à la création de sites internet assistée par l'IA, nous couvrons l'ensemble du cycle de développement.",
-      body: <SectionGrid sections={[
-        { title: "Notre centre de compétences", items: ["Applications métier sur mesure", "Intégrations et APIs", "Maintenance et évolutions", "De la spécification au déploiement"] },
-        { title: "Création de sites internet par l'IA", items: ["Sites modernes et optimisés SEO générés par IA", "Design et contenu assistés par IA, validés par nos experts", "Développement Next.js, React, Tailwind CSS", "Optimisation continue via analyse IA des performances"] },
-        { title: "Logiciels métier", items: ["FinAnalyzer — analyse financière", "ProcessMap — cartographie de processus", "WebForge — sites web et agents autonomes", "Solutions conçues pour les besoins réels des entreprises"] },
-      ]} />,
-      cta: "Parlons de votre projet de développement",
-    },
-    en: {
-      title: "Software Development",
-      description: "Custom applications, AI-powered websites and business software.",
-      intro: "IO Software develops software expertise through its centre of competence. From custom business applications to AI-assisted website creation, we cover the entire development lifecycle.",
-      body: <SectionGrid sections={[
-        { title: "Our centre of competence", items: ["Custom business applications", "Integrations and APIs", "Maintenance and feature evolution", "From specification to deployment"] },
-        { title: "AI-powered website creation", items: ["Modern SEO-optimised websites generated by AI", "AI-assisted design and content, validated by our experts", "Next.js, React, Tailwind CSS development", "Continuous optimisation via AI performance analysis"] },
-        { title: "Business software", items: ["FinAnalyzer — financial analysis", "ProcessMap — process mapping", "WebForge — websites and autonomous agents", "Solutions designed for real enterprise needs"] },
-      ]} />,
-      cta: "Let's talk about your development project",
-    },
-  },
-
   "web-agents-autonomes": {
     fr: {
       title: "Web & Agents Autonomes",
       description: "Sites web modernes et agents IA autonomes pour automatiser vos processus métier et enrichir votre présence digitale.",
-      intro: "L'intelligence artificielle ne se limite plus à générer du contenu : elle peut désormais agir de façon autonome — répondre à un client, qualifier un lead, mettre à jour une base de données — en s'appuyant sur un site web moderne comme point d'entrée.\n\nIO Software conçoit les deux briques ensemble, pour des solutions digitales qui travaillent pour vous, pas seulement qui vous représentent.",
-      body: <SectionGrid sections={[
-        { title: "Agents autonomes", items: ["Conception d'agents IA capables d'exécuter des tâches multi-étapes en autonomie (support client, qualification, veille, reporting)", "Intégration à vos outils existants (CRM, ERP, messagerie, bases de données)", "Supervision humaine et garde-fous : chaque agent reste sous contrôle, avec des limites d'action définies", "Architecture basée sur les meilleures pratiques (function calling, orchestration d'outils)"] },
-        { title: "Développement web", items: ["Sites modernes et performants (Next.js, React, Tailwind CSS), rapides et optimisés SEO", "Design et contenu pensés pour convertir, pas seulement pour informer", "Hébergement, sécurité et maintenance pris en charge", "Une base évolutive qui grandit avec vos besoins et vos agents"] },
-        { title: "Une approche intégrée", items: ["Un site vitrine qui alimente un agent capable de répondre à vos visiteurs en autonomie", "Automatisation des workflows web : formulaires, prises de rendez-vous, support de premier niveau", "Un seul interlocuteur pour le site et les agents qui l'animent", "Mesure de l'impact : temps gagné, taux de conversion, satisfaction client"] },
-      ]} />,
+      intro: "L'intelligence artificielle ne se limite plus à générer du contenu : elle peut désormais agir de façon autonome — répondre à un client, qualifier un prospect, mettre à jour une base de données — en s'appuyant sur un site web moderne comme point d'entrée.\n\nIO Software conçoit les deux briques ensemble, pour des solutions digitales qui travaillent pour vous, pas seulement qui vous représentent.",
+      body: <>
+        <SectionGrid sections={[
+          { title: "Agents autonomes", items: ["Conception d'agents IA capables d'exécuter des tâches multi-étapes en autonomie (support client, qualification, veille, reporting)", "Intégration à vos outils existants (CRM, ERP, messagerie, bases de données)", "Supervision humaine et garde-fous : chaque agent reste sous contrôle, avec des limites d'action définies", "Architecture basée sur les meilleures pratiques (function calling, orchestration d'outils)"] },
+          { title: "Développement web", items: ["Sites modernes et performants (Next.js, React, Tailwind CSS), rapides et optimisés SEO", "Design et contenu pensés pour convertir, pas seulement pour informer", "Hébergement, sécurité et maintenance pris en charge", "Une base évolutive qui grandit avec vos besoins et vos agents"] },
+          { title: "Une approche intégrée", items: ["Un site vitrine qui alimente un agent capable de répondre à vos visiteurs en autonomie", "Automatisation des workflows web : formulaires, prises de rendez-vous, support de premier niveau", "Un seul interlocuteur pour le site et les agents qui l'animent", "Mesure de l'impact : temps gagné, taux de conversion, satisfaction client"] },
+        ]} />
+        <UseCaseCards
+          key="use-cases"
+          heading="Exemple concret"
+          subheading="Un agent qui remplit votre agenda, quel que soit le canal"
+          diagram={rdvAgentDiagramFr}
+          cases={[
+            { title: "Prise de rendez-vous par email", flow: ["Email reçu", "Analyse de la demande", "Consultation de l'agenda", "Réservation ou proposition"], description: "L'agent lit les demandes de rendez-vous reçues par email, comprend les contraintes (durée, disponibilités), consulte votre agenda Google ou Outlook et réserve directement les créneaux sans ambiguïté — sinon il propose des alternatives par retour d'email." },
+            { title: "Prise de rendez-vous via le chatbot", flow: ["Visiteur sur le site", "Qualification du besoin", "Consultation de l'agenda", "Rendez-vous confirmé"], description: "Le chatbot présent sur ce site qualifie déjà les demandes entrantes. La même architecture peut aller plus loin et réserver directement un créneau dans votre agenda pendant la conversation — le visiteur repart avec un rendez-vous confirmé, sans email intermédiaire." },
+          ]}
+        />
+      </>,
       cta: "Parlons de votre projet web et agents autonomes",
     },
     en: {
       title: "Web & Autonomous Agents",
       description: "Modern websites and autonomous AI agents to automate your business processes and enrich your digital presence.",
-      intro: "Artificial intelligence is no longer limited to generating content: it can now act autonomously — answering a customer, qualifying a lead, updating a database — building on a modern website as the entry point.\n\nIO Software designs both building blocks together, for digital solutions that work for you, not just represent you.",
-      body: <SectionGrid sections={[
-        { title: "Autonomous agents", items: ["Design of AI agents able to execute multi-step tasks autonomously (customer support, lead qualification, monitoring, reporting)", "Integration with your existing tools (CRM, ERP, messaging, databases)", "Human oversight and guardrails: every agent stays under control, with defined action limits", "Architecture built on best practices (function calling, tool orchestration)"] },
-        { title: "Web development", items: ["Modern, high-performance websites (Next.js, React, Tailwind CSS), fast and SEO-optimised", "Design and content built to convert, not just inform", "Hosting, security and maintenance handled for you", "A scalable foundation that grows with your needs and your agents"] },
-        { title: "An integrated approach", items: ["A website that feeds an agent able to answer your visitors autonomously", "Automation of web workflows: forms, appointment booking, first-line support", "A single point of contact for the site and the agents that run it", "Measuring impact: time saved, conversion rate, customer satisfaction"] },
-      ]} />,
+      intro: "Artificial intelligence is no longer limited to generating content: it can now act autonomously — answering a customer, qualifying a prospect, updating a database — building on a modern website as the entry point.\n\nIO Software designs both building blocks together, for digital solutions that work for you, not just represent you.",
+      body: <>
+        <SectionGrid sections={[
+          { title: "Autonomous agents", items: ["Design of AI agents able to execute multi-step tasks autonomously (customer support, lead qualification, monitoring, reporting)", "Integration with your existing tools (CRM, ERP, messaging, databases)", "Human oversight and guardrails: every agent stays under control, with defined action limits", "Architecture built on best practices (function calling, tool orchestration)"] },
+          { title: "Web development", items: ["Modern, high-performance websites (Next.js, React, Tailwind CSS), fast and SEO-optimised", "Design and content built to convert, not just inform", "Hosting, security and maintenance handled for you", "A scalable foundation that grows with your needs and your agents"] },
+          { title: "An integrated approach", items: ["A website that feeds an agent able to answer your visitors autonomously", "Automation of web workflows: forms, appointment booking, first-line support", "A single point of contact for the site and the agents that run it", "Measuring impact: time saved, conversion rate, customer satisfaction"] },
+        ]} />
+        <UseCaseCards
+          key="use-cases"
+          heading="Concrete example"
+          subheading="An agent that fills your calendar, whatever the channel"
+          diagram={rdvAgentDiagramEn}
+          cases={[
+            { title: "Booking appointments by email", flow: ["Email received", "Request analysis", "Calendar check", "Booking or proposal"], description: "The agent reads appointment requests received by email, understands the constraints (duration, availability), checks your Google or Outlook calendar and books unambiguous slots directly — otherwise it proposes alternatives by email." },
+            { title: "Booking appointments via the chatbot", flow: ["Visitor on the site", "Needs qualification", "Calendar check", "Appointment confirmed"], description: "The chatbot on this site already qualifies incoming requests. The same architecture can go further and book a slot directly in your calendar during the conversation — the visitor leaves with a confirmed appointment, no email round-trip needed." },
+          ]}
+        />
+      </>,
       cta: "Let's talk about your web and autonomous agents project",
     },
   },
 };
 
 const relatedMap: Record<string, Record<Locale, { title: string; desc: string; href: string }[]>> = {
-  "conseil-en-management": {
-    fr: [{ title: "Stratégie & Développement", desc: "Définissez vos orientations stratégiques après avoir consolidé votre organisation.", href: "/fr/services/strategie-developpement" }, { title: "Finance d'entreprise", desc: "Pilotez la performance financière de votre structure.", href: "/fr/services/finance-entreprise" }],
-    en: [{ title: "Strategy & Development", desc: "Set your strategic direction after consolidating your organisation.", href: "/en/services/strategie-developpement" }, { title: "Corporate Finance", desc: "Drive the financial performance of your structure.", href: "/en/services/finance-entreprise" }],
-  },
-  "strategie-developpement": {
-    fr: [{ title: "Finance d'entreprise", desc: "Toute stratégie repose sur une analyse financière solide.", href: "/fr/services/finance-entreprise" }, { title: "Data Consulting", desc: "Enrichissez votre démarche stratégique avec des insights data.", href: "/fr/services/data-consulting" }],
-    en: [{ title: "Corporate Finance", desc: "Every strategy rests on solid financial analysis.", href: "/en/services/finance-entreprise" }, { title: "Data Consulting", desc: "Enrich your strategic approach with data insights.", href: "/en/services/data-consulting" }],
-  },
-  "finance-entreprise": {
-    fr: [{ title: "Stratégie & Développement", desc: "L'analyse financière est le socle de toute décision stratégique.", href: "/fr/services/strategie-developpement" }, { title: "Data Consulting", desc: "Transformez vos données financières en tableaux de bord.", href: "/fr/services/data-consulting" }],
-    en: [{ title: "Strategy & Development", desc: "Financial analysis is the foundation of every strategic decision.", href: "/en/services/strategie-developpement" }, { title: "Data Consulting", desc: "Transform your financial data into actionable dashboards.", href: "/en/services/data-consulting" }],
-  },
-  "data-consulting": {
-    fr: [{ title: "Process Mining", desc: "Exploitez les logs de vos systèmes pour visualiser vos processus.", href: "/fr/services/process-mining" }, { title: "Systèmes d'information", desc: "Une architecture SI solide est la condition pour exploiter vos données.", href: "/fr/services/systemes-information" }],
-    en: [{ title: "Process Mining", desc: "Exploit system logs to visualise your processes.", href: "/en/services/process-mining" }, { title: "Information Systems", desc: "A solid IS architecture is the prerequisite for exploiting your data.", href: "/en/services/systemes-information" }],
-  },
-  "process-mining": {
-    fr: [{ title: "Data Consulting", desc: "Le Process Mining génère des données précieuses à exploiter stratégiquement.", href: "/fr/services/data-consulting" }, { title: "Systèmes d'information", desc: "Alignez vos outils SI pour des analyses fiables.", href: "/fr/services/systemes-information" }],
-    en: [{ title: "Data Consulting", desc: "Process Mining generates valuable data to exploit strategically.", href: "/en/services/data-consulting" }, { title: "Information Systems", desc: "Align your IS tools for reliable analysis.", href: "/en/services/systemes-information" }],
-  },
-  "systemes-information": {
-    fr: [{ title: "Process Mining", desc: "Exploitez les logs de votre SI pour cartographier vos processus.", href: "/fr/services/process-mining" }, { title: "Développement logiciel", desc: "Complétez votre SI avec des applications sur mesure.", href: "/fr/services/developpement-logiciel" }],
-    en: [{ title: "Process Mining", desc: "Exploit IS logs to map your business processes.", href: "/en/services/process-mining" }, { title: "Software Development", desc: "Complement your IS with custom applications.", href: "/en/services/developpement-logiciel" }],
-  },
-  "redaction-technique": {
-    fr: [{ title: "Systèmes d'information", desc: "Une documentation rigoureuse s'appuie sur une architecture SI maîtrisée.", href: "/fr/services/systemes-information" }, { title: "Développement logiciel", desc: "Nous documentons les logiciels que nous développons.", href: "/fr/services/developpement-logiciel" }],
-    en: [{ title: "Information Systems", desc: "Rigorous documentation relies on a mastered IS architecture.", href: "/en/services/systemes-information" }, { title: "Software Development", desc: "We document the software we develop.", href: "/en/services/developpement-logiciel" }],
-  },
-  "developpement-logiciel": {
-    fr: [{ title: "Systèmes d'information", desc: "Assurez l'alignement entre vos outils et vos nouveaux logiciels.", href: "/fr/services/systemes-information" }, { title: "Process Mining", desc: "Analysez vos processus actuels pour concevoir des solutions adaptées.", href: "/fr/services/process-mining" }],
-    en: [{ title: "Information Systems", desc: "Ensure alignment between your tools and new software.", href: "/en/services/systemes-information" }, { title: "Process Mining", desc: "Analyse your current processes to design the right solutions.", href: "/en/services/process-mining" }],
-  },
   "web-agents-autonomes": {
     fr: [{ title: "Développement logiciel", desc: "Le développement d'agents s'appuie sur les mêmes fondations techniques que nos applications sur mesure.", href: "/fr/services/developpement-logiciel" }, { title: "Process Mining", desc: "Identifiez d'abord les processus à automatiser avant de déployer vos agents autonomes.", href: "/fr/services/process-mining" }],
     en: [{ title: "Software Development", desc: "Agent development relies on the same technical foundations as our custom applications.", href: "/en/services/developpement-logiciel" }, { title: "Process Mining", desc: "Identify which processes to automate first before deploying your autonomous agents.", href: "/en/services/process-mining" }],
@@ -379,7 +284,7 @@ export default async function ServicePage({ params }: { params: Promise<{ lang: 
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">{c.cta}</h2>
           <p className="text-white/80 mb-8">{ctaDesc}</p>
-          <Link href={`/${lang}/contact`} className="inline-block bg-white text-[#1e3a5f] font-bold px-8 py-4 rounded-md hover:bg-[#f1f5f9] transition-colors">{ctaBtn}</Link>
+          <Link href={`/${lang}/contact?subject=${encodeURIComponent(c.title)}`} className="inline-block bg-white text-[#1e3a5f] font-bold px-8 py-4 rounded-md hover:bg-[#f1f5f9] transition-colors">{ctaBtn}</Link>
         </div>
       </section>
     </>

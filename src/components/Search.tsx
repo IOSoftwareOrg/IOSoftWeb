@@ -25,6 +25,11 @@ export default function Search({ lang, dark }: { lang: Locale; dark: boolean }) 
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
+  const [prevQuery, setPrevQuery] = useState(query);
+  if (query !== prevQuery) {
+    setPrevQuery(query);
+    setActiveIndex(0);
+  }
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
   const labels = t[lang];
@@ -81,10 +86,6 @@ export default function Search({ lang, dark }: { lang: Locale; dark: boolean }) 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, []);
-
-  useEffect(() => {
-    setActiveIndex(0);
-  }, [query]);
 
   function handleInputKeyDown(e: KeyboardEvent<HTMLInputElement>) {
     if (e.key === "ArrowDown") {
