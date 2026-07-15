@@ -13,7 +13,7 @@ const t = {
     subtitle: "Assistant IA",
     openLabel: "Ouvrir le chat",
     closeLabel: "Fermer le chat",
-    greeting: "Bonjour, dites-moi ce dont vous avez besoin, je vous oriente vers le bon interlocuteur chez IO Software.",
+    greeting: "Bonjour, dites-moi ce dont vous avez besoin et je vous oriente vers le bon interlocuteur chez IO Software.",
     placeholder: "Écrivez votre message…",
     send: "Envoyer",
     gdprPrefix: "En discutant ici, vos échanges peuvent être transmis à IO Software pour traiter votre demande. ",
