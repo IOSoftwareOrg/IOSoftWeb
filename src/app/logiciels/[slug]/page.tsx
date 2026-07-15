@@ -21,7 +21,6 @@ export async function generateMetadata({
   return {
     title: `${logiciel.name} — ${logiciel.tagline}`,
     description: logiciel.description,
-    keywords: [logiciel.name, logiciel.category, "process mining", "logiciel métier", "optimisation processus", "IO Software"],
     alternates: { canonical: url },
     openGraph: {
       title: `${logiciel.name} — ${logiciel.tagline}`,

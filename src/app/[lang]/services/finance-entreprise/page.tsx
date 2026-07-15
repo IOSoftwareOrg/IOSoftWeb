@@ -24,6 +24,7 @@ const data = {
   fr: {
     label: "Nos services", title: "Finance d'entreprise",
     hero: "La responsabilité du chef d'entreprise est d'assurer une gestion saine des finances de sa société et d'anticiper les investissements futurs pour mener à bien ses projets stratégiques. La génération de richesse nécessite des investissements qui doivent être financés et suffisamment rentables.",
+    illustrationAlt: "Illustration abstraite d'un graphique financier ascendant",
     pillars: [
       { title: "Rentabilité", desc: "Mesurer la capacité de l'entreprise à générer des bénéfices par rapport aux ressources engagées." },
       { title: "Solvabilité", desc: "Évaluer la capacité à honorer ses engagements financiers à court, moyen et long terme." },
@@ -52,6 +53,7 @@ const data = {
   en: {
     label: "Our services", title: "Corporate Finance",
     hero: "A business leader's responsibility is to ensure sound financial management and anticipate future investments to achieve strategic goals. Wealth creation requires investments that must be financed and sufficiently profitable.",
+    illustrationAlt: "Abstract illustration of an ascending financial chart",
     pillars: [
       { title: "Profitability", desc: "Measure the company's capacity to generate profits relative to resources engaged." },
       { title: "Solvency", desc: "Assess the capacity to meet financial obligations in the short, medium and long term." },
@@ -87,14 +89,17 @@ export default async function FinancePage({ params }: { params: Promise<{ lang: 
   return (
     <>
       <section className="bg-[#1e3a5f] pt-32 pb-16">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex items-center gap-2 text-white/50 text-sm mb-6">
-            <Link href={`/${lang}/services`} className="text-white hover:text-white/80 transition-colors">Services</Link>
-            <span>/</span><span className="text-white/80">{d.title}</span>
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-[1.3fr_1fr] md:items-center gap-10">
+          <div>
+            <div className="flex items-center gap-2 text-white/50 text-sm mb-6">
+              <Link href={`/${lang}/services`} className="text-white hover:text-white/80 transition-colors">Services</Link>
+              <span>/</span><span className="text-white/80">{d.title}</span>
+            </div>
+            <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">{d.label}</span>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-6">{d.title}</h1>
+            <p className="text-white/70 max-w-2xl leading-relaxed">{d.hero}</p>
           </div>
-          <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">{d.label}</span>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-6">{d.title}</h1>
-          <p className="text-white/70 max-w-2xl leading-relaxed">{d.hero}</p>
+          <img src="/illustrations/finance-entreprise.svg" alt={d.illustrationAlt} width={480} height={360} className="hidden md:block w-full h-auto" />
         </div>
       </section>
 

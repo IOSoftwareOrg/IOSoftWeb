@@ -12,6 +12,7 @@ type ServiceContent = {
   intro: string;
   body: React.ReactNode;
   cta: string;
+  illustrationAlt: string;
 };
 
 // ─── Content registry ────────────────────────────────────────────────────────
@@ -183,6 +184,7 @@ const content: Record<string, Record<Locale, ServiceContent>> = {
         />
       </>,
       cta: "Parlons de votre projet web et agents autonomes",
+      illustrationAlt: "Illustration abstraite d'une fenêtre de navigateur reliée à un réseau d'agent IA",
     },
     en: {
       title: "Web & Autonomous Agents",
@@ -206,6 +208,7 @@ const content: Record<string, Record<Locale, ServiceContent>> = {
         />
       </>,
       cta: "Let's talk about your web and autonomous agents project",
+      illustrationAlt: "Abstract illustration of a browser window connected to an AI agent network",
     },
   },
 };
@@ -249,15 +252,18 @@ export default async function ServicePage({ params }: { params: Promise<{ lang: 
   return (
     <>
       <section className="bg-[#1e3a5f] pt-32 pb-16">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex items-center gap-2 text-white/50 text-sm mb-6">
-            <Link href={`/${lang}/services`} className="text-white hover:text-white/80 transition-colors">{backLabel}</Link>
-            <span>/</span>
-            <span className="text-white/80">{c.title}</span>
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-[1.3fr_1fr] md:items-center gap-10">
+          <div>
+            <div className="flex items-center gap-2 text-white/50 text-sm mb-6">
+              <Link href={`/${lang}/services`} className="text-white hover:text-white/80 transition-colors">{backLabel}</Link>
+              <span>/</span>
+              <span className="text-white/80">{c.title}</span>
+            </div>
+            <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">{sectionLabel}</span>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-6">{c.title}</h1>
+            <p className="text-white/70 max-w-2xl leading-relaxed">{c.description}</p>
           </div>
-          <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">{sectionLabel}</span>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-6">{c.title}</h1>
-          <p className="text-white/70 max-w-2xl leading-relaxed">{c.description}</p>
+          <img src="/illustrations/web-agents-autonomes.svg" alt={c.illustrationAlt} width={480} height={360} className="hidden md:block w-full h-auto" />
         </div>
       </section>
 

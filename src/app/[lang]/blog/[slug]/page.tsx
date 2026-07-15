@@ -17,6 +17,86 @@ import { hasLocale, locales, type Locale } from "@/lib/i18n";
 const BASE_URL = "https://www.io-software.fr";
 const ogLocale = { fr: "fr_FR", en: "en_US" } as const;
 
+const articleIllustrations: Record<string, { file: string; alt: Record<Locale, string> }> = {
+  "claude-anthropic-best-practices": {
+    file: "claude-anthropic-best-practices.svg",
+    alt: {
+      fr: "Bulle de conversation reliée à un panneau de code, représentant l'utilisation de l'API Claude",
+      en: "Chat bubble connected to a code panel, representing use of the Claude API",
+    },
+  },
+  "ia-management-adapter-organisation": {
+    file: "ia-management-adapter-organisation.svg",
+    alt: {
+      fr: "Organigramme dont le nœud sommital est une étincelle d'intelligence artificielle",
+      en: "Org chart whose top node is an artificial intelligence spark",
+    },
+  },
+  "takt-time-optimise-gerer-backlog-demandes": {
+    file: "takt-time-optimise-gerer-backlog-demandes.svg",
+    alt: {
+      fr: "Chronomètre au-dessus d'une file de tickets de support",
+      en: "Stopwatch above a queue of support tickets",
+    },
+  },
+  "controle-de-gestion-pilier-performance": {
+    file: "controle-de-gestion-pilier-performance.svg",
+    alt: {
+      fr: "Comparaison de barres entre budget prévisionnel et réalisations sur quatre périodes",
+      en: "Bar comparison between planned budget and actuals across four periods",
+    },
+  },
+  "effet-de-levier-financier": {
+    file: "effet-de-levier-financier.svg",
+    alt: {
+      fr: "Levier financier amplifiant un rendement via une flèche ascendante",
+      en: "Financial lever amplifying a return via an ascending arrow",
+    },
+  },
+  "matrice-swot-analyse-strategique": {
+    file: "matrice-swot-analyse-strategique.svg",
+    alt: {
+      fr: "Quatre colonnes représentant les forces, faiblesses, opportunités et menaces d'une matrice SWOT",
+      en: "Four columns representing the strengths, weaknesses, opportunities and threats of a SWOT matrix",
+    },
+  },
+  "le-marketing-definition": {
+    file: "le-marketing-definition.svg",
+    alt: {
+      fr: "Mégaphone diffusant un message vers une cible concentrique",
+      en: "Megaphone broadcasting a message toward a concentric target",
+    },
+  },
+  "securiser-son-site-internet": {
+    file: "securiser-son-site-internet.svg",
+    alt: {
+      fr: "Fenêtre de navigateur protégée par un badge bouclier et cadenas",
+      en: "Browser window protected by a shield-and-padlock badge",
+    },
+  },
+  pib: {
+    file: "pib.svg",
+    alt: {
+      fr: "Globe terrestre et graphique en barres à la courbe ascendante",
+      en: "Globe and bar chart with an ascending trend line",
+    },
+  },
+  "transmission-entreprise-artisanale": {
+    file: "transmission-entreprise-artisanale.svg",
+    alt: {
+      fr: "Une clé dorée remise d'une main à une autre",
+      en: "A golden key passed from one hand to another",
+    },
+  },
+  "technostructure-organisation-entreprise": {
+    file: "technostructure-organisation-entreprise.svg",
+    alt: {
+      fr: "Pyramide hiérarchique à trois niveaux, chacun marqué d'une icône d'engrenage",
+      en: "Three-tier hierarchical pyramid, each level marked with a gear icon",
+    },
+  },
+};
+
 export async function generateStaticParams() {
   return locales.flatMap((lang) => articles.map((a) => ({ lang, slug: a.slug })));
 }
@@ -61,6 +141,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ lang: 
   const content = getArticleContent(article, lang);
   const displayDate = getArticleDate(article, lang);
   const url = `${BASE_URL}/${lang}/blog/${slug}`;
+  const illustration = articleIllustrations[slug];
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -93,6 +174,15 @@ export default async function ArticlePage({ params }: { params: Promise<{ lang: 
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">{title}</h1>
           <p className="text-white/60 text-sm">{displayDate} · IO Software</p>
+          {illustration && (
+            <img
+              src={`/illustrations/${illustration.file}`}
+              alt={illustration.alt[lang as Locale]}
+              width={480}
+              height={200}
+              className="w-full h-auto mt-8 rounded-lg"
+            />
+          )}
         </div>
       </section>
 

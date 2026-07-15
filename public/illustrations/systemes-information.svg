@@ -1,0 +1,46 @@
+<svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="si-illus-title si-illus-desc">
+  <title id="si-illus-title">Serveur central connecté à trois postes de travail</title>
+  <desc id="si-illus-desc">Un serveur avec ses baies mises en service, relié par un réseau à trois postes de travail, représentant l'infrastructure et la maintenance informatique.</desc>
+  <defs>
+    <filter id="si-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#0a1830" flood-opacity="0.4" />
+    </filter>
+    <filter id="si-glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="30" />
+    </filter>
+  </defs>
+
+  <circle cx="240" cy="180" r="150" fill="#c9a84c" opacity="0.15" filter="url(#si-glow)" />
+
+  <g filter="url(#si-shadow)">
+    <rect x="60" y="40" width="360" height="280" rx="20" fill="#ffffff" />
+  </g>
+
+  <line x1="170" y1="185" x2="250" y2="108" stroke="#94a3b8" stroke-width="2" />
+  <line x1="170" y1="185" x2="290" y2="188" stroke="#94a3b8" stroke-width="2" />
+  <line x1="170" y1="185" x2="250" y2="268" stroke="#94a3b8" stroke-width="2" />
+  <circle cx="170" cy="185" r="4" fill="#c9a84c" />
+
+  <rect x="110" y="140" width="60" height="90" rx="6" fill="#1e3a5f" />
+  <rect x="118" y="152" width="44" height="12" rx="2" fill="#ffffff" opacity="0.12" />
+  <rect x="118" y="172" width="44" height="12" rx="2" fill="#ffffff" opacity="0.12" />
+  <rect x="118" y="192" width="44" height="12" rx="2" fill="#ffffff" opacity="0.12" />
+  <circle cx="156" cy="158" r="2.5" fill="#c9a84c" />
+  <circle cx="156" cy="178" r="2.5" fill="#c9a84c" />
+  <circle cx="156" cy="198" r="2.5" fill="#c9a84c" />
+
+  <rect x="250" y="90" width="50" height="36" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+  <rect x="256" y="95" width="38" height="20" rx="3" fill="#f1f5f9" />
+  <line x1="275" y1="126" x2="275" y2="132" stroke="#cbd5e1" stroke-width="1.5" />
+  <line x1="265" y1="132" x2="285" y2="132" stroke="#cbd5e1" stroke-width="1.5" />
+
+  <rect x="290" y="170" width="50" height="36" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+  <rect x="296" y="175" width="38" height="20" rx="3" fill="#f1f5f9" />
+  <line x1="315" y1="206" x2="315" y2="212" stroke="#cbd5e1" stroke-width="1.5" />
+  <line x1="305" y1="212" x2="325" y2="212" stroke="#cbd5e1" stroke-width="1.5" />
+
+  <rect x="250" y="250" width="50" height="36" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+  <rect x="256" y="255" width="38" height="20" rx="3" fill="#f1f5f9" />
+  <line x1="275" y1="286" x2="275" y2="292" stroke="#cbd5e1" stroke-width="1.5" />
+  <line x1="265" y1="292" x2="285" y2="292" stroke="#cbd5e1" stroke-width="1.5" />
+</svg>

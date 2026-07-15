@@ -1,0 +1,36 @@
+<svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="pib-illus-title pib-illus-desc">
+  <title id="pib-illus-title">Globe terrestre et courbe économique ascendante</title>
+  <desc id="pib-illus-desc">Un globe terrestre stylisé à gauche et un graphique en barres avec une courbe de tendance ascendante à droite, la dernière valeur étant mise en évidence en or, représentant la croissance du PIB.</desc>
+  <defs>
+    <filter id="pib-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0a1830" flood-opacity="0.35" />
+    </filter>
+    <filter id="pib-glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="24" />
+    </filter>
+  </defs>
+
+  <circle cx="240" cy="100" r="110" fill="#c9a84c" opacity="0.15" filter="url(#pib-glow)" />
+
+  <g filter="url(#pib-shadow)">
+    <rect x="40" y="20" width="400" height="160" rx="16" fill="#ffffff" />
+  </g>
+
+  <circle cx="140" cy="100" r="45" fill="none" stroke="#1e3a5f" stroke-width="2.5" />
+  <ellipse cx="140" cy="100" rx="18" ry="45" fill="none" stroke="#1e3a5f" stroke-width="1.5" opacity="0.5" />
+  <line x1="97" y1="85" x2="183" y2="85" stroke="#1e3a5f" stroke-width="1.5" opacity="0.5" />
+  <line x1="97" y1="115" x2="183" y2="115" stroke="#1e3a5f" stroke-width="1.5" opacity="0.5" />
+  <circle cx="155" cy="90" r="4" fill="#c9a84c" />
+
+  <line x1="230" y1="145" x2="400" y2="145" stroke="#e2e8f0" stroke-width="1.5" />
+  <rect x="245" y="115" width="28" height="30" rx="3" fill="#94a3b8" opacity="0.4" />
+  <rect x="290" y="95" width="28" height="50" rx="3" fill="#94a3b8" opacity="0.4" />
+  <rect x="335" y="75" width="28" height="70" rx="3" fill="#94a3b8" opacity="0.4" />
+  <rect x="380" y="50" width="28" height="95" rx="3" fill="#c9a84c" />
+
+  <polyline points="259,115 304,95 349,75 394,50" fill="none" stroke="#1e3a5f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="259" cy="115" r="3" fill="#1e3a5f" />
+  <circle cx="304" cy="95" r="3" fill="#1e3a5f" />
+  <circle cx="349" cy="75" r="3" fill="#1e3a5f" />
+  <circle cx="394" cy="50" r="4" fill="#c9a84c" stroke="#ffffff" stroke-width="1.5" />
+</svg>

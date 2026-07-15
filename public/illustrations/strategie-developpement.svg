@@ -1,0 +1,56 @@
+<svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="strat-illus-title strat-illus-desc">
+  <title id="strat-illus-title">Grille d'analyse SWOT</title>
+  <desc id="strat-illus-desc">Une matrice à quatre quadrants — forces, faiblesses, opportunités, menaces — séparés par une croix centrale, chacun identifié par une icône dédiée dans un badge circulaire.</desc>
+  <defs>
+    <filter id="strat-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#0a1830" flood-opacity="0.4" />
+    </filter>
+    <filter id="strat-shadow-sm" x="-60%" y="-60%" width="220%" height="220%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0a1830" flood-opacity="0.25" />
+    </filter>
+    <filter id="strat-glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="30" />
+    </filter>
+    <linearGradient id="strat-q4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e3a5f" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+  </defs>
+
+  <circle cx="240" cy="180" r="150" fill="#c9a84c" opacity="0.15" filter="url(#strat-glow)" />
+
+  <g filter="url(#strat-shadow)">
+    <rect x="60" y="40" width="360" height="280" rx="20" fill="#ffffff" />
+  </g>
+
+  <clipPath id="strat-matrix-clip">
+    <rect x="100" y="76" width="280" height="210" rx="14" />
+  </clipPath>
+  <g clip-path="url(#strat-matrix-clip)">
+    <rect x="100" y="76" width="140" height="105" fill="#c9a84c" opacity="0.14" />
+    <rect x="240" y="76" width="140" height="105" fill="#64748b" opacity="0.1" />
+    <rect x="100" y="181" width="140" height="105" fill="#c9a84c" />
+    <rect x="240" y="181" width="140" height="105" fill="url(#strat-q4)" />
+  </g>
+  <rect x="100" y="76" width="280" height="210" rx="14" fill="none" stroke="#1e3a5f" stroke-opacity="0.12" stroke-width="2" />
+  <line x1="240" y1="80" x2="240" y2="283" stroke="#ffffff" stroke-width="4" stroke-linecap="round" />
+  <line x1="104" y1="181" x2="376" y2="181" stroke="#ffffff" stroke-width="4" stroke-linecap="round" />
+
+  <!-- Forces -->
+  <circle cx="170" cy="128" r="23" fill="#ffffff" filter="url(#strat-shadow-sm)" />
+  <path d="M170,116 L179,131 L173.5,131 L173.5,141 L166.5,141 L166.5,131 L161,131 Z" fill="#c9a84c" />
+
+  <!-- Faiblesses -->
+  <circle cx="310" cy="128" r="23" fill="#ffffff" filter="url(#strat-shadow-sm)" />
+  <path d="M310,141 L301,126 L306.5,126 L306.5,116 L313.5,116 L313.5,126 L319,126 Z" fill="#64748b" />
+
+  <!-- Opportunités -->
+  <circle cx="170" cy="233" r="23" fill="#ffffff" filter="url(#strat-shadow-sm)" />
+  <path d="M170,218 L174,228 L184,231 L174,234 L170,244 L166,234 L156,231 L166,228 Z" fill="#c9a84c" />
+
+  <!-- Menaces -->
+  <circle cx="310" cy="233" r="23" fill="#ffffff" filter="url(#strat-shadow-sm)" />
+  <path d="M310,218 L322,240 L298,240 Z" fill="none" stroke="#1e3a5f" stroke-width="2.4" stroke-linejoin="round" />
+  <line x1="310" y1="225" x2="310" y2="232" stroke="#1e3a5f" stroke-width="2.4" stroke-linecap="round" />
+  <circle cx="310" cy="236" r="1.4" fill="#1e3a5f" />
+</svg>

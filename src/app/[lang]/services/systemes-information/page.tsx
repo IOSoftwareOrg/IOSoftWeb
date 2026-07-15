@@ -23,6 +23,7 @@ const data = {
   fr: {
     label: "Nos services", title: "Systèmes d'information",
     hero: "Nous intervenons en MOA aussi bien qu'en MOE et prenons en charge tous vos projets, de leurs lignes budgétaires à leur réalisation.",
+    illustrationAlt: "Illustration abstraite de nœuds serveurs et systèmes interconnectés",
     s1Label: "Service 01", s1Title: "Maintenance informatique",
     s1Text: "Notre prestation de maintenance informatique vous permet de vous affranchir de la gestion de votre parc informatique. Que vous possédiez des ordinateurs de bureau, des ordinateurs portables, une ou plusieurs imprimantes, un réseau local (LAN et/ou WAN), nous vous garantissons le bon état de fonctionnement de votre matériel.",
     s1CovLabel: "Notre couverture",
@@ -46,6 +47,7 @@ const data = {
   en: {
     label: "Our services", title: "Information Systems",
     hero: "We act as both business owner (MOA) and technical implementer (MOE), taking full responsibility for your projects from budget lines to delivery.",
+    illustrationAlt: "Abstract illustration of interconnected server nodes and systems",
     s1Label: "Service 01", s1Title: "IT maintenance",
     s1Text: "Our IT maintenance service allows you to delegate the management of your IT infrastructure. Whether you have desktop computers, laptops, printers, or a local network (LAN and/or WAN), we guarantee the proper functioning of your equipment.",
     s1CovLabel: "Our coverage",
@@ -76,14 +78,17 @@ export default async function SIPage({ params }: { params: Promise<{ lang: strin
   return (
     <>
       <section className="bg-[#1e3a5f] pt-32 pb-16">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex items-center gap-2 text-white/50 text-sm mb-6">
-            <Link href={`/${lang}/services`} className="text-white hover:text-white/80 transition-colors">Services</Link>
-            <span>/</span><span className="text-white/80">{d.title}</span>
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-[1.3fr_1fr] md:items-center gap-10">
+          <div>
+            <div className="flex items-center gap-2 text-white/50 text-sm mb-6">
+              <Link href={`/${lang}/services`} className="text-white hover:text-white/80 transition-colors">Services</Link>
+              <span>/</span><span className="text-white/80">{d.title}</span>
+            </div>
+            <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">{d.label}</span>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-6">{d.title}</h1>
+            <p className="text-white/70 max-w-2xl leading-relaxed">{d.hero}</p>
           </div>
-          <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">{d.label}</span>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-6">{d.title}</h1>
-          <p className="text-white/70 max-w-2xl leading-relaxed">{d.hero}</p>
+          <img src="/illustrations/systemes-information.svg" alt={d.illustrationAlt} width={480} height={360} className="hidden md:block w-full h-auto" />
         </div>
       </section>
 

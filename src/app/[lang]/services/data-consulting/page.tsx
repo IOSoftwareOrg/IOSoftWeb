@@ -23,6 +23,7 @@ const data = {
   fr: {
     label: "Nos services",
     hero: "Dans un monde où la donnée est devenue un moteur de transformation digitale, nous aidons les entreprises à collecter, traiter, analyser et valoriser leurs informations pour booster leur compétitivité et leur capacité d'innovation.",
+    illustrationAlt: "Illustration abstraite de points de données convergeant vers un tableau de bord analytique",
     domainesTitle: "Nos domaines d'intervention",
     domaines: [
       { title: "Audit des données", desc: "Identifier les sources existantes (ERP, CRM, IoT, etc.), évaluer leur qualité et analyser leur pertinence pour vos objectifs métiers." },
@@ -61,6 +62,7 @@ const data = {
   en: {
     label: "Our services",
     hero: "In a world where data has become a driver of digital transformation, we help companies collect, process, analyse and leverage their information to boost competitiveness and innovation capacity.",
+    illustrationAlt: "Abstract illustration of data points converging into an analytics dashboard",
     domainesTitle: "Our areas of intervention",
     domaines: [
       { title: "Data audit", desc: "Identify existing sources (ERP, CRM, IoT, etc.), assess their quality and analyse their relevance to your business objectives." },
@@ -106,14 +108,17 @@ export default async function DataConsultingPage({ params }: { params: Promise<{
   return (
     <>
       <section className="bg-[#1e3a5f] pt-32 pb-16">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex items-center gap-2 text-white/50 text-sm mb-6">
-            <Link href={`/${lang}/services`} className="text-white hover:text-white/80 transition-colors">Services</Link>
-            <span>/</span><span className="text-white/80">Data Consulting</span>
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-[1.3fr_1fr] md:items-center gap-10">
+          <div>
+            <div className="flex items-center gap-2 text-white/50 text-sm mb-6">
+              <Link href={`/${lang}/services`} className="text-white hover:text-white/80 transition-colors">Services</Link>
+              <span>/</span><span className="text-white/80">Data Consulting</span>
+            </div>
+            <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">{d.label}</span>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-6">Data Consulting</h1>
+            <p className="text-white/70 max-w-2xl leading-relaxed">{d.hero}</p>
           </div>
-          <span className="text-[#c9a84c] text-sm font-semibold uppercase tracking-widest">{d.label}</span>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-6">Data Consulting</h1>
-          <p className="text-white/70 max-w-2xl leading-relaxed">{d.hero}</p>
+          <img src="/illustrations/data-consulting.svg" alt={d.illustrationAlt} width={480} height={360} className="hidden md:block w-full h-auto" />
         </div>
       </section>
 

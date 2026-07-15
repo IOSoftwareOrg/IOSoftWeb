@@ -12,6 +12,21 @@ const serviceSlugsList = [
   "redaction-technique", "developpement-logiciel", "web-agents-autonomes",
 ];
 
+// Slugs d'articles disposant d'une illustration dans public/illustrations/ (voir src/app/[lang]/blog/[slug]/page.tsx)
+const illustratedArticleSlugs = new Set([
+  "claude-anthropic-best-practices",
+  "ia-management-adapter-organisation",
+  "takt-time-optimise-gerer-backlog-demandes",
+  "controle-de-gestion-pilier-performance",
+  "effet-de-levier-financier",
+  "matrice-swot-analyse-strategique",
+  "le-marketing-definition",
+  "securiser-son-site-internet",
+  "pib",
+  "transmission-entreprise-artisanale",
+  "technostructure-organisation-entreprise",
+]);
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = locales.flatMap((lang) => [
     { url: `${BASE_URL}/${lang}`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 1 },
@@ -25,6 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.8,
+      images: [`${BASE_URL}/illustrations/${slug}.svg`],
     })),
   ]);
 
@@ -33,7 +49,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   );
 
   const articleRoutes = locales.flatMap((lang) =>
-    articles.map((a) => ({ url: `${BASE_URL}/${lang}/blog/${a.slug}`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.6 }))
+    articles.map((a) => ({
+      url: `${BASE_URL}/${lang}/blog/${a.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "yearly" as const,
+      priority: 0.6,
+      ...(illustratedArticleSlugs.has(a.slug) ? { images: [`${BASE_URL}/illustrations/${a.slug}.svg`] } : {}),
+    }))
   );
 
   return [...staticRoutes, ...logicielRoutes, ...articleRoutes];
