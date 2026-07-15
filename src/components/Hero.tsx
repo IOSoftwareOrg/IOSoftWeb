@@ -35,7 +35,7 @@ const t = {
   },
 };
 
-export default function Hero({ lang: langProp = "fr" }: { lang?: Locale }) {
+export default function Hero({}: { lang?: Locale } = {}) {
   const sectionRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
   // Dérive la locale depuis l'URL pour éviter la désynchronisation après hydration

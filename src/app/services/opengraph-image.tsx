@@ -10,7 +10,7 @@ export default function Image() {
     (
       <div style={{ background: "#1e3a5f", width: "100%", height: "100%", display: "flex", flexDirection: "column", alignItems: "flex-start", justifyContent: "center", padding: "80px" }}>
         <div style={{ color: "#c9a84c", fontSize: "24px", fontWeight: "bold", textTransform: "uppercase", letterSpacing: "4px", marginBottom: "24px" }}>Ce que nous faisons</div>
-        <div style={{ color: "white", fontSize: "64px", fontWeight: "bold", lineHeight: 1.1, marginBottom: "32px" }}>Nos domaines<br />d'expertise</div>
+        <div style={{ color: "white", fontSize: "64px", fontWeight: "bold", lineHeight: 1.1, marginBottom: "32px" }}>Nos domaines<br />d&apos;expertise</div>
         <div style={{ color: "rgba(255,255,255,0.6)", fontSize: "28px" }}>Management • Finance • Data • Process Mining • SI • Développement</div>
         <div style={{ position: "absolute", bottom: "40px", left: "80px", display: "flex", alignItems: "center" }}>
           <span style={{ color: "#c9a84c", fontSize: "28px", fontFamily: "monospace", fontWeight: "bold" }}>{"</>"}</span>
