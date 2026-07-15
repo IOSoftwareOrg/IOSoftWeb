@@ -66,9 +66,9 @@ export default function Contact({ hideHeader, lang = "fr" }: { hideHeader?: bool
 
   useEffect(() => {
     if (state.success) {
-      sendGTMEvent({ event: "generate_lead" });
+      sendGTMEvent({ event: "generate_lead", subject, lang });
     }
-  }, [state.success]);
+  }, [state.success, subject, lang]);
 
   useEffect(() => {
     const form = formRef.current;
