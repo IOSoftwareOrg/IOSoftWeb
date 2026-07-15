@@ -40,7 +40,7 @@ const leadArgsSchema = z.object({
   name: z.string().min(1).max(150),
   email: z.string().email(),
   company: z.string().max(200).optional(),
-  phone: z.string().max(30).optional(),
+  phone: z.string().min(1).max(30),
   service_slug: z.string().max(100).optional(),
   need_summary: z.string().min(1).max(2000),
 });
@@ -55,14 +55,14 @@ const submitLeadTool = {
   function: {
     name: "submit_qualified_lead",
     description:
-      "Enregistre un lead qualifié une fois que le nom, l'email et le besoin du visiteur ont été récoltés dans la conversation. À appeler une seule fois, quand ces informations sont réunies.",
+      "Enregistre un lead qualifié une fois que le nom, l'email, le téléphone et le besoin du visiteur ont été récoltés dans la conversation. À appeler une seule fois, quand ces informations sont réunies.",
     parameters: {
       type: "object",
       properties: {
         name: { type: "string", description: "Nom (et prénom si donné) du visiteur" },
         email: { type: "string", description: "Adresse email du visiteur" },
         company: { type: "string", description: "Société du visiteur, si mentionnée" },
-        phone: { type: "string", description: "Téléphone du visiteur, si mentionné" },
+        phone: { type: "string", description: "Téléphone du visiteur, tel que donné dans la conversation" },
         service_slug: {
           type: "string",
           enum: serviceSlugs,
@@ -70,7 +70,7 @@ const submitLeadTool = {
         },
         need_summary: { type: "string", description: "Résumé concis (2-3 phrases) du besoin exprimé par le visiteur" },
       },
-      required: ["name", "email", "need_summary"],
+      required: ["name", "email", "phone", "need_summary"],
     },
   },
 };
@@ -89,15 +89,15 @@ ${serviceList}
 
 Your goals, in order:
 1. Understand the visitor's need in a few exchanges: what problem they're facing, which of the services above is relevant.
-2. Once the need is clear, collect their name and email (company and phone are welcome but optional) so a consultant can follow up.
-3. As soon as you have name, email, and a summary of the need, call the submit_qualified_lead tool. Call it only once, only when you actually have this information.
+2. Once the need is clear, collect their name, email and phone number (company is welcome but optional) so a consultant can follow up.
+3. As soon as you have name, email, phone, and a summary of the need, call the submit_qualified_lead tool. Call it only once, only when you actually have this information.
 
 Language:
 - Always reply in the same language the visitor is currently writing in, and switch immediately (without commentary) if they switch language mid-conversation. Default to ${defaultLangName} for your very first message, before the visitor has written anything.
 - Translate service names and descriptions into that language as needed — don't stick to the English text above if the visitor is writing in another language.
 
 Strict rules:
-- NEVER invent or guess a name or email. Only call submit_qualified_lead if the visitor themselves typed their name and email out in the conversation — copy them exactly as given. If you don't have them yet, simply keep asking.
+- NEVER invent or guess a name, email, or phone number. Only call submit_qualified_lead if the visitor themselves typed their name, email, and phone number out in the conversation — copy them exactly as given. If you don't have them yet, simply keep asking.
 - Never give a price quote, a delivery deadline, or any contractual commitment. If asked, say a consultant will discuss this directly with them.
 - Stay strictly within the scope of IO Software's services listed above. Politely redirect if asked about anything else.
 - Always be transparent that you are an AI assistant, not a human.
@@ -113,15 +113,15 @@ ${serviceList}
 
 Tes objectifs, dans l'ordre :
 1. Comprendre en quelques échanges le besoin du visiteur : quel problème il rencontre, quel service ci-dessus est pertinent.
-2. Une fois le besoin clair, récupérer son nom et son email (société et téléphone bienvenus mais facultatifs) pour qu'un consultant puisse le recontacter.
-3. Dès que tu as le nom, l'email et un résumé du besoin, appelle l'outil submit_qualified_lead. Ne l'appelle qu'une seule fois, seulement quand tu disposes réellement de ces informations.
+2. Une fois le besoin clair, récupérer son nom, son email et son numéro de téléphone (société bienvenue mais facultative) pour qu'un consultant puisse le recontacter.
+3. Dès que tu as le nom, l'email, le téléphone et un résumé du besoin, appelle l'outil submit_qualified_lead. Ne l'appelle qu'une seule fois, seulement quand tu disposes réellement de ces informations.
 
 Langue :
 - Réponds toujours dans la langue utilisée par le visiteur dans son dernier message, et change immédiatement de langue (sans commentaire) s'il en change en cours de conversation. Par défaut, utilise le ${defaultLangName} pour ton tout premier message, avant que le visiteur n'ait écrit quoi que ce soit.
 - Traduis les noms et descriptions de services dans cette langue si besoin — ne reste pas figé sur le texte français ci-dessus si le visiteur écrit dans une autre langue.
 
 Règles strictes :
-- N'invente et ne devine JAMAIS un nom ou un email. N'appelle submit_qualified_lead que si le visiteur a lui-même écrit son nom et son email en toutes lettres dans la conversation — recopie-les exactement tels qu'il les a donnés. Si tu ne les as pas encore, continue simplement à les demander.
+- N'invente et ne devine JAMAIS un nom, un email ou un numéro de téléphone. N'appelle submit_qualified_lead que si le visiteur a lui-même écrit son nom, son email et son téléphone en toutes lettres dans la conversation — recopie-les exactement tels qu'il les a donnés. Si tu ne les as pas encore, continue simplement à les demander.
 - Ne jamais donner de devis, de délai, ou d'engagement contractuel. Si on te le demande, dis qu'un consultant en discutera directement avec le visiteur.
 - Rester strictement dans le périmètre des services IO Software listés ci-dessus. Rediriger poliment si on te pose une autre question.
 - Toujours être transparent sur le fait que tu es un assistant IA, pas un humain.
@@ -234,6 +234,15 @@ function conversationHasEmail(history: { role: string; content: string }[], emai
   return history.some((m) => m.role === "user" && m.content.toLowerCase().includes(needle));
 }
 
+// Même garde-fou que conversationHasEmail, mais tolérant aux formats (espaces, points, indicatif
+// +33 vs 0...) : on compare les 8 derniers chiffres plutôt que la chaîne exacte.
+function conversationHasPhone(history: { role: string; content: string }[], phone: string): boolean {
+  const digits = phone.replace(/\D/g, "");
+  if (digits.length < 6) return false;
+  const needle = digits.slice(-8);
+  return history.some((m) => m.role === "user" && m.content.replace(/\D/g, "").includes(needle));
+}
+
 async function notifyLead(
   lead: z.infer<typeof leadArgsSchema>,
   transcript: { role: string; content: string }[],
@@ -319,8 +328,8 @@ export async function POST(request: Request) {
 
   const askForContactFallback =
     lang === "en"
-      ? "Could you confirm your name and email address so I can pass your request on to a consultant?"
-      : "Pouvez-vous me confirmer votre nom et votre adresse email pour que je transmette votre demande à un consultant ?";
+      ? "Could you confirm your name, email address and phone number so I can pass your request on to a consultant?"
+      : "Pouvez-vous me confirmer votre nom, votre adresse email et votre numéro de téléphone pour que je transmette votre demande à un consultant ?";
 
   // Le lead a déjà été qualifié et transmis lors d'un tour précédent de cette conversation :
   // on continue à discuter normalement, sans jamais rappeler l'outil de qualification.
@@ -355,8 +364,8 @@ export async function POST(request: Request) {
       leadArgs = null;
     }
 
-    if (!leadArgs || !conversationHasEmail(history, leadArgs.email)) {
-      console.warn("Chat: tool call écarté (email absent de la conversation) —", toolCall.function.arguments);
+    if (!leadArgs || !conversationHasEmail(history, leadArgs.email) || !conversationHasPhone(history, leadArgs.phone)) {
+      console.warn("Chat: tool call écarté (email ou téléphone absent de la conversation) —", toolCall.function.arguments);
       return NextResponse.json({ reply: firstMessage?.content || askForContactFallback, qualified: false });
     }
 
