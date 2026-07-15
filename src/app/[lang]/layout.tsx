@@ -32,9 +32,6 @@ export async function generateMetadata({
     description: isFr
       ? "Cabinet de conseil basé à Marseille. Stratégie, Organisation, Process, Data et IA. Plus de 30 ans d'expérience."
       : "Consulting firm based in Marseille. Strategy, Organisation, Process, Data & AI. Over 30 years of experience.",
-    keywords: isFr
-      ? ["conseil entreprise", "stratégie", "data consulting", "process mining", "IA", "agents autonomes", "développement web", "Marseille"]
-      : ["consulting", "strategy", "data consulting", "process mining", "AI", "autonomous agents", "web development", "Marseille"],
     openGraph: {
       type: "website",
       locale: isFr ? "fr_FR" : "en_US",
