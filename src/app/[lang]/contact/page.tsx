@@ -21,9 +21,16 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   return { title: meta[lang].title, description: meta[lang].description, alternates: { canonical: `${BASE_URL}/${lang}/contact`, languages: { fr: `${BASE_URL}/fr/contact`, en: `${BASE_URL}/en/contact` } } };
 }
 
-export default async function ContactPage({ params }: { params: Promise<{ lang: string }> }) {
+export default async function ContactPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ lang: string }>;
+  searchParams: Promise<{ subject?: string }>;
+}) {
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
+  const { subject } = await searchParams;
   const d = hero[lang as Locale];
 
   return (
@@ -35,7 +42,7 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
           <p className="text-white/70 mt-4 max-w-xl">{d.subtitle}</p>
         </div>
       </section>
-      <Contact hideHeader lang={lang as Locale} />
+      <Contact hideHeader lang={lang as Locale} initialSubject={subject} />
     </>
   );
 }
