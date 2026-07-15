@@ -3,7 +3,6 @@ import { hasLocale, locales, type Locale } from "@/lib/i18n";
 import type { Metadata } from "next";
 import Link from "next/link";
 import RelatedServices from "@/components/RelatedServices";
-import { WebAgentsIllustration } from "@/components/illustrations";
 
 const BASE_URL = "https://www.io-software.fr";
 
@@ -264,7 +263,7 @@ export default async function ServicePage({ params }: { params: Promise<{ lang: 
             <h1 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-6">{c.title}</h1>
             <p className="text-white/70 max-w-2xl leading-relaxed">{c.description}</p>
           </div>
-          <WebAgentsIllustration className="hidden md:block w-full h-auto" label={c.illustrationAlt} />
+          <img src="/illustrations/web-agents-autonomes.svg" alt={c.illustrationAlt} width={480} height={360} className="hidden md:block w-full h-auto" />
         </div>
       </section>
 

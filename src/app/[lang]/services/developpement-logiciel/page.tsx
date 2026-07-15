@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import RelatedServices from "@/components/RelatedServices";
-import { SoftwareDevIllustration } from "@/components/illustrations";
 import { hasLocale, locales, type Locale } from "@/lib/i18n";
 import { logicielsSegment } from "@/lib/routes";
 import { notFound } from "next/navigation";
@@ -106,7 +105,7 @@ export default async function DevLogicielPage({ params }: { params: Promise<{ la
             <h1 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-6">{d.title}</h1>
             <p className="text-white/70 max-w-2xl leading-relaxed">{d.hero}</p>
           </div>
-          <SoftwareDevIllustration className="hidden md:block w-full h-auto" label={d.illustrationAlt} />
+          <img src="/illustrations/developpement-logiciel.svg" alt={d.illustrationAlt} width={480} height={360} className="hidden md:block w-full h-auto" />
         </div>
       </section>
 

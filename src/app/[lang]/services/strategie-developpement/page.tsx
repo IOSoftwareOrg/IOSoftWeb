@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import RelatedServices from "@/components/RelatedServices";
-import { StrategyIllustration } from "@/components/illustrations";
 import { hasLocale, locales, type Locale } from "@/lib/i18n";
 import { notFound } from "next/navigation";
 
@@ -28,7 +27,7 @@ const data = {
     label: "Nos services", title: "Stratégie & Développement",
     quote: "« Connaissez l'ennemi et connaissez vous vous-même ; en cent batailles vous ne courrez jamais aucun danger. »",
     quoteAuthor: "— Sun Tzu, L'Art de la guerre",
-    illustrationAlt: "Illustration abstraite d'une trajectoire de croissance ascendante avec repère de cap stratégique",
+    illustrationAlt: "Illustration d'une grille d'analyse SWOT présentant ses quatre quadrants : forces, faiblesses, opportunités, menaces",
     intro1: "Dès le milieu des années 1960, de nombreux modèles d'analyse stratégique sont venus des États-Unis (LCAG, SWOT, etc.). Depuis, la réflexion stratégique n'a cessé d'évoluer, de s'affiner et de s'enrichir de nouvelles méthodes innovantes.",
     intro2: "Notre activité de consulting en stratégie s'appuie sur une démarche cohérente inspirée des dernières méthodes d'analyse stratégique, enrichie par la puissance de la donnée. À l'issue de notre analyse, vous aurez une vision claire de l'avenir de votre entreprise — croissance interne, croissance externe, relocalisation, évolution de gamme.",
     etapesTitle: "Notre démarche en 5 étapes",
@@ -62,7 +61,7 @@ const data = {
     label: "Our services", title: "Strategy & Development",
     quote: '"Know the enemy and know yourself; in a hundred battles you will never be in peril."',
     quoteAuthor: "— Sun Tzu, The Art of War",
-    illustrationAlt: "Abstract illustration of an ascending growth trajectory with a strategic compass marker",
+    illustrationAlt: "Illustration of a SWOT analysis grid showing its four quadrants: strengths, weaknesses, opportunities, threats",
     intro1: "Since the mid-1960s, many strategic analysis models have emerged from the United States (LCAG, SWOT, etc.). Since then, strategic thinking has continued to evolve, be refined and be enriched by new innovative methods.",
     intro2: "Our strategy consulting approach is built on a coherent methodology inspired by the latest strategic analysis methods, enriched by the power of data. By the end of our analysis, you will have a clear vision of your company's future — internal growth, external growth, relocation, product line evolution.",
     etapesTitle: "Our 5-step approach",
@@ -115,7 +114,13 @@ export default async function StrategiePage({ params }: { params: Promise<{ lang
               <footer className="mt-2 text-white/40 not-italic text-sm">{d.quoteAuthor}</footer>
             </blockquote>
           </div>
-          <StrategyIllustration className="hidden md:block w-full h-auto" label={d.illustrationAlt} />
+          <img
+            src="/illustrations/strategie-developpement.svg"
+            alt={d.illustrationAlt}
+            width={480}
+            height={360}
+            className="hidden md:block w-full h-auto"
+          />
         </div>
       </section>
 

@@ -13,99 +13,86 @@ import {
 } from "@/lib/articles";
 import type { Metadata } from "next";
 import { hasLocale, locales, type Locale } from "@/lib/i18n";
-import {
-  ClaudeBestPracticesIllustration,
-  AiManagementIllustration,
-  TaktTimeIllustration,
-  ManagementControlIllustration,
-  FinancialLeverageIllustration,
-  SwotMatrixIllustration,
-  MarketingIllustration,
-  SecurityIllustration,
-  GdpIllustration,
-  BusinessTransferIllustration,
-  TechnostructureIllustration,
-} from "@/components/illustrations";
 
 const BASE_URL = "https://www.io-software.fr";
 const ogLocale = { fr: "fr_FR", en: "en_US" } as const;
 
-const articleIllustrations: Record<string, { Illustration: typeof ClaudeBestPracticesIllustration; alt: Record<Locale, string> }> = {
+const articleIllustrations: Record<string, { file: string; alt: Record<Locale, string> }> = {
   "claude-anthropic-best-practices": {
-    Illustration: ClaudeBestPracticesIllustration,
+    file: "claude-anthropic-best-practices.svg",
     alt: {
-      fr: "Illustration abstraite d'une bulle de dialogue reliée à un réseau de neurones",
-      en: "Abstract illustration of a chat bubble connected to a neural network",
+      fr: "Bulle de conversation reliée à un panneau de code, représentant l'utilisation de l'API Claude",
+      en: "Chat bubble connected to a code panel, representing use of the Claude API",
     },
   },
   "ia-management-adapter-organisation": {
-    Illustration: AiManagementIllustration,
+    file: "ia-management-adapter-organisation.svg",
     alt: {
-      fr: "Illustration abstraite d'un organigramme avec un nœud amplifié par une étincelle IA",
-      en: "Abstract illustration of an org chart with one node amplified by an AI spark",
+      fr: "Organigramme dont le nœud sommital est une étincelle d'intelligence artificielle",
+      en: "Org chart whose top node is an artificial intelligence spark",
     },
   },
   "takt-time-optimise-gerer-backlog-demandes": {
-    Illustration: TaktTimeIllustration,
+    file: "takt-time-optimise-gerer-backlog-demandes.svg",
     alt: {
-      fr: "Illustration abstraite d'un flux segmenté avec un chronomètre",
-      en: "Abstract illustration of a segmented flow with a stopwatch",
+      fr: "Chronomètre au-dessus d'une file de tickets de support",
+      en: "Stopwatch above a queue of support tickets",
     },
   },
   "controle-de-gestion-pilier-performance": {
-    Illustration: ManagementControlIllustration,
+    file: "controle-de-gestion-pilier-performance.svg",
     alt: {
-      fr: "Illustration abstraite d'une jauge de pilotage avec barres d'indicateurs clés",
-      en: "Abstract illustration of a steering gauge with key performance bars",
+      fr: "Comparaison de barres entre budget prévisionnel et réalisations sur quatre périodes",
+      en: "Bar comparison between planned budget and actuals across four periods",
     },
   },
   "effet-de-levier-financier": {
-    Illustration: FinancialLeverageIllustration,
+    file: "effet-de-levier-financier.svg",
     alt: {
-      fr: "Illustration abstraite d'un levier financier avec une courbe ascendante",
-      en: "Abstract illustration of a financial lever with an ascending curve",
+      fr: "Levier financier amplifiant un rendement via une flèche ascendante",
+      en: "Financial lever amplifying a return via an ascending arrow",
     },
   },
   "matrice-swot-analyse-strategique": {
-    Illustration: SwotMatrixIllustration,
+    file: "matrice-swot-analyse-strategique.svg",
     alt: {
-      fr: "Illustration abstraite d'une grille en quatre quadrants",
-      en: "Abstract illustration of a four-quadrant grid",
+      fr: "Quatre colonnes représentant les forces, faiblesses, opportunités et menaces d'une matrice SWOT",
+      en: "Four columns representing the strengths, weaknesses, opportunities and threats of a SWOT matrix",
     },
   },
   "le-marketing-definition": {
-    Illustration: MarketingIllustration,
+    file: "le-marketing-definition.svg",
     alt: {
-      fr: "Illustration abstraite d'un mégaphone et d'une cible avec cercles concentriques",
-      en: "Abstract illustration of a megaphone and a target with concentric circles",
+      fr: "Mégaphone diffusant un message vers une cible concentrique",
+      en: "Megaphone broadcasting a message toward a concentric target",
     },
   },
   "securiser-son-site-internet": {
-    Illustration: SecurityIllustration,
+    file: "securiser-son-site-internet.svg",
     alt: {
-      fr: "Illustration abstraite d'un cadenas protégeant une fenêtre de navigateur",
-      en: "Abstract illustration of a padlock protecting a browser window",
+      fr: "Fenêtre de navigateur protégée par un badge bouclier et cadenas",
+      en: "Browser window protected by a shield-and-padlock badge",
     },
   },
   pib: {
-    Illustration: GdpIllustration,
+    file: "pib.svg",
     alt: {
-      fr: "Illustration abstraite d'un globe surmonté d'une courbe économique ascendante",
-      en: "Abstract illustration of a globe topped with an ascending economic curve",
+      fr: "Globe terrestre et graphique en barres à la courbe ascendante",
+      en: "Globe and bar chart with an ascending trend line",
     },
   },
   "transmission-entreprise-artisanale": {
-    Illustration: BusinessTransferIllustration,
+    file: "transmission-entreprise-artisanale.svg",
     alt: {
-      fr: "Illustration abstraite d'un relais générationnel entre deux cercles",
-      en: "Abstract illustration of a generational handover between two circles",
+      fr: "Une clé dorée remise d'une main à une autre",
+      en: "A golden key passed from one hand to another",
     },
   },
   "technostructure-organisation-entreprise": {
-    Illustration: TechnostructureIllustration,
+    file: "technostructure-organisation-entreprise.svg",
     alt: {
-      fr: "Illustration abstraite d'une pyramide hiérarchique de nœuds connectés",
-      en: "Abstract illustration of a hierarchical pyramid of connected nodes",
+      fr: "Pyramide hiérarchique à trois niveaux, chacun marqué d'une icône d'engrenage",
+      en: "Three-tier hierarchical pyramid, each level marked with a gear icon",
     },
   },
 };
@@ -188,7 +175,13 @@ export default async function ArticlePage({ params }: { params: Promise<{ lang: 
           <h1 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">{title}</h1>
           <p className="text-white/60 text-sm">{displayDate} · IO Software</p>
           {illustration && (
-            <illustration.Illustration className="w-full h-auto mt-8 rounded-lg" label={illustration.alt[lang as Locale]} />
+            <img
+              src={`/illustrations/${illustration.file}`}
+              alt={illustration.alt[lang as Locale]}
+              width={480}
+              height={200}
+              className="w-full h-auto mt-8 rounded-lg"
+            />
           )}
         </div>
       </section>

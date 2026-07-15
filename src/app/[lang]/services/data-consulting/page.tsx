@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import RelatedServices from "@/components/RelatedServices";
-import { DataConsultingIllustration } from "@/components/illustrations";
 import { hasLocale, locales, type Locale } from "@/lib/i18n";
 import { notFound } from "next/navigation";
 
@@ -119,7 +118,7 @@ export default async function DataConsultingPage({ params }: { params: Promise<{
             <h1 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-6">Data Consulting</h1>
             <p className="text-white/70 max-w-2xl leading-relaxed">{d.hero}</p>
           </div>
-          <DataConsultingIllustration className="hidden md:block w-full h-auto" label={d.illustrationAlt} />
+          <img src="/illustrations/data-consulting.svg" alt={d.illustrationAlt} width={480} height={360} className="hidden md:block w-full h-auto" />
         </div>
       </section>
 

@@ -1,0 +1,37 @@
+<svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="iamgmt-illus-title iamgmt-illus-desc">
+  <title id="iamgmt-illus-title">Organigramme avec un nœud d'intelligence artificielle au sommet</title>
+  <desc id="iamgmt-illus-desc">Un organigramme dont le nœud sommital, représenté par une étincelle, est relié à trois membres de l'équipe, symbolisant l'IA qui redistribue les décisions dans l'organisation.</desc>
+  <defs>
+    <filter id="iamgmt-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0a1830" flood-opacity="0.35" />
+    </filter>
+    <filter id="iamgmt-glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="24" />
+    </filter>
+  </defs>
+
+  <circle cx="240" cy="100" r="110" fill="#c9a84c" opacity="0.15" filter="url(#iamgmt-glow)" />
+
+  <g filter="url(#iamgmt-shadow)">
+    <rect x="40" y="20" width="400" height="160" rx="16" fill="#ffffff" />
+  </g>
+
+  <line x1="240" y1="92" x2="150" y2="123" stroke="#cbd5e1" stroke-width="2.5" />
+  <line x1="240" y1="92" x2="240" y2="133" stroke="#cbd5e1" stroke-width="2.5" />
+  <line x1="240" y1="92" x2="330" y2="123" stroke="#cbd5e1" stroke-width="2.5" />
+
+  <circle cx="150" cy="140" r="17" fill="#ffffff" stroke="#1e3a5f" stroke-width="2" />
+  <circle cx="150" cy="135" r="4.8" fill="#1e3a5f" />
+  <ellipse cx="150" cy="149" rx="7" ry="6" fill="#1e3a5f" />
+
+  <circle cx="240" cy="150" r="17" fill="#ffffff" stroke="#1e3a5f" stroke-width="2" />
+  <circle cx="240" cy="145" r="4.8" fill="#1e3a5f" />
+  <ellipse cx="240" cy="159" rx="7" ry="6" fill="#1e3a5f" />
+
+  <circle cx="330" cy="140" r="17" fill="#ffffff" stroke="#1e3a5f" stroke-width="2" />
+  <circle cx="330" cy="135" r="4.8" fill="#1e3a5f" />
+  <ellipse cx="330" cy="149" rx="7" ry="6" fill="#1e3a5f" />
+
+  <circle cx="240" cy="70" r="22" fill="#c9a84c" />
+  <path d="M240,58 L243,66 L251,68 L243,70 L240,78 L237,70 L229,68 L237,66 Z" fill="#ffffff" />
+</svg>
