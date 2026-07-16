@@ -31,7 +31,7 @@ export default async function MentionsLegalesPage({ params }: { params: Promise<
           <h2>Propriété intellectuelle</h2>
           <p>La structure du site, les logiciels, textes, images, logos et tout autre contenu sont la propriété exclusive d&apos;<strong>IO Software SAS</strong> et sont protégés par le droit de la propriété intellectuelle. Les illustrations présentes sur le site sont des créations originales réalisées spécifiquement pour IO Software SAS et ne reproduisent aucune œuvre ou visuel tiers protégé.</p>
           <h2>Données personnelles</h2>
-          <p>Ce site est déclaré auprès de la CNIL sous le numéro <strong>1811247</strong>. Les informations communiquées via les formulaires de contact sont utilisées exclusivement à des fins de gestion administrative et commerciale.</p>
+          <p>Les informations communiquées via les formulaires de contact sont utilisées exclusivement à des fins de gestion administrative et commerciale.</p>
           <h2>Cookies</h2>
           <p>Ce site utilise des cookies pour enregistrer des informations relatives à la navigation. Vous pouvez paramétrer votre navigateur pour refuser les cookies.</p>
           <h2>Juridiction</h2>
