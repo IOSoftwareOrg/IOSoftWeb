@@ -17,25 +17,25 @@
   </g>
 
   <clipPath id="secu-browser-clip">
-    <rect x="90" y="50" width="220" height="110" rx="10" />
+    <rect x="119" y="50" width="220" height="110" rx="10" />
   </clipPath>
   <g clip-path="url(#secu-browser-clip)">
-    <rect x="90" y="50" width="220" height="110" fill="#ffffff" />
-    <rect x="90" y="50" width="220" height="24" fill="#f1f5f9" />
-    <circle cx="104" cy="62" r="3" fill="#cbd5e1" />
-    <circle cx="118" cy="62" r="3" fill="#cbd5e1" />
-    <circle cx="132" cy="62" r="3" fill="#cbd5e1" />
-    <rect x="144" y="56" width="140" height="12" rx="6" fill="#ffffff" stroke="#e2e8f0" />
-    <circle cx="152" cy="62" r="2" fill="#c9a84c" />
-    <rect x="104" y="90" width="150" height="8" rx="4" fill="#94a3b8" opacity="0.4" />
-    <rect x="104" y="106" width="110" height="8" rx="4" fill="#94a3b8" opacity="0.3" />
-    <rect x="104" y="122" width="130" height="8" rx="4" fill="#94a3b8" opacity="0.3" />
-    <rect x="104" y="138" width="90" height="8" rx="4" fill="#94a3b8" opacity="0.3" />
+    <rect x="119" y="50" width="220" height="110" fill="#ffffff" />
+    <rect x="119" y="50" width="220" height="24" fill="#f1f5f9" />
+    <circle cx="133" cy="62" r="3" fill="#cbd5e1" />
+    <circle cx="147" cy="62" r="3" fill="#cbd5e1" />
+    <circle cx="161" cy="62" r="3" fill="#cbd5e1" />
+    <rect x="173" y="56" width="140" height="12" rx="6" fill="#ffffff" stroke="#e2e8f0" />
+    <circle cx="181" cy="62" r="2" fill="#c9a84c" />
+    <rect x="133" y="90" width="150" height="8" rx="4" fill="#94a3b8" opacity="0.4" />
+    <rect x="133" y="106" width="110" height="8" rx="4" fill="#94a3b8" opacity="0.3" />
+    <rect x="133" y="122" width="130" height="8" rx="4" fill="#94a3b8" opacity="0.3" />
+    <rect x="133" y="138" width="90" height="8" rx="4" fill="#94a3b8" opacity="0.3" />
   </g>
-  <rect x="90" y="50" width="220" height="110" rx="10" fill="none" stroke="#e2e8f0" />
+  <rect x="119" y="50" width="220" height="110" rx="10" fill="none" stroke="#e2e8f0" />
 
-  <path d="M300,87 L332,99 L332,127 C332,149 316,163 300,171 C284,163 268,149 268,127 L268,99 Z" fill="#c9a84c" stroke="#ffffff" stroke-width="3" />
-  <path d="M293,129 v-9 a7,7 0 0 1 14,0 v9" fill="none" stroke="#ffffff" stroke-width="3.2" />
-  <rect x="289" y="129" width="22" height="18" rx="3" fill="#ffffff" />
-  <circle cx="300" cy="137" r="2" fill="#c9a84c" />
+  <path d="M329,87 L361,99 L361,127 C361,149 345,163 329,171 C313,163 297,149 297,127 L297,99 Z" fill="#c9a84c" stroke="#ffffff" stroke-width="3" />
+  <path d="M322,129 v-9 a7,7 0 0 1 14,0 v9" fill="none" stroke="#ffffff" stroke-width="3.2" />
+  <rect x="318" y="129" width="22" height="18" rx="3" fill="#ffffff" />
+  <circle cx="329" cy="137" r="2" fill="#c9a84c" />
 </svg>

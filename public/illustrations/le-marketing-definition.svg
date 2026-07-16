@@ -16,12 +16,12 @@
     <rect x="40" y="20" width="400" height="160" rx="16" fill="#ffffff" />
   </g>
 
-  <polygon points="100,85 155,65 155,135 100,115" fill="#1e3a5f" />
-  <rect x="88" y="90" width="16" height="20" rx="4" fill="#1e3a5f" />
-  <path d="M167,80 A25,25 0 0 1 167,120" stroke="#94a3b8" stroke-width="3" fill="none" stroke-linecap="round" />
-  <path d="M182,70 A38,38 0 0 1 182,130" stroke="#94a3b8" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.6" />
+  <polygon points="103.5,85 158.5,65 158.5,135 103.5,115" fill="#1e3a5f" />
+  <rect x="91.5" y="90" width="16" height="20" rx="4" fill="#1e3a5f" />
+  <path d="M170.5,80 A25,25 0 0 1 170.5,120" stroke="#94a3b8" stroke-width="3" fill="none" stroke-linecap="round" />
+  <path d="M185.5,70 A38,38 0 0 1 185.5,130" stroke="#94a3b8" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.6" />
 
-  <circle cx="340" cy="100" r="45" fill="none" stroke="#c9a84c" stroke-width="8" opacity="0.3" />
-  <circle cx="340" cy="100" r="30" fill="none" stroke="#c9a84c" stroke-width="8" opacity="0.5" />
-  <circle cx="340" cy="100" r="14" fill="#c9a84c" />
+  <circle cx="343.5" cy="100" r="45" fill="none" stroke="#c9a84c" stroke-width="8" opacity="0.3" />
+  <circle cx="343.5" cy="100" r="30" fill="none" stroke="#c9a84c" stroke-width="8" opacity="0.5" />
+  <circle cx="343.5" cy="100" r="14" fill="#c9a84c" />
 </svg>

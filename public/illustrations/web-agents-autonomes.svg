@@ -20,43 +20,43 @@
   </g>
 
   <clipPath id="wa-browser-clip">
-    <rect x="90" y="90" width="180" height="140" rx="10" />
+    <rect x="82" y="90" width="180" height="140" rx="10" />
   </clipPath>
   <g clip-path="url(#wa-browser-clip)">
-    <rect x="90" y="90" width="180" height="140" fill="#ffffff" />
-    <rect x="90" y="90" width="180" height="26" fill="#f1f5f9" />
-    <circle cx="104" cy="103" r="3.5" fill="#cbd5e1" />
-    <circle cx="118" cy="103" r="3.5" fill="#cbd5e1" />
-    <circle cx="132" cy="103" r="3.5" fill="#cbd5e1" />
-    <rect x="106" y="136" width="148" height="48" rx="12" fill="#1e3a5f" />
-    <path d="M118,184 L110,196 L128,184 Z" fill="#1e3a5f" />
-    <rect x="118" y="148" width="110" height="7" rx="3" fill="#ffffff" opacity="0.6" />
-    <rect x="118" y="160" width="80" height="7" rx="3" fill="#ffffff" opacity="0.4" />
+    <rect x="82" y="90" width="180" height="140" fill="#ffffff" />
+    <rect x="82" y="90" width="180" height="26" fill="#f1f5f9" />
+    <circle cx="96" cy="103" r="3.5" fill="#cbd5e1" />
+    <circle cx="110" cy="103" r="3.5" fill="#cbd5e1" />
+    <circle cx="124" cy="103" r="3.5" fill="#cbd5e1" />
+    <rect x="98" y="136" width="148" height="48" rx="12" fill="#1e3a5f" />
+    <path d="M110,184 L102,196 L120,184 Z" fill="#1e3a5f" />
+    <rect x="110" y="148" width="110" height="7" rx="3" fill="#ffffff" opacity="0.6" />
+    <rect x="110" y="160" width="80" height="7" rx="3" fill="#ffffff" opacity="0.4" />
   </g>
-  <rect x="90" y="90" width="180" height="140" rx="10" fill="none" stroke="#e2e8f0" />
+  <rect x="82" y="90" width="180" height="140" rx="10" fill="none" stroke="#e2e8f0" />
 
-  <circle cx="255" cy="215" r="22" fill="#c9a84c" stroke="#ffffff" stroke-width="3" />
-  <rect x="245" y="205" width="20" height="16" rx="4" fill="#ffffff" />
-  <circle cx="250" cy="213" r="1.8" fill="#c9a84c" />
-  <circle cx="260" cy="213" r="1.8" fill="#c9a84c" />
-  <line x1="255" y1="205" x2="255" y2="200" stroke="#ffffff" stroke-width="2" />
-  <circle cx="255" cy="199" r="2" fill="#ffffff" />
+  <circle cx="247" cy="215" r="22" fill="#c9a84c" stroke="#ffffff" stroke-width="3" />
+  <rect x="237" y="205" width="20" height="16" rx="4" fill="#ffffff" />
+  <circle cx="242" cy="213" r="1.8" fill="#c9a84c" />
+  <circle cx="252" cy="213" r="1.8" fill="#c9a84c" />
+  <line x1="247" y1="205" x2="247" y2="200" stroke="#ffffff" stroke-width="2" />
+  <circle cx="247" cy="199" r="2" fill="#ffffff" />
 
-  <line x1="279" y1="209" x2="324" y2="196" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" marker-end="url(#wa-arrow)" />
+  <line x1="271" y1="209" x2="316" y2="196" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" marker-end="url(#wa-arrow)" />
 
   <clipPath id="wa-cal-clip">
-    <rect x="330" y="165" width="76" height="76" rx="10" />
+    <rect x="322" y="165" width="76" height="76" rx="10" />
   </clipPath>
   <g clip-path="url(#wa-cal-clip)">
-    <rect x="330" y="165" width="76" height="76" fill="#ffffff" />
-    <rect x="330" y="165" width="76" height="20" fill="#1e3a5f" />
-    <rect x="338" y="195" width="16" height="16" rx="3" fill="#f1f5f9" />
-    <rect x="358" y="195" width="16" height="16" rx="3" fill="#f1f5f9" />
-    <rect x="378" y="195" width="16" height="16" rx="3" fill="#f1f5f9" />
-    <rect x="338" y="215" width="16" height="16" rx="3" fill="#f1f5f9" />
-    <rect x="358" y="215" width="16" height="16" rx="3" fill="#c9a84c" />
-    <path d="M361,223 L365,227 L372,219" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-    <rect x="378" y="215" width="16" height="16" rx="3" fill="#f1f5f9" />
+    <rect x="322" y="165" width="76" height="76" fill="#ffffff" />
+    <rect x="322" y="165" width="76" height="20" fill="#1e3a5f" />
+    <rect x="330" y="195" width="16" height="16" rx="3" fill="#f1f5f9" />
+    <rect x="350" y="195" width="16" height="16" rx="3" fill="#f1f5f9" />
+    <rect x="370" y="195" width="16" height="16" rx="3" fill="#f1f5f9" />
+    <rect x="330" y="215" width="16" height="16" rx="3" fill="#f1f5f9" />
+    <rect x="350" y="215" width="16" height="16" rx="3" fill="#c9a84c" />
+    <path d="M353,223 L357,227 L364,219" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+    <rect x="370" y="215" width="16" height="16" rx="3" fill="#f1f5f9" />
   </g>
-  <rect x="330" y="165" width="76" height="76" rx="10" fill="none" stroke="#e2e8f0" />
+  <rect x="322" y="165" width="76" height="76" rx="10" fill="none" stroke="#e2e8f0" />
 </svg>

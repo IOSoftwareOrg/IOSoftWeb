@@ -16,29 +16,29 @@
     <rect x="60" y="40" width="360" height="280" rx="20" fill="#ffffff" />
   </g>
 
-  <rect x="90" y="76" width="130" height="60" rx="10" fill="#f8fafc" stroke="#e2e8f0" />
-  <rect x="104" y="96" width="40" height="10" rx="5" fill="#c9a84c" />
-  <rect x="104" y="114" width="70" height="6" rx="3" fill="#e2e8f0" />
+  <rect x="95" y="76" width="130" height="60" rx="10" fill="#f8fafc" stroke="#e2e8f0" />
+  <rect x="109" y="96" width="40" height="10" rx="5" fill="#c9a84c" />
+  <rect x="109" y="114" width="70" height="6" rx="3" fill="#e2e8f0" />
 
-  <rect x="250" y="76" width="130" height="60" rx="10" fill="#f8fafc" stroke="#e2e8f0" />
-  <rect x="264" y="96" width="55" height="10" rx="5" fill="#1e3a5f" />
-  <rect x="264" y="114" width="70" height="6" rx="3" fill="#e2e8f0" />
+  <rect x="255" y="76" width="130" height="60" rx="10" fill="#f8fafc" stroke="#e2e8f0" />
+  <rect x="269" y="96" width="55" height="10" rx="5" fill="#1e3a5f" />
+  <rect x="269" y="114" width="70" height="6" rx="3" fill="#e2e8f0" />
 
-  <rect x="90" y="150" width="290" height="130" rx="10" fill="#ffffff" stroke="#e2e8f0" />
-  <line x1="100" y1="255" x2="360" y2="255" stroke="#e2e8f0" stroke-width="1.5" />
+  <rect x="95" y="150" width="290" height="130" rx="10" fill="#ffffff" stroke="#e2e8f0" />
+  <line x1="105" y1="255" x2="365" y2="255" stroke="#e2e8f0" stroke-width="1.5" />
 
-  <rect x="112" y="215" width="26" height="40" rx="3" fill="#94a3b8" opacity="0.45" />
-  <rect x="152" y="195" width="26" height="60" rx="3" fill="#94a3b8" opacity="0.45" />
-  <rect x="192" y="225" width="26" height="30" rx="3" fill="#94a3b8" opacity="0.45" />
-  <rect x="232" y="185" width="26" height="70" rx="3" fill="#94a3b8" opacity="0.45" />
-  <rect x="272" y="205" width="26" height="50" rx="3" fill="#94a3b8" opacity="0.45" />
-  <rect x="312" y="165" width="26" height="90" rx="3" fill="#c9a84c" />
+  <rect x="117" y="215" width="26" height="40" rx="3" fill="#94a3b8" opacity="0.45" />
+  <rect x="157" y="195" width="26" height="60" rx="3" fill="#94a3b8" opacity="0.45" />
+  <rect x="197" y="225" width="26" height="30" rx="3" fill="#94a3b8" opacity="0.45" />
+  <rect x="237" y="185" width="26" height="70" rx="3" fill="#94a3b8" opacity="0.45" />
+  <rect x="277" y="205" width="26" height="50" rx="3" fill="#94a3b8" opacity="0.45" />
+  <rect x="317" y="165" width="26" height="90" rx="3" fill="#c9a84c" />
 
-  <polyline points="125,215 165,195 205,225 245,185 285,205 325,165" fill="none" stroke="#1e3a5f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-  <circle cx="125" cy="215" r="3" fill="#1e3a5f" />
-  <circle cx="165" cy="195" r="3" fill="#1e3a5f" />
-  <circle cx="205" cy="225" r="3" fill="#1e3a5f" />
-  <circle cx="245" cy="185" r="3" fill="#1e3a5f" />
-  <circle cx="285" cy="205" r="3" fill="#1e3a5f" />
-  <circle cx="325" cy="165" r="4" fill="#c9a84c" stroke="#ffffff" stroke-width="1.5" />
+  <polyline points="130,215 170,195 210,225 250,185 290,205 330,165" fill="none" stroke="#1e3a5f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="130" cy="215" r="3" fill="#1e3a5f" />
+  <circle cx="170" cy="195" r="3" fill="#1e3a5f" />
+  <circle cx="210" cy="225" r="3" fill="#1e3a5f" />
+  <circle cx="250" cy="185" r="3" fill="#1e3a5f" />
+  <circle cx="290" cy="205" r="3" fill="#1e3a5f" />
+  <circle cx="330" cy="165" r="4" fill="#c9a84c" stroke="#ffffff" stroke-width="1.5" />
 </svg>
